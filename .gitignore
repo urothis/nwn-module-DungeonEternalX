@@ -1,0 +1,16 @@
+# Ignore packed files
+*.erf
+*.hak
+*.mod
+
+# Ignore the nasher directory
+.nasher/
+
+# Ignore module
+*.mod
+config/nwserver.env
+config/db.env
+docker-compose.yml
+database/var/*
+logs/*
+bin/nwnsc

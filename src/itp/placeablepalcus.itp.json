@@ -1,0 +1,763 @@
+{
+  "__data_type": "ITP ",
+  "MAIN": {
+    "type": "list",
+    "value": [
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 7
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6783
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 22
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 111663
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 6
+        },
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Activate"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_000"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Chain of Wonder"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "bc_xp_chain"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Emitter"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_007"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Last Effect"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_005"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Last Type"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_004"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Next Effect"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_002"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Next Type"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_003"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Pawn Exchange"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "pawn_exchange"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "RESREF": {
+                "type": "resref",
+                "value": "pullrope"
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 14706
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Remains"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "bossbag"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Remains"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "lootbag"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Rewards"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "questbag"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Storm Generator"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_001"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Target"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "_vfx_maker_006"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Trash Can"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "trashcan"
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6782
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 8
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6784
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 9
+        },
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Flaming Brazier"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "brazierofiphegor"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Fountain of Eternity"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "fountain001"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "RESREF": {
+                "type": "resref",
+                "value": "invisible"
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 5800
+              }
+            },
+            {
+              "__struct_id": 0,
+              "RESREF": {
+                "type": "resref",
+                "value": "invisobj"
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 5800
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Maglubiyet, The Mighty One"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "maglubiyet_statu"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "RESREF": {
+                "type": "resref",
+                "value": "factionobelisk"
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 9194
+              }
+            },
+            {
+              "__struct_id": 0,
+              "RESREF": {
+                "type": "resref",
+                "value": "factionobelisk0"
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 4075
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Rune Stone"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "maglubiyet_stone"
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 1592
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 10
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6785
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 11
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6786
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 12
+        },
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Bindstone"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "bindstone"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Grave"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "pc_grave"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Slot Flag Black"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "slot_flag_black"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Slot Flag White"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "slot_flag_white"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Temple Run"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "templerunsign"
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6787
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 14
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 9122
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 15
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 9128
+        }
+      },
+      {
+        "__struct_id": 0,
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 0
+              },
+              "LIST": {
+                "type": "list",
+                "value": [
+                  {
+                    "__struct_id": 0,
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "crystal_ball"
+                    },
+                    "STRREF": {
+                      "type": "dword",
+                      "value": 83438
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "DD AOE"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "dd_aoe"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "faction_artifact"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "faction_artifact"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "In Memoriam for Storm_13 "
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "inmemoriamforsto"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Persistent Chest"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "sfpb_chest"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Townportal"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "tp_portal_back"
+                    }
+                  }
+                ]
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 6688
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 1
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 6689
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 2
+              },
+              "LIST": {
+                "type": "list",
+                "value": [
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Countdown Parrot"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "countdownpillar"
+                    }
+                  }
+                ]
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 6690
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 3
+              },
+              "LIST": {
+                "type": "list",
+                "value": [
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Town Portal"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "townportal"
+                    }
+                  }
+                ]
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 6691
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 4
+              },
+              "LIST": {
+                "type": "list",
+                "value": [
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "LootCache"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "lootcache"
+                    }
+                  }
+                ]
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 6692
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6687
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 13
+        },
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Planted Seeds"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "crafting_plant"
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6788
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 16
+        },
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 17
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 62485
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 19
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 5836
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 21
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 67585
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 20
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 53151
+              }
+            },
+            {
+              "__struct_id": 0,
+              "ID": {
+                "type": "byte",
+                "value": 18
+              },
+              "STRREF": {
+                "type": "dword",
+                "value": 67132
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 66490
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ID": {
+          "type": "byte",
+          "value": 5
+        },
+        "LIST": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Magic Rune"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "magicrune"
+              }
+            },
+            {
+              "__struct_id": 0,
+              "NAME": {
+                "type": "cexostring",
+                "value": "Temple of Adaghar Portal"
+              },
+              "RESREF": {
+                "type": "resref",
+                "value": "toa_portal"
+              }
+            }
+          ]
+        },
+        "STRREF": {
+          "type": "dword",
+          "value": 6781
+        }
+      }
+    ]
+  }
+}

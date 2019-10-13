@@ -1,0 +1,62 @@
+NDB V1.0
+0000002 0000001 0000011 0000009 0000012
+n00 nw_i0_tool
+N01 axecheck
+s 03 vector
+sf f x
+sf f y
+sf f z
+f 00000139 00000175 002 i HasItem
+fp o
+fp s
+f ffffffff ffffffff 003 v TakeGold
+fp i
+fp o
+fp i
+f ffffffff ffffffff 002 i HasGold
+fp i
+fp o
+f ffffffff ffffffff 003 i AutoDC
+fp i
+fp i
+fp o
+f ffffffff ffffffff 004 v DoGiveXP
+fp s
+fp i
+fp o
+fp i
+f ffffffff ffffffff 003 v RewardPartyGP
+fp i
+fp o
+fp i
+f ffffffff ffffffff 003 v RewardPartyXP
+fp i
+fp o
+fp i
+f ffffffff ffffffff 002 i CheckPartyForItem
+fp o
+fp s
+f 00000091 00000139 000 i StartingConditional
+f 0000000d 00000017 000 i #loader
+f 00000017 00000091 000 v #globals
+v 0000000f ffffffff 00000000 i #retval
+v 00000019 ffffffff 00000000 i DC_EASY
+v 0000002f ffffffff 00000004 i DC_MEDIUM
+v 00000045 ffffffff 00000008 i DC_HARD
+v 0000005b ffffffff 0000000c i G_CLASSCHANCE
+v 00000091 00000137 00000000 i #retval
+v 00000139 00000173 00000000 i #retval
+v 00000139 0000016d 00000004 s s
+v 00000139 0000016d 00000008 o oCreature
+l00 0000018 00000017 0000002d
+l00 0000019 0000002d 00000043
+l00 0000020 00000043 00000059
+l00 0000024 00000059 0000006f
+l01 0000013 00000091 000000b1
+l01 0000016 000000b1 000000cb
+l01 0000017 000000d1 000000f1
+l01 0000019 000000f7 00000117
+l01 0000021 00000117 00000137
+l01 0000024 00000137 00000139
+l00 0000040 00000139 0000016d
+l00 0000041 0000016d 00000175

@@ -1,0 +1,81 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 99
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 74
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 100
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "<c  ÿ>Basic Adventurer's Guide<cÿÿÿ>\n\nCompiled by the Loftenwood Librarian.\n\nWelcome to the town of Loftenwood, adventurer.  I have collected various insights in this short text for you to read.  I hope it will help you with your first few steps.  I used to be an adventurer, but now I just try to help other people out.  Stop by the Loftenwood library, share a tale or two of your adventures, and check out a book if you feel like returning the favor.\n\nThese short stories contain helpful information.\n\n<c  ÿ>Excerpts from a Loftenwood Herdsman's Journal to his children: <cÿÿÿ>\n\n\"…\n\nIt all began a years ago when I was a small child.  The dark storm, the swirling lights, and then… the dead walked again.  At first, I didn't believe it, I thought it was only children's tales, or the joke of the village prankster.  But then I saw it with my own eyes.  Old Sillzek the Cooper, after visiting the gravesight where his latest coffin would be placed, let loose a bloodcurdling scream, and came running back from the north-side of town.  Behind him, the long-dead wife of our previous mayor Dirk (also known as Dirk the Devious, but that's another story) came shuffling into town.  Oozing pieces of rotting flesh dripped from her face to the ground.  It was horrible.  The town guard ran over and dispatched the fiendish ghoul, but not before the zombie had clubbed Sillzek with its own femur…\n\nDark days followed. We posted rewards, offered treasures, and eventually, the heroes arrived, and beat back the tides of zombies rising from their graves.\n\nNot long after, a witch named \"Baba Yaga\" moved into our town.  I don't trust her.  I've heard adventurers say that her shop isn't just here in Loftenwood, but that she peddles her spells and potions in many towns.  It must be powerful magic she holds if she can be in so many places, but I'm just a herdsman.  I only know about keeping the flocks of sheep and cattle alive against vicious dire wolves, I don't hold any great magic.  Talk to a mage if you are curious about magic.  All the so-called \"heroes\" that come to our town to slay the zombies - they pay Baba large amounts of gold for her to enchant their weapons before they fight.  As a favor for all their business, she offers a place to rest, and special portaling magic to travel quickly to the adventuring party's captain.  Very useful.  Personally, I'd never pay her one precious gold piece that could be spent on quality ingredients for home-brewed ale!\n\nWe live in a peaceful valley, why anybody would leave this place is beyond me.  If you travel not very far to the east, you run into swamp creatures, and to the south, there are lizard-people.  A little bit to the west of here, goblins have claimed the forests.  Of course we are able to trade with them from time to time, but only when we show up with a fully-armed militia to guard our merchants. \n\nIf the undead prove to be too strong and overtake our town, there are other places you can go live.  If you pass far to the east and then head south past the swamps and rivers, you can travel to Ridgetown.  Past the mountains to the North West, the oasis-town of Kjuina can offer respite from the surrounding deserts.  I've heard of other towns including Tengle, Duvanbower, and Mythara, but I do not know how to travel to those places.\n\nOf course, there are many clans, factions, and kingdoms who fight for control of our beloved lands.  Some are very kind, and I've shared many a frosty pint in the local tavern based on their generosity.  Others… well let's just say I've found more than a few cattle that have been sacrificed in dark rituals, and it wasn't just cattle bones I found in the resulting carnage the next day.  I cannot verify it, but I'd describe some of the bones as demonkin, and the blackened, blasted earth where these occurred never grew right again.  Some of these twisted folk have gone out of their way to hunt other people…  just be careful.\n\nWhat can I say to you, my children that I haven't already taught you as you grew up.  Don't forget to feed and water the herds. Our family has tended them for 14 generations.  And if I come back from the Loftenwood graveyard after I am dead, offer me a pint of beer.  If I don't take it, you'll know there really is nothing left of me, and you can chop me back down to the sweet mother earth.  \n\n…\"\n\n<c  ÿ>%%%%%%%%%%%%<cÿÿÿ>\n\nThe following are scribbled class notes from a student at the \"Heroes Academy\" - a failed school that was over-run by chaotic evil barbarians looking for loot.\n---------------------\n\"… the mage lectured today about avoiding strikes in combat.  He mentioned that because of how the magic worked, only certain types of armor class could be used to avoid strikes in combat.  He used some silly technical terms, I'll have to look them up later.  Something about Deflection, Natural, Armor, Dodge, and Shield enchantments for armor class.  He did say that Deflection was found on cloaks, rings, helmets.  Armor enchantment was found on the main suit of armor a person wore.  Natural enchantment is found on amulets.  Dodge enchantment can only be found on boots (I guess they make you more nimble).  Shield enchantment is only found on shields, and as I am more experienced, I will enjoy some Shielding from using two-weapons or from using a two-handed weapon…\n\n… furthermore the mage lectured us on enchanting our equipment.  He mentioned that by the time we are epic heroes we should have boosted our constitution, strength, and other relavant attributes as much as possible…  He specifically mentioned that by level 10, we should have full (+5) armor class and haste on our items which can be purchased in Ridgetown. By level 21, our items should have full attribute (+12 to your important attributes like constitution and whatever other attributes you want to boost), saves (fortitude), skills (discipline), and armor class boosts.  Our weapon should be maxxed out by level 25 at least…\"\n---------------------\n\"…the priest gives the most boring lectures.  Today, he spoke about avoiding dying instantly.  Like that will ever happen! What a mindless fool this guy is.  He mentioned that my fortitude must be powerful to resist the effects of death.  He also wrote some numbers with the burnt-willow stick on the classroom slate.  Something about recommendations before I go out and adventure.  Anyhow, here is what he wrote:\n\n    Please consider these general guidelines:  A well-built level 40 adventurer should have 50 fortitude or more, and at least 50 discipline.  Armor class should be at least 60.  Hit points should be at least 500.  Arguably, a melee build should have 65+ AC, 62+ AB, 51+ Fortitude, 70+ discipline, and 650 or more HP…\n\nAfter writing all that stuff, he said it is very important to protect our minds, and that a simple clarity potion or a powerful mage spell like mindblank would protect us from being controlled or dominated.  He then looked at me and told me he was reading my mind right then and that I should stop thinking about the beautiful aasimir sitting in front of me… especially with her clothes off.  I've never been so embarrassed…\"\n---------------------\n\"…young adventurers should try to use invisibility to travel from place to place.  Potions can be purchased.   Using heal kits in between each fight can help to keep us alive longer.  Antidote potions are very useful, they cure any drained or lowered attribute.  Concealment provided by improved invisibility will keep you alive.  Use it.  Finally, when going to kill creatures, be sure to visit Baba Yaga and get weapon enchantments if you can afford them…\"\n---------------------\n\"… Graduation ceremony coming up in a few weeks.  I can hardly wait.  The lector mentioned that mapping out our career choices _on paper_ is very important.  It's very important to develop your skills in the correct order to increase your chances to be successful in combat.  That being said he said if you are inexperienced, that there are guides on what classes to take and what levels to take them, what races are most suited to magic versus melee, and that these can be very useful…\"\n---------------------\n\"… Oh no. Elven barbarians everywhere.  The evil bastards killed my teacher.  I am hiding in the closet, but I am going to try my new spell, \"Sleep\" on them.  If if anyone finds these notes, I probably did not survive…\"  \n\n<c  ÿ>%%%%%%%%%%%%<cÿÿÿ>\n"
+    }
+  },
+  "Description": {
+    "type": "cexolocstring",
+    "value": {
+      "0": ""
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "<c  ÿ>Basic Adventurer's Guide"
+    }
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 7
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 60
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "MonsterManual"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "monstermanual"
+  }
+}

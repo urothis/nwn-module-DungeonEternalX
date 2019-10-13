@@ -1,0 +1,79 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 3000
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 77
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 3000
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "Description": {
+    "id": 13293,
+    "type": "cexolocstring",
+    "value": {
+      "0": "3000 GP\n\nFire agate forms in thin brown layers that refract the incoming light, giving the gem its \"fire.\" The refraction often forms patterns reminiscent of a dragon's scales, which makes it prized by sorcerers who claim to trace their lineage back to dragonkin. A well-cut stone has its outer layers polished and ground away until only the fire is visible."
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "id": 13292,
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 2
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 57
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "GEM_03000"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "gem_03000"
+  }
+}

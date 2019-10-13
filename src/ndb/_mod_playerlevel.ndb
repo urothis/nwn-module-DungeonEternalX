@@ -1,0 +1,190 @@
+NDB V1.0
+0000003 0000001 0000049 0000016 0000049
+n00 _inc_aps
+n01 _inc_character
+N02 _mod_playerlevel
+s 03 vector
+sf f x
+sf f y
+sf f z
+f ffffffff ffffffff 000 v SQLInit
+f 00000282 000002ce 001 v SQLExecDirect
+fp s
+f 000002ce 00000419 000 i SQLFetch
+f ffffffff ffffffff 000 i SQLFirstRow
+f ffffffff ffffffff 000 i SQLNextRow
+f 00000419 00000657 001 s SQLGetData
+fp i
+f ffffffff ffffffff 001 s LocationToString
+fp e2
+f ffffffff ffffffff 001 e2 StringToLocation
+fp s
+f ffffffff ffffffff 001 s VectorToString
+fp t0000
+f ffffffff ffffffff 001 t0000 StringToVector
+fp s
+f ffffffff ffffffff 005 v SetPersistentString
+fp o
+fp s
+fp s
+fp i
+fp s
+f ffffffff ffffffff 005 v SetPersistentInt
+fp o
+fp s
+fp i
+fp i
+fp s
+f ffffffff ffffffff 005 v SetPersistentFloat
+fp o
+fp s
+fp f
+fp i
+fp s
+f ffffffff ffffffff 005 v SetPersistentLocation
+fp o
+fp s
+fp e2
+fp i
+fp s
+f ffffffff ffffffff 005 v SetPersistentVector
+fp o
+fp s
+fp t0000
+fp i
+fp s
+f ffffffff ffffffff 003 s GetPersistentString
+fp o
+fp s
+fp s
+f ffffffff ffffffff 003 i GetPersistentInt
+fp o
+fp s
+fp s
+f ffffffff ffffffff 003 f GetPersistentFloat
+fp o
+fp s
+fp s
+f ffffffff ffffffff 003 e2 GetPersistentLocation
+fp o
+fp s
+fp s
+f ffffffff ffffffff 003 t0000 GetPersistentVector
+fp o
+fp s
+fp s
+f ffffffff ffffffff 003 v DeletePersistentVariable
+fp o
+fp s
+fp s
+f ffffffff ffffffff 001 s SQLEncodeSpecialChars
+fp s
+f ffffffff ffffffff 001 s SQLDecodeSpecialChars
+fp s
+f ffffffff ffffffff 000 i FACTION_NONE
+f ffffffff ffffffff 000 i FACTION_EVIL
+f ffffffff ffffffff 000 i FACTION_GOOD
+f ffffffff ffffffff 000 i FACTION_NEUTRAL
+f ffffffff ffffffff 000 i RANK_NONE
+f ffffffff ffffffff 000 i RANK_MEMBER
+f ffffffff ffffffff 000 i RANK_COMMANDER
+f ffffffff ffffffff 000 i RANK_GENERAL
+f ffffffff ffffffff 000 s STONE_GENERAL
+f ffffffff ffffffff 000 s STONE_COMMANDER
+f ffffffff ffffffff 000 s STONE_MEMBER
+f ffffffff ffffffff 002 v SetPlayerID
+fp o
+fp s
+f ffffffff ffffffff 001 s GetPlayerID
+fp o
+f ffffffff ffffffff 002 v SetCharacterID
+fp o
+fp s
+f 00000240 00000282 001 s GetCharacterID
+fp o
+f ffffffff ffffffff 002 v SetFaction
+fp o
+fp i
+f ffffffff ffffffff 001 i GetFaction
+fp o
+f ffffffff ffffffff 002 v SetFactionRank
+fp o
+fp i
+f ffffffff ffffffff 001 i GetFactionRank
+fp o
+f ffffffff ffffffff 001 v DisablePorts
+fp o
+f ffffffff ffffffff 001 v EnablePorts
+fp o
+f ffffffff ffffffff 001 v ApplyFactionBuffs
+fp o
+f ffffffff ffffffff 001 v RemoveFactionBuffs
+fp o
+f 00000053 00000240 000 v main
+f 0000000d 00000015 000 v #loader
+f 00000015 00000053 000 v #globals
+v 00000017 ffffffff 00000000 i SQL_ERROR
+v 0000002d ffffffff 00000004 i SQL_SUCCESS
+v 00000055 00000238 00000000 o oPC
+v 0000006a 00000238 00000004 s sCharacterID
+v 00000240 00000280 00000000 s #retval
+v 00000240 0000027a 00000004 o oPC
+v 00000282 000002c6 00000000 s sSQL
+v 000002ce 00000417 00000000 i #retval
+v 000002d0 00000411 00000004 s sRow
+v 000002d2 00000411 00000008 o oModule
+v 00000419 00000655 00000000 s #retval
+v 00000419 0000064f 00000004 i iCol
+v 0000041b 00000649 00000008 i iPos
+v 0000041d 00000649 0000000c s sResultSet
+v 0000044f 00000649 00000010 i iCount
+v 00000465 00000649 00000014 s sColValue
+l00 0000013 00000015 0000002b
+l00 0000014 0000002b 00000041
+l02 0000006 00000053 00000068
+l02 0000007 00000068 00000088
+l02 0000008 00000088 000000ed
+l02 0000009 000000ed 00000154
+l02 0000010 00000154 000001bb
+l02 0000011 000001bb 000001e9
+l02 0000012 000001e9 000001fb
+l02 0000014 00000201 00000230
+l02 0000016 00000236 00000238
+l02 0000020 0000023e 00000240
+l01 0000029 00000240 0000027a
+l01 0000030 0000027a 00000282
+l00 0000154 00000282 000002a2
+l00 0000155 000002a2 000002c6
+l00 0000156 000002c6 000002ce
+l00 0000160 000002ce 000002d0
+l00 0000161 000002d0 000002e5
+l00 0000162 000002e5 00000326
+l00 0000163 00000326 00000354
+l00 0000164 00000354 00000369
+l00 0000166 0000036f 0000039c
+l00 0000167 0000039c 000003be
+l00 0000169 000003c4 000003c6
+l00 0000171 000003c6 000003ef
+l00 0000172 000003ef 00000411
+l00 0000174 00000417 00000419
+l00 0000190 00000419 0000041b
+l00 0000191 0000041b 0000044d
+l00 0000194 0000044d 00000463
+l00 0000195 00000463 00000477
+l00 0000197 00000477 00000497
+l00 0000198 00000497 000004c9
+l00 0000201 000004cf 000004e5
+l00 0000203 000004eb 000004ed
+l00 0000206 00000505 00000517
+l00 0000208 0000051d 0000051f
+l00 0000211 0000051f 00000537
+l00 0000213 00000537 0000054b
+l00 0000214 0000054b 0000055d
+l00 0000215 00000563 00000586
+l00 0000216 0000058c 0000058e
+l00 0000218 0000058e 000005c8
+l00 0000219 000005c8 000005e8
+l00 0000223 000005e8 000005fa
+l00 0000224 00000600 0000061b
+l00 0000228 00000627 00000649
+l00 0000229 0000064f 00000657

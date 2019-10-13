@@ -1,0 +1,79 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 5000
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 77
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 5000
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "Description": {
+    "id": 13317,
+    "type": "cexolocstring",
+    "value": {
+      "0": "5000 GP\n\nWhen cut and polished, aventurine is alluring as its name. It resembles misty quartz, but contains glistening flecks of green that give it a unique sheen. The witches of Rashemen are said to use aventurine for invocations, evocations, and spirit work."
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "id": 13316,
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 14
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 57
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "GEM_05000"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "gem_05000"
+  }
+}
