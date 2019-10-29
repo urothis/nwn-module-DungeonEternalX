@@ -4,7 +4,7 @@ services:
   - docker:19.03.1-dind
 
 variables:
-  IMAGE_NAME: urothis/nwn-module-DungeonEternalX:latest
+  IMAGE_NAME: urothis/dex:latest
 
 stages:
   - Build image
