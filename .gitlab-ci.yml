@@ -27,10 +27,9 @@ build:dex:
   image: 
     name: squattingmonk/nasher:latest
     entrypoint: [""]
-  before_script:
+  script:
     - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
     - cd nwn-module-DungeonEternalX
-  script:
     - nasher pack
   artifacts:
     paths:
