@@ -8,6 +8,7 @@ variables:
 
 stages:
   - Build
+  - Staging
   - Deploy
 
 build:disdex:
@@ -35,15 +36,12 @@ build:dex:
     expire_in: 1 week
 
 build:docker:
-  stage: Build
+  stage: Staging
   only:
   - master
   script:
   - docker info
-  - docker build -t $FINAL_IMAGE_NAME .
-  dependencies:
-    - build:disdex
-    - build:dex    
+  - docker build -t $FINAL_IMAGE_NAME . 
 
 docker push:
   stage: Deploy
