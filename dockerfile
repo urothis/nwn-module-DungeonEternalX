@@ -1,11 +1,10 @@
 # build the discord bot binary
 FROM golang:1.13.0 as dexbot
-ADD disdex disdex
 RUN apt update \
     && apt upgrade -y \
     && rm -r /var/lib/apt/lists /var/cache/apt \
-    && git clone https://github.com/urothis/nwn-module-DungeonEternalX.git \
-    && cd nwn-module-DungeonEternalX/disdex \
+    && git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
+RUN cd nwn-module-DungeonEternalX/disdex \
     && go mod download \
     && go build -o ./bin/dexbot \ 
     && mv dexbot /usr/local/bin/
@@ -13,8 +12,8 @@ RUN apt update \
 # build the module
 FROM nasher:latest as module
 COPY . /nasher
-ENTRYPOINT [ "nasher" ]
-CMD [ "pack" ""]
+WORKDIR /nasher
+RUN nasher pack
 
 # put it all together into nwserver
 FROM nwnxee/unified:latest
