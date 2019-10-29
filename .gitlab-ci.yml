@@ -22,10 +22,11 @@ golang build:
     - ln -s $CI_PROJECT_DIR
     - cd $CI_PROJECT_NAME
   script:
-    - go build -o disdex
+    - cd disdex
+    - go build -o disdex 
   artifacts:
     paths:
-    - disdex
+    - disdex/disdex
     expire_in: 1 week
   
 module build:
