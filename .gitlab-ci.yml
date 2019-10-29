@@ -33,7 +33,8 @@ module build:
   stage: Build Module
   image: squattingmonk/nasher:latest
   script:
-    nasher pack
+    - cd $CI_PROJECT_DIR
+    - nasher pack
   artifacts:
     paths:
     - server/modules/DungeonEternalX.mod
