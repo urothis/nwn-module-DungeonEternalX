@@ -15,6 +15,10 @@ stages:
 golang build:
   stage: Build Disdex
   image: golang:1.13.0  
+  only:
+  - master
+    changes:
+      - disdex/**/*
   before_script:
     - cd $GOPATH/src
     - mkdir -p gitlab.com/$CI_PROJECT_NAMESPACE
@@ -26,22 +30,28 @@ golang build:
     - go build -o disdex 
   artifacts:
     paths:
-    - disdex/disdex
+    - disdex
     expire_in: 1 week
-  
+ 
 module build:
   stage: Build Module
   image: squattingmonk/nasher:latest
+  only:
+  - master
+    changes:
+      - src/**/*
   script:
     - cd $CI_PROJECT_DIR
     - nasher pack
   artifacts:
     paths:
-    - server/modules/DungeonEternalX.mod
+    - DungeonEternalX.mod
     expire_in: 1 week
 
 docker build:
   stage: Build image
+  only:
+  - master
   script:
   - docker info
   - docker build -t $FINAL_IMAGE_NAME .
