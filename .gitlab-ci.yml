@@ -15,12 +15,6 @@ stages:
 golang build:
   stage: Build Disdex
   image: golang:1.13.0  
-  before_script:
-    - cd $GOPATH/src
-    - mkdir -p gitlab.com/$CI_PROJECT_NAMESPACE
-    - cd gitlab.com/$CI_PROJECT_NAMESPACE
-    - ln -s $CI_PROJECT_DIR
-    - cd $CI_PROJECT_NAME
   script:
     - cd disdex
     - go build -o disdex 
@@ -33,7 +27,7 @@ module build:
   stage: Build Module
   image: squattingmonk/nasher:latest
   script:
-    - cd $CI_PROJECT_DIR
+    - ls
     - nasher pack
   artifacts:
     paths:
