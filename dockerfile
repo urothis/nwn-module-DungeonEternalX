@@ -8,7 +8,7 @@ RUN apt update \
     && cd nwn-module-DungeonEternalX/disdex \
     && go mod download \
     && go build -o ./bin/dexbot \ 
-    && mv nwn-module-DungeonEternalX/dexbot /usr/local/bin/
+    && mv dexbot /usr/local/bin/
 
 # build the module
 FROM nasher:latest as module
