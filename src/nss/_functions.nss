@@ -415,19 +415,8 @@ float GetMinf(float iNum1 = 0.0, float iNum2 = 0.0)
 void LetoReadSpellSchool(object oPC)
 {
    if (!GetLevelByClass(CLASS_TYPE_WIZARD, oPC)) return; // NO WIZ LEVELS, NOTHING TO SEE HERE
-   /*
-   string sPath = GetVaultDir()+"/"+GetPCPlayerName(oPC)+"/";
-   string sScript  = "%char = '"+sPath+"'+FindNewestBic('"+sPath+"'); " + " for (/ClassList) {if (/~/School ne '') {print /~/School;}} close %char; ";
-   WriteTimestampedLogEntry("Leto Get Spell School Script >: "+sScript);
-   SetLocalString(GetModule(), "NWNX!LETO!SCRIPT", sScript);
-   string sScriptResult = GetLocalString(GetModule(), "NWNX!LETO!SCRIPT");
-   WriteTimestampedLogEntry("Leto Results <: "+sScriptResult);
-   */
-
-
-   // They are adding the functionality soon in NWNX
-   SetLocalInt(oPC, "SPELL_SCHOOL", NWNX_Creature_GetWizardSpecialization(oPC));
-   //SendMessageToPC(oPC, "Spell School is SPELL_SCHOOL_GENERAL for now until NWNX adds it.");
+   int nSchool = NWNX_Creature_GetWizardSpecialization(oPC);
+   SetLocalInt(oPC, "SPELL_SCHOOL", nSchool);
 }
 
 int GetNetWorth(object oPC)

@@ -6,6 +6,7 @@
 #include "gen_inc_color"
 #include "fky_chat_inc"
 #include "fame_charvalue"
+#include "_webhook"
 
 void OnClientExit(object oPC) // CALL ON CLIENT EXIT
 {
@@ -47,7 +48,8 @@ void main()
     string publicKey      = GetLocalString(oPC, "player_cdkey");
     string sFAID          = GetLocalString(oPC, "FAID");
 
-
+    // logout webhook
+    LogoutWebhook(oPC);
 
     if (GetIsDM(oPC))
     {

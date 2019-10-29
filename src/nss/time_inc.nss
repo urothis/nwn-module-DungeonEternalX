@@ -1,5 +1,6 @@
 #include "_functions"
 #include "string_inc"
+#include "nwnx_time"
 
 string ShowLastUpdate(object oHolder, string sVarName = "", string sWhat = "update");
 string HoursToMinutes(int iTime);

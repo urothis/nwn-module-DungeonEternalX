@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 	"os/signal"
-	"runtime"
 	"syscall"
 
 	log "github.com/sirupsen/logrus"
@@ -21,16 +20,17 @@ func checkENV() (err error) {
 
 func main() {
 	// load the core config here
-	err := checkENV()
-	if err != nil {
-		return
-	}
+	//err := checkENV()
+	//if err != nil {
+	//	return
+	//}
 
 	// Initialize
 	log.WithFields(log.Fields{"Booted": 1}).Info("disdex")
 
-	go InitRedis()
-	go initDiscord()
+	//go InitRedis()
+	//go initDiscord()
+	go InitDockerPull()
 
 	// wait until signal received.
 	done := make(chan os.Signal, 1)

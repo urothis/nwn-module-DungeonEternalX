@@ -1,20 +1,7 @@
 //::///////////////////////////////////////////////
 //:: Purple Dragon Knight - Heroic Shield
 //:: x3_s2_pdk_shield.nss
-//:://////////////////////////////////////////////
-//:: Applies a temporary AC bonus to one ally
-//:://////////////////////////////////////////////
-//:: Created By: Stratovarius
-//:://////////////////////////////////////////////
-/*
-    Modified By : gaoneng erick
-    Modified On : may 6, 2006
-    added custom vfx
-*/
-
-
-void main()
-{
+void main() {
     //Declare main variables.
     object oPC = OBJECT_SELF;
     object oTarget = GetSpellTargetObject();
@@ -23,18 +10,15 @@ void main()
 
     nRounds = GetAbilityModifier(ABILITY_CHARISMA, oPC);
 
-    if (GetLocalInt(oPC, "PDKHeroicTracking"))
-    {
+    if (GetLocalInt(oPC, "PDKHeroicTracking")) {
         FloatingTextStringOnCreature("You can only use this ability once per day", oPC, FALSE);
         return;
     }
-    if (oPC == oTarget)
-    {
+    if (oPC == oTarget) {
         FloatingTextStringOnCreature("You cannot aid yourself using this ability", oPC, FALSE);
         return;
     }
-    if (!GetIsFriend(oTarget))
-    {
+    if (!GetIsFriend(oTarget)) {
         FloatingTextStringOnCreature("You cannot aid an enemy using this ability", oPC, FALSE);
         return;
     }

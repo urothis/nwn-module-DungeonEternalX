@@ -14,6 +14,13 @@ const string WIN_NWN_ROOT_DIR = "C:/NWNServer/";
 
 const string SERVER_TIME_LEFT = "SERVER_TIME_LEFT";
 
+void BootAllPC() {
+   object oPC = GetFirstPC();
+   while (GetIsObjectValid(oPC)) {
+      BootPC(oPC, "SERVER RESET.  You may log back in now.");
+      oPC = GetNextPC();
+   }
+}
 
 int GetServerNumber() {
    return GetLocalInt(GetModule(), "SERVER");

@@ -1,7 +1,6 @@
 //Returns Total game time converted into total ammount of seconds
 int GetTotalTimeInSeconds();
 
-
 int GetTotalTimeInSeconds()
 {
     int nTime = FloatToInt(HoursToSeconds((GetCalendarMonth() * 28) * 24));
@@ -11,8 +10,6 @@ int GetTotalTimeInSeconds()
     nTime += GetTimeSecond();
     return nTime;
 }
-//int GetTotalTimeInSeconds() {return FloatToInt(HoursToSeconds((GetCalendarMonth()*28)*24)) + FloatToInt(HoursToSeconds(GetCalendarDay()*24)) + FloatToInt(HoursToSeconds(GetTimeHour())) + (GetTimeMinute()*60) + GetTimeSecond(); }
-
 
 int WaitInterval(int SecondsToWait, object VHolder = OBJECT_SELF)
 {

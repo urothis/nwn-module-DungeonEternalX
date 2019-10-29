@@ -2,108 +2,93 @@
 #include "random_loot_inc"
 #include "inc_server"
 #include "db_inc"
+#include "nwnx_admin"
+#include "_webhook"
 
-string TimeLeftMessage(int nRemain);
-void TimedServerReboot(string sSEID);
 
-string TimeLeftMessage(int nRemain)
-{
-    if (nRemain > 59)
-    {
-        if (nRemain / 60 > 1)
-        {
-            if (nRemain % 60 != 0) return IntToString(nRemain / 60) + " hours " + IntToString(nRemain % 60) + " minutes.";
-            else return IntToString(nRemain / 60) + " hours.";
-        }
-        else if (nRemain % 60 != 0)
-        {
-            return IntToString(nRemain / 60) + " hour " + IntToString(nRemain % 60) + " minutes.";
-        }
-        else return IntToString(nRemain / 60) + " hour.";
+void finalShutdown() {
+    ChainWonderSave();
+    object oMaglubiyet = GetObjectByTag("MAGLUBIYET_STATUE");
+    if (GetIsObjectValid(oMaglubiyet)) {
+        int nCall = GetLocalInt(oMaglubiyet, "CALL");
+        NWNX_SQL_ExecuteQuery("update pwdata set val='" + IntToString(nCall) + "' where name='MAGLUBIYET'");
     }
-    else if (nRemain % 60 != 1) return IntToString(nRemain % 60) + " minutes.";
-    return "1 minute.";
+
+    // remove players bank area
+    object oBank = GetArea(GetObjectByTag("BANK_DOOR_WP"));
+    object oPC = GetFirstObjectInArea(oBank);
+
+    // location to move them to
+    location lLoc = GetStartingLocation();
+    while (GetIsObjectValid(oPC)) {
+        if (GetIsPC(oPC) && !GetIsDM(oPC)) AssignCommand(oPC, JumpToLocation(lLoc));
+        oPC = GetNextObjectInArea(oBank);
+    }
+
+    ExportAllCharacters();
+    SpeakString( "All characters have been saved by auto-reboot script.", TALKVOLUME_SHOUT);
+    SpeakString("<cσ  >Server restart has begun.",TALKVOLUME_SHOUT);
+    DelayCommand(1.0,  SpeakString(" SERVER RESET IN <cσσσ>60</c> SECONDS!!!",TALKVOLUME_SHOUT));
+    DelayCommand(30.0, SpeakString(" SERVER RESET IN <cσσσ>30</c> SECONDS!!!",TALKVOLUME_SHOUT));
+    DelayCommand(45.0, SpeakString(" SERVER RESET IN <cσσσ>15</c> SECONDS!!!",TALKVOLUME_SHOUT));
+    DelayCommand(50.0, SpeakString(" SERVER RESET IN <cσσσ>10</c> SECONDS!!!",TALKVOLUME_SHOUT));
+    DelayCommand(55.0, SpeakString(" SERVER RESET IN <cσσσ>5</c>",TALKVOLUME_SHOUT));
+    DelayCommand(56.0, SpeakString(" SERVER RESET IN <cσσσ>4</c>",TALKVOLUME_SHOUT));
+    DelayCommand(57.0, SpeakString(" SERVER RESET IN <cσσσ>3</c>",TALKVOLUME_SHOUT));
+    DelayCommand(58.0, SpeakString(" SERVER RESET IN <cσσσ>2</c>",TALKVOLUME_SHOUT));
+    DelayCommand(59.0, SpeakString(" SERVER RESET IN <cσσσ>1</c>",TALKVOLUME_SHOUT));
+    DelayCommand(60.0, SpeakString("<cσ  >SERVER INSTANCE RESET",TALKVOLUME_SHOUT));
+    DelayCommand(61.0, BootAllPC());
+    DelayCommand(62.0, dbSessionEnd());
+    DelayCommand(62.0, ModDownWebhook());
+    DelayCommand(63.9, WriteTimestampedLogEntry("*****SERVER RESTART*****"));
+    DelayCommand(64.0, NWNX_Administration_ShutdownServer());
 }
 
+void mainRebootChecker() {
+    object oModule = GetModule();
+    int timekeeper = GetLocalInt(oModule, "REBOOT_TICKER");
+    int iUpTime = NWNX_Time_GetTimeStamp() - GetLocalInt(oModule, "RAW_BOOT_TIME");
 
-void TimedServerReboot(string sSEID)
-{
-    int nRemain = GetLocalInt(GetModule(), SERVER_TIME_LEFT);
+    // TODO some stuff
+    NWNX_SQL_ExecuteQuery("delete from temporaryban where expires<=now()");
+    DelayCommand(1.0, UpdateFactionStats());
+    DelayCommand(2.0, LoadFactionRanking());
+    DelayCommand(3.0, UpdateRichStatues());
 
-    if (nRemain == 0)
-    {
-        ChainWonderSave();
-        object oMaglubiyet = GetObjectByTag("MAGLUBIYET_STATUE");
-        if (GetIsObjectValid(oMaglubiyet))
-        {
-            int nCall = GetLocalInt(oMaglubiyet, "CALL");
-            NWNX_SQL_ExecuteQuery("update pwdata set val='" + IntToString(nCall) + "' where name='MAGLUBIYET'");
-        }
-        dbSessionEnd();
-        DelayCommand(4.0, SetLocalString(GetModule(), "NWNX!SHELL!SHUTDOWN", "CLOSE"));
-        SpeakString("Server Session #" + sSEID + " is rebooting. Thank you come again.", TALKVOLUME_SHOUT);
+    if (timekeeper == 0 && iUpTime > 60) {
+        SpeakString("Server restart in<cσσσ> 24 </c>hours.", TALKVOLUME_SHOUT);
+        SetLocalInt(oModule, "REBOOT_TICKER", (timekeeper + 1));
         return;
     }
 
-    if ((nRemain % 60) == 0 || nRemain <= 5)// 60 min & 5, 4, 3, 2, 1 notices
-    {
-        SpeakString("Server Session #" + sSEID + " will restart in " + TimeLeftMessage(nRemain), TALKVOLUME_SHOUT);
-    }
-    if ((nRemain % 60) == 0) // UNBAN THE TEMPS HOURLY
-    {
-        NWNX_SQL_ExecuteQuery("delete from temporaryban where expires<=now()");
-    }
-
-    if ((nRemain % 15) == 0)
-    {
-        DelayCommand(1.0, UpdateFactionStats());
-        DelayCommand(2.0, LoadFactionRanking());
-        DelayCommand(3.0, UpdateRichStatues());
-    }
-
-    if (nRemain == 2)
-    {
+    else if (timekeeper == 1 && iUpTime > 82800) {
+        SpeakString("Server restart in<cσσσ> 1 </c>hour.", TALKVOLUME_SHOUT);
+        SetLocalInt(oModule, "REBOOT_TICKER", (timekeeper + 1));
         return;
-        SpeakString("Loftenwood Bank is now closed.", TALKVOLUME_SHOUT);
-        object bankDoorO = GetObjectByTag("LOFT_BANK");
-        object bankDoorI = GetObjectByTag("BANK_DOOR");
-        if (GetIsOpen(bankDoorO))
-        {
-            AssignCommand(bankDoorO, ActionCloseDoor(bankDoorO));
-            AssignCommand(bankDoorO, SetLocked(bankDoorO, TRUE));
-        }
-        if (GetIsOpen(bankDoorI)) AssignCommand(bankDoorI, ActionCloseDoor(bankDoorI));
+    }
 
+    else if (timekeeper == 2 && iUpTime > 84600) {
+        SpeakString("Server restart in<cσσσ> 30 </c>minutes.", TALKVOLUME_SHOUT);
+        SetLocalInt(oModule, "REBOOT_TICKER", (timekeeper + 1));
+        return;
     }
-    if (nRemain == 1)
-    {
-        object oBank = GetArea(GetObjectByTag("BANK_DOOR_WP"));
-        location lLoc = GetStartingLocation();
 
-        object oPC = GetFirstObjectInArea(oBank);
-        while (GetIsObjectValid(oPC))
-        {
-            if (GetIsPC(oPC) && !GetIsDM(oPC)) AssignCommand(oPC, JumpToLocation(lLoc));
-            oPC = GetNextObjectInArea(oBank);
-        }
+    else if (timekeeper == 3 && iUpTime > 85500) {
+        SpeakString("Server restart in<cσσσ> 15 </c>minutes.", TALKVOLUME_SHOUT);
+        SetLocalInt(oModule, "REBOOT_TICKER", (timekeeper + 1));
+        return;
     }
-    // less recursive calls
-    /*if (nRemain > 60)
-    {
-        SetLocalInt(GetModule(), SERVER_TIME_LEFT, nRemain - 15);
-        DelayCommand(900.0, TimedServerReboot(sSEID));
+
+    else if (timekeeper == 4 && iUpTime > 86100){
+        SpeakString("Server restart in<cσσσ> 5 </c>minutes.", TALKVOLUME_SHOUT);
+        SetLocalInt(oModule, "REBOOT_TICKER", (timekeeper + 1));
+        return;
     }
-    else if (nRemain > 5)*/
-    if (nRemain > 5)
-    {
-        SetLocalInt(GetModule(), SERVER_TIME_LEFT, nRemain - 5);
-        DelayCommand(300.0, TimedServerReboot(sSEID));
-    }
-    else
-    {
-        SetLocalInt(GetModule(), SERVER_TIME_LEFT, nRemain - 1);
-        DelayCommand(60.0, TimedServerReboot(sSEID));
+
+    else if (timekeeper == 5 && iUpTime > 86400){
+        finalShutdown();
+        SetLocalInt(oModule, "REBOOT_TICKER", (timekeeper + 1));
+        return;
     }
 }
-
-//void main(){}

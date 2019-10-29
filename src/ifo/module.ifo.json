@@ -1536,7 +1536,7 @@
   },
   "Mod_OnHeartbeat": {
     "type": "resref",
-    "value": ""
+    "value": "_mod_heartbeat"
   },
   "Mod_OnModLoad": {
     "type": "resref",
@@ -1548,7 +1548,7 @@
   },
   "Mod_OnPlrChat": {
     "type": "resref",
-    "value": "on_player_chat"
+    "value": "_mod_player_chat"
   },
   "Mod_OnPlrDeath": {
     "type": "resref",
@@ -1556,7 +1556,7 @@
   },
   "Mod_OnPlrDying": {
     "type": "resref",
-    "value": "nw_o0_dying"
+    "value": "_mod_player_dyin"
   },
   "Mod_OnPlrEqItm": {
     "type": "resref",

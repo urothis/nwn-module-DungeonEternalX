@@ -1,22 +1,3 @@
-//::///////////////////////////////////////////////
-//:: Player Tool 8 Instant Feat
-//:: x3_pl_tool08
-//:://////////////////////////////////////////////
-/*
-    This simply executes the script indicated by
-    tk_playertools.2da.
-*/
-//:://////////////////////////////////////////////
-//:: Created By: The Krit
-//:: Created On: 2008-10-06
-//:://////////////////////////////////////////////
-
-
 #include "tk_ptool_inc"
 
-
-void main()
-{
-    // DoPlayerTool(8);
-}
-
+void main(){}

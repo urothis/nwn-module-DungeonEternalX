@@ -1,22 +1,4 @@
-//::///////////////////////////////////////////////
-//:: Purple Dragon Knight - Final Stand
-//:: x3_s2_pdk_stand.nss
-//:://////////////////////////////////////////////
-//:: Add temporary hitpoints to friends in spell
-//:: sphere.
-//:://////////////////////////////////////////////
-//:: Created By: Stratovarius
-//:: Created On: Sept 22, 2005
-//:://////////////////////////////////////////////
-/*
-    Modified By : gaoneng erick
-    Modified On : may 6, 2006
-    added custom vfx
-*/
-
-
-void main()
-{
+void main() {
     object oPDK = OBJECT_SELF;
     int nCount = GetLevelByClass(CLASS_TYPE_PURPLE_DRAGON_KNIGHT, oPDK) + GetAbilityModifier(ABILITY_CHARISMA, oPDK);
 
@@ -34,18 +16,15 @@ void main()
     object oTarget = GetFirstObjectInShape(SHAPE_SPHERE, RADIUS_SIZE_LARGE, GetLocation(OBJECT_SELF), TRUE, OBJECT_TYPE_CREATURE);
 
     // Cycle through the targets within the spell shape until you run out of targets.
-    while (GetIsObjectValid(oTarget) && nTargetsLeft > 0)
-    {
-        if(oTarget == OBJECT_SELF)
-        {
+    while (GetIsObjectValid(oTarget) && nTargetsLeft > 0) {
+        if(oTarget == OBJECT_SELF) {
             DelayCommand(0.9, ApplyEffectToObject(DURATION_TYPE_INSTANT, eVis, oTarget));
             ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eHP, oTarget, RoundsToSeconds(nCount));
             // Every time you apply effects, count down remaining targets
             nTargetsLeft -= 1;
 
         }
-        else if(GetIsNeutral(oTarget) || GetIsFriend(oTarget))
-        {
+        else if(GetIsNeutral(oTarget) || GetIsFriend(oTarget)) {
             DelayCommand(0.9, ApplyEffectToObject(DURATION_TYPE_INSTANT, eVis, oTarget));
             ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eHP, oTarget, RoundsToSeconds(nCount));
             // Every time you apply effects, count down

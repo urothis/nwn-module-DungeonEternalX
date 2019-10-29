@@ -5,7 +5,7 @@
 #include "_inc_port"
 #include "rune_include"
 #include "_inc_inventory"
-
+#include "_webhook"
 
 void InitNewCharacter(object oPC)
 {
@@ -213,6 +213,9 @@ void main()
     string sCDKEY      = GetPCPublicCDKey(oPC, TRUE);
     int    nTRUEID     = dbInitTRUEID(oPC);
 
+    /////////////////////////////////////////
+    // login webhook
+    LoginWebhook(oPC);
 
     /////////////////////////////////////////
     //Subrace stuff

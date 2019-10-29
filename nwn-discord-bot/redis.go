@@ -79,11 +79,11 @@ func InitRedis() {
 
 						log.WithFields(log.Fields{"Pubsub": "1", "Channel": msg.Channel, "Message": msg.Data}).Info("disdex.pubsub")
 					case "discord.out":
-						var err error
-						err = DiscordInHandler(string(msg.Data))
-						if err != nil {
-							log.WithFields(log.Fields{"Pubsub": "0", "Channel": msg.Channel, "Message": string(msg.Data)}).Info("disdex.pubsub")
-						}
+						//var err error
+						//err = DiscordInHandler(string(msg.Data))
+						//if err != nil {
+						//	log.WithFields(log.Fields{"Pubsub": "0", "Channel": msg.Channel, "Message": string(msg.Data)}).Info("disdex.pubsub")
+						//}
 						log.WithFields(log.Fields{"Pubsub": "1", "Channel": msg.Channel, "Message": msg.Data}).Info("disdex.pubsub")
 					case "log.fatal":
 						log.WithFields(log.Fields{"Pubsub": "1", "Channel": msg.Channel, "Message": msg.Data}).Info("disdex.pubsub")

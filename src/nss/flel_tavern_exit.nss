@@ -108,9 +108,15 @@ void PlayerCheckupLoop(object oPC)
     // DelayCommand(15.0f, Compensate(oPC)); // disabled by Ezramun, totally useless
 }
 
-void main()
-{
-   object oPC = GetExitingObject();
-   if (!GetIsDM(oPC))    PlayerCheckupLoop(oPC); // Check items on entering players
-   ExecuteScript("_mod_areaexit", OBJECT_SELF);
+void main() {
+    object oPC = GetExitingObject();
+    if (!GetIsDM(oPC))    PlayerCheckupLoop(oPC); // Check items on entering players
+
+    // auto dislike logic
+    object nPC    = GetFirstPC();
+    while (GetIsObjectValid(nPC)) {
+        SetPCDislike(oPC, nPC);
+        nPC = GetNextPC();
+    }
+    ExecuteScript("_mod_areaexit", OBJECT_SELF);
 }

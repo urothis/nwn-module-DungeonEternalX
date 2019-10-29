@@ -1,19 +1,3 @@
-//::///////////////////////////////////////////////
-//:: Purple Dragon Knight - Rallying Cry
-//:: x3_s2_pdk_rally.nss
-//:://////////////////////////////////////////////
-//:: Increase attack & movement for friends in
-//:: area of spell
-//:://////////////////////////////////////////////
-//:: Created By: Stratovarius
-//:: Created On: Sept 22, 2005
-//:://////////////////////////////////////////////
-/*
-    Modified By : gaoneng erick
-    Modified On : may 6, 2006
-    added custom vfx
-*/
-
 #include "x0_i0_spells"
 
 void main()

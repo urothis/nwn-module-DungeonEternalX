@@ -3,6 +3,7 @@
 #include "x0_i0_position"
 #include "_functions"
 #include "time_inc"
+#include "_server_reboot"
 
 const int KEG_COST_ABILITY       = 25;
 const int KEG_COST_BLESSWEAPON   = 50;
@@ -117,6 +118,7 @@ void GemUse(object oUser, int iSpell, int iPrice, int iBeam) {
 
 void main()
 {
+    object oMod = GetModule();
     object oUser = GetLastUsedBy();
     if (oUser==OBJECT_INVALID) oUser = GetEnteringObject();
     object oLocator;
@@ -214,7 +216,48 @@ void main()
     }
     if (sTag=="SUNDIAL")
     {
-        SendMessageToPC(oUser, "Server is on the " + GetLocalString(GetModule(), "TIMEZONE") + ".\nNext reboot in " + RemainingUpTime()+ ".");
+        // just as a safeguard
+        mainRebootChecker();
+
+        string sPlayer      = "SUNDIAL";
+        string sKey         = "TRUE";
+        string sUpTime;
+        string sBootTime = GetLocalString(oMod, "BOOT_TIME");
+        string sBootDate = GetLocalString(oMod, "BOOT_DATE");
+
+        int iCurrentTime = NWNX_Time_GetTimeStamp();
+        int iBootTime = GetLocalInt(oMod, "RAW_BOOT_TIME");
+        int iUpTime = iCurrentTime - iBootTime;
+
+        int iMin = iUpTime / 60;
+        int iSec = iUpTime % 60;
+        int iHour = iMin / 60;
+        int iTrueMin = iMin % 60;
+        string sSec = IntToString(iSec);
+        string sHour = IntToString(iHour);
+        string sTrueMin = IntToString(iTrueMin);
+
+        if (iUpTime > 3600) {
+            sUpTime = sHour + ":" + sTrueMin + ":" + sSec;
+        }
+
+        else {
+            sUpTime = sTrueMin + ":" + sSec;
+        }
+
+        if (GetLocalString(oUser, sPlayer) != sKey) {
+            SendMessageToPC(oUser, "<c ออ>DungeonEternalX resets every 24 hours.</c>");
+            SendMessageToPC(oUser, "<c ออ>Server was loaded at: <cอออ>" + sBootTime + " (GMT)</c>");
+
+            SendMessageToPC(oUser, "<c ออ>Uptime: <cอออ>" + sUpTime);
+            SendMessageToPC(oUser, "<c ออ>The date is <cอออ>" + NWNX_Time_GetSystemDate() + " (GMT)</c>");
+            SendMessageToPC(oUser, "<c ออ>The time is <cอออ>" + NWNX_Time_GetSystemTime() + " (GMT)</c>");
+            SetLocalString(oUser, sPlayer, sKey);
+            DelayCommand(6.0, DeleteLocalString(oUser, sPlayer));
+        }
+        else {
+            SendMessageToPC(oUser, "<cอ  >Wait a few seconds before using Sundial again</c>");
+        }
         return;
     }
     else if (sTag=="SERVER_PORTAL")
