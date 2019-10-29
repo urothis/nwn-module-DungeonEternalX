@@ -15,9 +15,6 @@ stages:
 golang build:
   stage: Build Disdex
   image: golang:1.13.0  
-  only:
-    changes:
-      - disdex/**/*
   before_script:
     - cd $GOPATH/src
     - mkdir -p gitlab.com/$CI_PROJECT_NAMESPACE
@@ -35,9 +32,6 @@ golang build:
 module build:
   stage: Build Module
   image: squattingmonk/nasher:latest
-  only:
-    changes:
-      - src/**/*
   script:
     - cd $CI_PROJECT_DIR
     - nasher pack
