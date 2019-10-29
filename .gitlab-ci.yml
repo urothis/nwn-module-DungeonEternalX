@@ -16,7 +16,6 @@ golang build:
   stage: Build Disdex
   image: golang:1.13.0  
   only:
-  - master
     changes:
       - disdex/**/*
   before_script:
@@ -37,7 +36,6 @@ module build:
   stage: Build Module
   image: squattingmonk/nasher:latest
   only:
-  - master
     changes:
       - src/**/*
   script:
