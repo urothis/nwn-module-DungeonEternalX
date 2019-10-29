@@ -10,7 +10,7 @@ stages:
   - Build
   - Deploy
 
-golang build:
+build:disdex:
   stage: Build
   image: golang:1.13.0  
   script:
@@ -21,25 +21,29 @@ golang build:
     - _disdex
     expire_in: 1 week
  
-module build:
+build:dex:
   stage: Build
   image: squattingmonk/nasher:latest
-  script:
+  before_script:
     - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
     - cd nwn-module-DungeonEternalX
+  script:
     - nasher pack
   artifacts:
     paths:
     - server/DungeonEternalX.mod
     expire_in: 1 week
 
-docker build:
+build:docker:
   stage: Build
   only:
   - master
   script:
   - docker info
   - docker build -t $FINAL_IMAGE_NAME .
+  dependencies:
+    - build:disdex
+    - build:dex    
 
 docker push:
   stage: Deploy
