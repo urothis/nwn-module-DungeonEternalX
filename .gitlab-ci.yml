@@ -16,7 +16,7 @@ build:disdex:
   image: golang:1.13.0  
   script:
     - cd disdex
-    - go build -o _disdex 
+    - go build -o _disdex
   artifacts:
     paths:
     - _disdex
@@ -25,6 +25,7 @@ build:disdex:
 build:dex:
   stage: Build
   image: squattingmonk/nasher:latest
+  entrypoint: [""]
   before_script:
     - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
     - cd nwn-module-DungeonEternalX
@@ -41,7 +42,7 @@ build:docker:
   - master
   script:
   - docker info
-  - docker build -t $FINAL_IMAGE_NAME . 
+  - docker build -t $FINAL_IMAGE_NAME .
 
 docker push:
   stage: Deploy
