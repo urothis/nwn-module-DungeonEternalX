@@ -28,6 +28,7 @@ build:dex:
     name: squattingmonk/nasher:latest
     entrypoint: [""]
   script:
+    - apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
     - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
     - cd nwn-module-DungeonEternalX
     - nasher pack
