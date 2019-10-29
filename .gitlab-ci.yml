@@ -24,8 +24,9 @@ build:disdex:
  
 build:dex:
   stage: Build
-  image: squattingmonk/nasher:latest
-  entrypoint: [""]
+  image: 
+    name: squattingmonk/nasher:latest
+    entrypoint: [""]
   before_script:
     - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
     - cd nwn-module-DungeonEternalX
