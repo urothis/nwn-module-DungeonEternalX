@@ -7,35 +7,34 @@ variables:
   FINAL_IMAGE_NAME: urothis/dex:latest
 
 stages:
-  - Build Disdex
-  - Build Module
-  - Build image
-  - Push to Docker Hub
+  - Build
+  - Deploy
 
 golang build:
-  stage: Build Disdex
+  stage: Build
   image: golang:1.13.0  
   script:
     - cd disdex
-    - go build -o disdex 
+    - go build -o _disdex 
   artifacts:
     paths:
-    - disdex
+    - _disdex
     expire_in: 1 week
  
 module build:
-  stage: Build Module
+  stage: Build
   image: squattingmonk/nasher:latest
   script:
-    - ls
+    - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
+    - cd nwn-module-DungeonEternalX
     - nasher pack
   artifacts:
     paths:
-    - DungeonEternalX.mod
+    - server/DungeonEternalX.mod
     expire_in: 1 week
 
 docker build:
-  stage: Build image
+  stage: Build
   only:
   - master
   script:
@@ -43,7 +42,7 @@ docker build:
   - docker build -t $FINAL_IMAGE_NAME .
 
 docker push:
-  stage: Push to Docker Hub
+  stage: Deploy
   only:
   - master
   script:
