@@ -17,7 +17,7 @@ build:disdex:
   script:
     - cd disdex
     - go build -o disdexBinary
-    - cp disdexBinary $CI_PROJECT_DIR/disdexBinary
+    - mv disdexBinary $CI_PROJECT_DIR/disdexBinary
   artifacts:
     paths:
     - disdexBinary
@@ -55,5 +55,5 @@ docker push:
   only:
   - master
   script:
-  - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
+  - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   - docker push $FINAL_IMAGE_NAME && docker image rm $FINAL_IMAGE_NAME
