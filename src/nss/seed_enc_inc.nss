@@ -11,28 +11,28 @@ object SpawnBoss(string sWhich, object oLocation);
 void DoPrayer(object oPC) {
    int iWhich=d8();
    switch (iWhich) {
-      case "1":
+      case 1:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_LOOPING_CONJURE1, 1.0f, IntToFloat(d2()+1)));
          break;
-      case "2":
+      case 2:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_LOOPING_CONJURE2, 1.0f, IntToFloat(d2()+1)));
          break;
-      case "3":
+      case 3:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_FIREFORGET_BOW));
          break;
-      case "4":
+      case 4:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_FIREFORGET_VICTORY1));
          break;
-      case "5":
+      case 5:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_LOOPING_TALK_PLEADING, 1.0f, IntToFloat(d2()+1)));
          break;
-      case "6":
+      case 6:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_LOOPING_TALK_LAUGHING, 1.0f, IntToFloat(d2()+1)));
          break;
-      case "7":
+      case 7:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_FIREFORGET_SPASM));
          break;
-      case "8":
+      case 8:
          AssignCommand(oPC, ActionPlayAnimation(ANIMATION_FIREFORGET_VICTORY2));
          break;
       default:
