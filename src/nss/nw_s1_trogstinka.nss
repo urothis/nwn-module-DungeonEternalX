@@ -12,7 +12,7 @@
 //:: Created By: Craig Welburn
 //:: Created On: Nov 6, 2004
 //:://////////////////////////////////////////////
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 
 void main()
 {

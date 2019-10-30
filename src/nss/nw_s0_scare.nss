@@ -12,7 +12,7 @@
 //:: Last Updated By: Preston Watamaniuk, On: April 11, 2001
 //:: Modified March 2003 to give -2 attack and damage penalties
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 

@@ -5,7 +5,7 @@
 // It also is pretty clever and executes the default On Spawn file after
 // the appear animation.
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 
 void main()
 {

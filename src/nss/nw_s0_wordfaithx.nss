@@ -16,7 +16,7 @@
 //:: Sep 2002: fixed the 'level 8' instantkill problem
 //:: description is slightly inaccurate but I won't change it
 //:: Georg: It's nerf time! oh yes. The spell now matches it's description.
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "x2_inc_spellhook"
 
 void main()

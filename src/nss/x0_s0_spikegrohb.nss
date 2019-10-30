@@ -11,7 +11,7 @@
 //:: Created By: Brent Knowles
 //:: Created On: September 6, 2002
 //:://////////////////////////////////////////////
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 
 void main() {

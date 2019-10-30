@@ -17,7 +17,7 @@
 //:://////////////////////////////////////////////
 //:: GZ: Removed SR, its not there by the book
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 
 void main() {

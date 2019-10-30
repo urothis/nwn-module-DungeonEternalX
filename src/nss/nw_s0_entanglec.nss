@@ -8,7 +8,7 @@
    a reflex save or be entangled by vegitation
 */
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 
 void main() {

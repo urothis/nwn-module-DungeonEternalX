@@ -16,7 +16,7 @@
 // creatures. The spell affects creatures with the lowest.
 */
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 

@@ -11,7 +11,7 @@
 //:: (maximum 20d6), or half damage if a Reflex save is successful. In addition, the ray results in
 //:: the total destruction of undead creatures specifically affected by sunlight if they fail their saves.
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 

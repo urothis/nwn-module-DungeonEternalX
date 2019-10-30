@@ -18,7 +18,7 @@
 //::         - Spell is now much less cpu expensive
 
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "x2_i0_spells"
 #include "pure_caster_inc"
 

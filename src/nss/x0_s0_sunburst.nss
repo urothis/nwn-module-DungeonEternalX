@@ -15,7 +15,7 @@
 //:: Created On: July 23 2002
 //:://////////////////////////////////////////////
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 float nSize =  RADIUS_SIZE_COLOSSAL;
 

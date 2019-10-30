@@ -16,7 +16,7 @@
 //:: Created By:
 //:: Created On:
 //:://////////////////////////////////////////////
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "x2_inc_itemprop"
 
 void main()

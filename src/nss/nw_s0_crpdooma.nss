@@ -9,7 +9,7 @@
    1d4 per swarm counter on the AOE.
 */
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 
 void main() {

@@ -2,7 +2,7 @@
 //:: Holy Water
 //:://////////////////////////////////////////////
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pc_inc"
 
 int CryptRingGetSuccess(object oPC, object oTarget, object oItem, string sTag, int nLvl)

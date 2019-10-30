@@ -19,7 +19,7 @@
 // Note by Ness - I don't believe this script is even used by this module anymore.
 // ez: it is
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 

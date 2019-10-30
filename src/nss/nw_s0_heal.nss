@@ -7,7 +7,7 @@
 //:: If undead they reduced to 1d4 HP.
 //:://////////////////////////////////////////////
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "NW_I0_SPELLS"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"

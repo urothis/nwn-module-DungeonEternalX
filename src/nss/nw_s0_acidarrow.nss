@@ -10,7 +10,7 @@
    additional 1d6 per round.
 */
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "x2_i0_spells"
 #include "pure_caster_inc"
 #include "_inc_sneakspells"

@@ -10,7 +10,7 @@
    in the area loses 2 spells protections.
 */
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "inc_dispel"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"

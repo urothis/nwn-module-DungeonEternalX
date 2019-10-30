@@ -12,7 +12,7 @@
 //:: Created By: Georg Zoeller
 //:: Created On: Oct, 2003
 //:://////////////////////////////////////////////
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "x2_inc_shifter"
 
 void main()

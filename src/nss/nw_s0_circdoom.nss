@@ -13,7 +13,7 @@
 //:: VFX Pass By: Preston W, On: June 20, 2001
 //:: Update Pass By: Preston W, On: July 25, 2001
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "x2_inc_spellhook"
 
 void main()

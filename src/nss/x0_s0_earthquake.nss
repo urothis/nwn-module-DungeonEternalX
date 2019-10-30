@@ -8,7 +8,7 @@
 //:: Caped at 16. If Pure Druid, cap is 20
 //:: Immobilize Effect, 25% Spellfailure for 2 Rounds
 
-#include "X0_I0_SPELLS"
+#include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 
