@@ -21,7 +21,7 @@
 
 void main()
 {
-    int nBonus = nBonus = ArcaneArcherCalculateBonus();
+    int nBonus = ArcaneArcherCalculateBonus();
 
     object oTarget = GetSpellTargetObject();
 

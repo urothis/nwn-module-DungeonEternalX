@@ -34,7 +34,8 @@ void main()
     effect eVis  = EffectVisualEffect(VFX_IMP_MAGIC_PROTECTION);
     effect eSave = EffectSavingThrowIncrease(SAVING_THROW_ALL, 8 + nPureBonus/4, SAVING_THROW_TYPE_SPELL);
     effect eDur2 = EffectVisualEffect(VFX_DUR_MAGIC_RESISTANCE);
-    effect eLink = EffectLinkEffects(eLink, eDur2);
+    effect eLink = EffectLinkEffects(eSave, eDur);
+    eLink = EffectLinkEffects(eLink, eDur2);
 
     float fDelay;
     object oMyLeader = GetFactionLeader(OBJECT_SELF);
