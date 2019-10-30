@@ -17,6 +17,7 @@ build:disdex:
   script:
     - cd disdex
     - go build -o disdexBinary
+    - cp disdexBinary $CI_PROJECT_DIR/disdexBinary
   artifacts:
     paths:
     - disdexBinary
