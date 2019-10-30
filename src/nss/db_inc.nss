@@ -120,12 +120,12 @@ int dbInitTRUEID(object oPC);
 //LOGIN_TYPE_PLID
 //LOGIN_TYPE_TRUEID
 //LOGIN_TYPE_DEXID
-void dbUpdateLogin(object oPC, int LOGIN_TYPE);
+void dbUpdateLogin(object oPC, int LOGIN_TYPE=0);
 
 //Boots a PC by displaying a death screen with sMSG
 //Sends a message to DM channel with sDMMsg
 //Boots PC after fDelay seconds
-int dbBootPC(object oPC, string sMsg, string sDMMsg, float fDelay=5.0f);
+void dbBootPC(object oPC, string sMsg, string sDMMsg, float fDelay=5.0f);
 
 //Checks the DB for expired temporary bans and moves them to table
 //temporarybanhistory if they are expired.
@@ -804,8 +804,7 @@ void dbUpdateLogin(object oPC, int LOGIN_TYPE=0)
    if (sSQL!="")   NWNX_SQL_ExecuteQuery(sSQL);
 }
 
-void dbBootPC(object oPC, string sMsg, string sDMMsg, float fDelay=5.0f)
-{
+void dbBootPC(object oPC, string sMsg, string sDMMsg, float fDelay=5.0f) {
     if (!GetIsObjectValid(oPC)) return;
     PopUpDeathGUIPanel(oPC, FALSE, FALSE, 0, sMsg + " You will be booted in "+IntToString(FloatToInt(fDelay))+" seconds.");
     string sBoot = "Booted TRUEID/CDKey/Account/Player: " + DelimList("TRUEID:"+IntToString(dbGetTRUEID(oPC)),GetPCPublicCDKey(oPC), GetPCPlayerName(oPC), GetName(oPC), GetPCIPAddress(oPC));
@@ -1603,4 +1602,4 @@ void dbDeletePersistentVariable(object oObject, string sVarName, string sTable =
 }
 
 
-//void main(){}
+// void main(){}
