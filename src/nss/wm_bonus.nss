@@ -1,5 +1,5 @@
 #include "x2_inc_switches"
-#include "INC_WEP_AC_BON"
+#include "inc_wep_ac_bon"
 #include "gen_inc_color"
 #include "arres_inc"
 #include "ness_pvp_db_inc"
