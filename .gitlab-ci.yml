@@ -4,7 +4,7 @@ services:
   - docker:19.03.1-dind
 
 variables:
-  FINAL_IMAGE_NAME: urothis/dex:latest
+  FINAL_IMAGE_NAME: urothis/dex
 
 stages:
   - Build
@@ -42,18 +42,12 @@ build:dex:
     - DungeonEternalX.mod
     expire_in: 1 week
 
-build:docker:
-  stage: Staging
+deploy:docker:
+  stage: deploy
   only:
   - master
   script:
   - docker info
   - docker build -t $FINAL_IMAGE_NAME .
-
-docker push:
-  stage: Deploy
-  only:
-  - master
-  script:
   - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   - docker push $FINAL_IMAGE_NAME && docker image rm $FINAL_IMAGE_NAME
