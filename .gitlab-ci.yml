@@ -35,6 +35,7 @@ build:dex:
     - cd nwn-module-DungeonEternalX
     - "nasher config --nssFlags:'-n /nwn/data -o'"
     - nasher pack
+    - cp DungeonEternalX.mod $CI_PROJECT_DIR/DungeonEternalX.mod
   artifacts:
     paths:
     - DungeonEternalX.mod
