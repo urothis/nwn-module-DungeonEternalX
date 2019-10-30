@@ -1,5 +1,5 @@
 #include "x2_inc_itemprop"
-#include "INC_WEP_AC_BON"
+#include "inc_wep_ac_bon"
 
 void GiveArresAura(object oPC);
 int RandomChance(int nChance, object oPC);
