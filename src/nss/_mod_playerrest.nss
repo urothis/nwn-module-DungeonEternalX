@@ -2,7 +2,7 @@
 #include "db_inc"
 #include "seed_faction_inc"
 #include "artifact_inc"
-#include "INC_WEP_AC_BON"
+#include "inc_wep_ac_bon"
 #include "arres_inc"
 #include "fame_inc"
 #include "fame_charvalue"
