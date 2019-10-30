@@ -96,7 +96,7 @@ int MK_GetBodyPart(object oCreature, int nBodyPartToBeModified, int nSubBodyPart
 // ----------------------------------------------------------------------------
 // Sets the current body part number
 // ----------------------------------------------------------------------------
-int MK_SetBodyPart(int nBodyPart, object oCreature, int nBodyPartToBeModified, int nSubBodyPart=0);
+void MK_SetBodyPart(int nBodyPart, object oCreature, int nBodyPartToBeModified, int nSubBodyPart=0);
 
 // ----------------------------------------------------------------------------
 // Calculates the save bodypart string
