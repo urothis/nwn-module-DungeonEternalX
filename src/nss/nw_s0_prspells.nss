@@ -33,6 +33,7 @@ void main()
     object oTarget;
     effect eVis  = EffectVisualEffect(VFX_IMP_MAGIC_PROTECTION);
     effect eSave = EffectSavingThrowIncrease(SAVING_THROW_ALL, 8 + nPureBonus/4, SAVING_THROW_TYPE_SPELL);
+    effect eDur = EffectVisualEffect(VFX_DUR_CESSATE_POSITIVE);
     effect eDur2 = EffectVisualEffect(VFX_DUR_MAGIC_RESISTANCE);
     effect eLink = EffectLinkEffects(eSave, eDur);
     eLink = EffectLinkEffects(eLink, eDur2);
