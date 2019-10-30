@@ -37,7 +37,7 @@ build:dex:
     - nasher pack
   artifacts:
     paths:
-    - server/DungeonEternalX.mod
+    - DungeonEternalX.mod
     expire_in: 1 week
 
 build:docker:
