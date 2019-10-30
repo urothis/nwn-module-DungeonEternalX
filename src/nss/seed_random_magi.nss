@@ -1353,7 +1353,7 @@ object SRM_CreateHealingKit(object oTarget, int nHD = 1) {
 }
 
 object SRM_CreateLockPick(object oTarget, int nHD = 1) {
-  int nHD = Random(100) + nHD;
+  nHD = Random(100) + nHD;
   string sKit = "";
   if (nHD<16)      sKit = "nw_it_picks001";
   else if (nHD<32) sKit = "nw_it_picks002";

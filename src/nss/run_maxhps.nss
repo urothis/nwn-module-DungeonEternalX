@@ -14,9 +14,6 @@ void main()
             return;
         }
 
-        //Single call doesn't work? Is it done by level?
-        //NWNX_Creature_SetMaxHitPointsByLevel(oPC, nLevel, NWNX_Creature_GetMaxHitPointsByLevel(oPC, nLevel));
-
         int x = 1;
         for (x; x <= nLevel; x++)
         {

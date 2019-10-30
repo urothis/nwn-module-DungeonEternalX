@@ -68,7 +68,7 @@ void DrawSpiral(int nDurationType, int nVFX, location lCenter, float fRadiusStar
 // fTime = time in seconds taken to draw the spring.              DEFAULT : 6.0
 // fRotate = the angle of rotation respective to normal.          DEFAULT : 0.0
 // sAxis = ("x", "y" or "z") the normal axis.                     DEFAULT : "z"
-void DrawSpring(int nDurationType, int nVFX, location lCenter, float fRadiusStart, float fRadiusEnd=0.0f, float fHeightStart=0.0f, float fHeightEnd=5.0f, float fDuration=0.0f, int nFrequency=90, float fRev=5.0f, float fTime=6.0f, float fRotate=0.0f, string sAxis="z");
+void DrawSpring(int nDurationType, int nVFX, location lCenter, float fRadiusStart, float fRadiusEnd=0.0f, float fHeightStart=0.0f, float fHeightEnd=5.0f, float fDuration=0.0f, int nFrequency=90, float fRev=1.0f, float fTime=6.0f, float fRotate=0.0f, string sAxis="z");
 
 // Draws a line towards lCenter
 // ============================
@@ -118,7 +118,7 @@ void DrawLineFromCenter(int nDurationType, int nVFX, location lCenter, float fLe
 // fTime = time in seconds taken to draw the spring.              DEFAULT : 6.0
 // fRotate = the angle of rotation respective to normal.          DEFAULT : 0.0
 // sAxis = ("x", "y" or "z") the normal axis.                     DEFAULT : "z"
-void DrawPolygonalSpring(int nDurationType, int nVFX, location lCenter, float fRadiusStart, float fRadiusEnd=0.0f, float fHeightStart=0.0f, float fHeightEnd=5.0f, int nSides=3, float fDuration=0.0f, int nFrequency=90, float fRev=5.0f, float fTime=6.0f, float fRotate=0.0f, string sAxis="z");
+void DrawPolygonalSpring(int nDurationType, int nVFX, location lCenter, float fRadiusStart, float fRadiusEnd=0.0f, float fHeightStart=0.0f, float fHeightEnd=5.0f, int nSides=5, float fDuration=0.0f, int nFrequency=90, float fRev=5.0f, float fTime=6.0f, float fRotate=0.0f, string sAxis="z");
 
 // Draws a polygonal spiral around lCenter
 // =======================================
@@ -943,7 +943,7 @@ void PlaceEllipticalSpring(string sTemplate, location lCenter, float fRadiusStar
 // fWait = time in seconds to wait before applying visual effect. DEFAULT : 1.0
 // fLifetime = if fLifetime is not 0.0, then this is time in seconds before the
 //             placeables get destroyed.                          DEFAULT : 0.0
-void PlaceEllipticalSpiral(string sTemplate, location lCenter, float fRadiusStartOuter, float fRadiusStartInner, float fRadiusEndOuter=0.0f, float fRadiusEndInner=0.0f, int nFrequency=60, float fRev=1.0f, float fTime=12.0f, float fRotate=0.0f, string sAxis="z", int nDurationType=-1, int nVFX=-1, float fDuration=0.0f, float fWait=1.0f, float fLifetime=0.0f);
+void PlaceEllipticalSpiral(string sTemplate, location lCenter, float fRadiusStartOuter, float fRadiusStartInner, float fRadiusEndOuter=0.0f, float fRadiusEndInner=0.0f, int nFrequency=60, float fRev=5.0f, float fTime=12.0f, float fRotate=0.0f, string sAxis="z", int nDurationType=-1, int nVFX=-1, float fDuration=0.0f, float fWait=1.0f, float fLifetime=0.0f);
 
 // Places an ellipse around lCenter
 // ================================
@@ -966,7 +966,7 @@ void PlaceEllipticalSpiral(string sTemplate, location lCenter, float fRadiusStar
 // fWait = time in seconds to wait before applying visual effect. DEFAULT : 1.0
 // fLifetime = if fLifetime is not 0.0, then this is time in seconds before the
 //             placeables get destroyed.                          DEFAULT : 0.0
-void PlaceEllipse(string sTemplate, location lCenter, float fRadiusOuter, float fRadiusInner, int nFrequency=60, float fRev=1.0f, float fTime=12.0f, float fRotate=0.0f, string sAxis="z", int nDurationType=-1, int nVFX=-1, float fDuration=0.0f, float fWait=1.0f, float fLifetime=0.0f);
+void PlaceEllipse(string sTemplate, location lCenter, float fRadiusOuter, float fRadiusInner, int nFrequency=60, float fRev=5.0f, float fTime=12.0f, float fRotate=0.0f, string sAxis="z", int nDurationType=-1, int nVFX=-1, float fDuration=0.0f, float fWait=1.0f, float fLifetime=0.0f);
 
 // Places a stella octangula above lCenter
 // =======================================
