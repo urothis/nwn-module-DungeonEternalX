@@ -22,7 +22,7 @@ void DoShowMessage(object oHolder);
 int GetPageOptionSelected(object oHolder);
 string DisabledText(string sText);
 string GetCurrentList(object oHolder);
-string SetCurrentList(object oHolder, string sList);
+void SetCurrentList(object oHolder, string sList);
 void CleanUpInc(object oHolder);
 
 
