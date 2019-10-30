@@ -16,10 +16,10 @@ build:disdex:
   image: golang:1.13.0  
   script:
     - cd disdex
-    - go build -o _disdex
+    - go build -o disdexBinary
   artifacts:
     paths:
-    - _disdex
+    - disdexBinary
     expire_in: 1 week
  
 build:dex:
