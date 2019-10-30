@@ -8,7 +8,6 @@ variables:
 
 stages:
   - Build
-  - Staging
   - Deploy
 
 build:disdex:
@@ -43,7 +42,7 @@ build:dex:
     expire_in: 1 week
 
 deploy:docker:
-  stage: deploy
+  stage: Deploy
   only:
   - master
   script:
