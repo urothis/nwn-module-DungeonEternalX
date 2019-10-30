@@ -28,7 +28,7 @@
 */
 
 #include "x2_inc_itemprop"
-#include "X2_inc_switches"
+#include "x2_inc_switches"
 
 int DoPoisonCheck(object oPC, int nApplyDC)
 {
