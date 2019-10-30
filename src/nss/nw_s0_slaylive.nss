@@ -12,7 +12,7 @@
 //:: Last Updated By: Preston Watamaniuk, On: April 11, 2001
 //:: VFX Pass By: Preston W, On: June 25, 2001
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "pure_caster_inc"
 #include "_inc_sneakspells"
 #include "x2_inc_spellhook"

@@ -19,7 +19,7 @@
 //:://////////////////////////////////////////////
 //:: VFX Pass By: Preston W, On: June 25, 2001
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x2_inc_spellhook"
 #include "_inc_sneakspells"
 

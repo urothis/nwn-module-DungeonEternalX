@@ -10,7 +10,7 @@
 //:: Created On: Jan 12, 2001
 //:://////////////////////////////////////////////
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 

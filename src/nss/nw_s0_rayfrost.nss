@@ -8,7 +8,7 @@
    the target takes 1d4 damage.
 */
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"
 

@@ -15,7 +15,7 @@
 //:: Created On: July 31, 2002
 //:://////////////////////////////////////////////
 //:: VFX Pass By:
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x2_inc_spellhook"
 
 void main()

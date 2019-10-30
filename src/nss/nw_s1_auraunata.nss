@@ -11,7 +11,7 @@
 //:: Created By: Preston Watamaniuk
 //:: Created On: May 25, 2001
 //:://////////////////////////////////////////////
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 
 void main()
 {

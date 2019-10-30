@@ -7,7 +7,7 @@
     Double duration (4x with extend spell) and indispelable if cast without monkspeed
 */
 //:://////////////////////////////////////////////
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x2_inc_spellhook"
 void main()
 {

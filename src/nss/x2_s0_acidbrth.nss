@@ -9,7 +9,7 @@
 // level (maximum 10d6).
 */
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"

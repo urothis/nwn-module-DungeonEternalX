@@ -8,7 +8,7 @@
    can be dominated.
 */
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "seed_boost_undea"
 
 void main() {

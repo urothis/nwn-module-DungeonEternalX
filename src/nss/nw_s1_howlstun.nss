@@ -12,7 +12,7 @@
 //:: Created On: May 14, 2000
 //:://////////////////////////////////////////////
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 void main()
 {
     //Declare major variables

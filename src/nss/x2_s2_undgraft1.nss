@@ -19,7 +19,7 @@
 //:: Updated On: 2003-07-24, Georg Zoeller (added elf immunity, touch attack check, fixed duration)
 //:://////////////////////////////////////////////
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "_functions"
 
 void main()

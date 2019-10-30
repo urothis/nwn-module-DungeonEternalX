@@ -9,7 +9,7 @@
 // This spell does not affect living creatures.
 */
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "X2_i0_spells"
 //------------------------------------------------------------------------------
 // This part is moved into a delayed function in order to alllow it to bypass

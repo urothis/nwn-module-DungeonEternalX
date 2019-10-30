@@ -19,7 +19,7 @@
 //:://////////////////////////////////////////////
 
 #include "pure_caster_inc"
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 
 void main() {
    //Declare major variables

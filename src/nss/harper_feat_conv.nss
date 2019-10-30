@@ -23,7 +23,8 @@ void SetMenuOptionString(string sOptionText, string sOptionValue, object oPC, st
 void SetMenuOptionObject(string sOptionText, object oOptionValue, object oPC, string sList = "HS_LIST");
 string JapSendMessage(object oPC, object oMember, string sPCName, string sPCLogin, string sListPlayer, string sFAIDMember, int nLvlMember, int nLvlPC, int nSendMessage = FALSE);
 void DoConfirmAction(object oPC);
-void SetConfirmAction(object oPC, string sPrompt, int nActionConfirm, string sConfirm="Yes, Sir", string sCancel="No, Sir", int nActionCancel=HS_END_CONVO);
+void SetConfirmAction(object oPC, string sPrompt, int nActionConfirm, string sConfirm="Yes", string sCancel="No", int nActionCancel=HS_END_CONVO);
+
 void SetShowMessage(object oPC, string sPrompt, int nOkAction = HS_END_CONVO);
 void DoShowMessage(object oPC);
 

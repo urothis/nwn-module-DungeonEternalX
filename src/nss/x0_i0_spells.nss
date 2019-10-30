@@ -26,7 +26,7 @@
 //::                          Dispel Magic delay until VFX hit has been set down to 0.3
 //:://////////////////////////////////////////////
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x0_i0_match"
 #include "x2_inc_switches"
 #include "x2_inc_itemprop"

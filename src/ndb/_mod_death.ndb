@@ -2,7 +2,7 @@ NDB V1.0
 0000008 0000001 0000115 0000059 0000177
 n00 _inc_aps
 n01 _inc_character
-n02 NW_I0_SPELLS
+n02 nw_i0_spells
 n03 randomlocal
 n04 _inc_death
 n05 qe_include

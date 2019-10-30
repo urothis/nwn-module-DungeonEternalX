@@ -22,7 +22,7 @@
 //:: Created By: Preston Watamaniuk
 //:: Created On: Nov 20, 2001
 //:://////////////////////////////////////////////
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x2_inc_spellhook"
 
 void main()

@@ -17,7 +17,7 @@
 //::        - Fixed an issue where the AOE would dispell if the CASTER left the AOE
 //::            ...when the AOE was supposed to be centered ON the caster.
 //:://////////////////////////////////////////////
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 
 #include "x2_inc_spellhook"
 

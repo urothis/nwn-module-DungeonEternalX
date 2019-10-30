@@ -7,7 +7,7 @@
    Movement have their movement reduced by 1/2.
 */
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x0_i0_spells"
 #include "pure_caster_inc"
 

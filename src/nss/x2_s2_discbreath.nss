@@ -27,7 +27,7 @@
 //:: Created On: June, 17, 2003
 //:://////////////////////////////////////////////
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 
 int getRDDdc(object oPC)
 {

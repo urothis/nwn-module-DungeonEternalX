@@ -13,7 +13,7 @@
 //:: Created By: Preston Watamaniuk
 //:: Created On: May 29, 2001
 //:://////////////////////////////////////////////
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x0_i0_spells"
 #include "pure_caster_inc"
 #include "x2_inc_spellhook"

@@ -593,8 +593,7 @@ int ExecuteScriptAndReturnInt(string sScript, object oTarget)
 //----------------------------------------------------------------------------
 // Helper function for ExecuteScriptAndReturnInt
 //----------------------------------------------------------------------------
-void  SetExecutedScriptReturnValue(int nValue = X2_EXECUTE_SCRIPT_CONTINUE)
-{
+void SetExecutedScriptReturnValue(int nValue = X2_EXECUTE_SCRIPT_CONTINUE) {
     SetLocalInt(OBJECT_SELF,"X2_L_LAST_RETVAR",nValue);
 }
 

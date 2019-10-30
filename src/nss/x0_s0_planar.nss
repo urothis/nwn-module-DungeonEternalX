@@ -14,7 +14,7 @@
 //:: Modified from Planar binding
 //:: Hold ability removed for cleric version of spell
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "x2_inc_spellhook"
 #include "pc_inc"
 

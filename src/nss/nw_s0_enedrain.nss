@@ -7,7 +7,7 @@
    Target loses 2d4 levels.
 */
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "pure_caster_inc"
 #include "spell_sneak_inc"
 #include "x2_inc_spellhook"

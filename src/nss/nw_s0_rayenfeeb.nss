@@ -12,7 +12,7 @@
 //:: Created On: Feb 2, 2001
 //:://////////////////////////////////////////////
 
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 #include "pure_caster_inc"
 #include "_inc_sneakspells"
 #include "x2_inc_spellhook"

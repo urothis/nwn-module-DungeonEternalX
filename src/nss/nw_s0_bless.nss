@@ -17,7 +17,7 @@
 //:://////////////////////////////////////////////
 //:: VFX Pass By: Preston W, On: June 20, 2001
 //:: Added Bless item ability: Georg Z, On: June 20, 2001
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 
 #include "x2_inc_spellhook"
 

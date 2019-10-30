@@ -27,7 +27,7 @@ void DoBoot(object oPC);
 //Returns the number of legendary levels possessed by the character. If not using the legendary level system,
 //It will return 0 unless you are using the Lootable field to store data (it returns Lootable - 40, and never
 //returns below a 0). If that's the case, you probably know how to configure this function to your needs.
-int GetNumberOfLegendaryLevels(object oChar);
+int GetNumberOfLegendaryLevels(object oChar = OBJECT_SELF);
 
 void DoCough(object oCougher)
 {

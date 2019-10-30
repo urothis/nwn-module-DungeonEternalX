@@ -13,7 +13,7 @@
 //:: Created On: May 11, 2001
 //:://////////////////////////////////////////////
 //:: Updated Georg Z, 2003-09-02: fixed cone not visible if no damage is done
-#include "NW_I0_SPELLS"
+#include "nw_i0_spells"
 void main()
 {
     //Declare major variables
