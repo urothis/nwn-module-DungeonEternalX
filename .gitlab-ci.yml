@@ -4,7 +4,7 @@ services:
   - docker:19.03.1-dind
 
 variables:
-  FINAL_IMAGE_NAME: urothis/dex
+  FINAL_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-DungeonEternalX:latest
 
 stages:
   - Build
