@@ -1,4 +1,4 @@
-build:disdex:
+build:
   stage: Build
   image: golang:1.13.0  
   script:
