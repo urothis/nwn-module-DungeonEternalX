@@ -35,7 +35,7 @@ deploy:disdex:
   - docker push $FINAL_DISDEX_IMAGE_NAME && docker image rm $FINAL_DISDEX_IMAGE_NAME    
 
 build:dex:
-  stage: Build DisDex
+  stage: Build Dex
   image: 
     name: squattingmonk/nasher:latest
     entrypoint: [""]
