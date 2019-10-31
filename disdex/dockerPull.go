@@ -1,38 +1,41 @@
 package main
 
 import (
-    "os"
-    "os/exec"
-	"syscall"
-	
+	"context"
+	"fmt"
+
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/client"
 	"github.com/robfig/cron"
 	log "github.com/sirupsen/logrus"
 )
 
-func dockerCheck() {
-    binary, lookErr := exec.LookPath("docker")
-    if lookErr != nil {
-        panic(lookErr)
-	}	
-	
-	args := []string{"docker", "pull"}
-
-	env := os.Environ()
-
-    execErr := syscall.Exec(binary, args, env)
-    if execErr != nil {
-        panic(execErr)
+func dockerPull() error {
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
 	}
 
-	log.WithFields(log.Fields{"docker pull": 1}).Info("disdex")
+	containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
+	if err != nil {
+		panic(err)
+	}
 
+	if len(containers) > 0 {
+		for _, container := range containers {
+			fmt.Printf("Container ID: %s", container.ID)
+		}
+	} else {
+		fmt.Println("There are no containers running")
+	}
+	return nil
 }
 
-// InitDockerPull init cron 
+// InitDockerPull init cron
 func InitDockerPull() {
 	// cron things
 	c := cron.New()
-	c.AddFunc("@every 1m", func() { dockerCheck() })
+	c.AddFunc("@every 1s", func() { dockerPull() })
 	log.WithFields(log.Fields{"automated docker pull initiated": 1}).Info("disdex")
 	c.Start()
 }

@@ -46,8 +46,9 @@ deploy:docker:
   only:
   - master
   script:
-  - env > gitlab.env '/^DOCKER_ENV_CI_SERVER_TLS_CA_FILE=/,/^$/d' > gitlab.env
-  - docker build -t $FINAL_IMAGE_NAME . --build-arg NWNX_ADMINISTRATION_SKIP=$NWNX_ADMINISTRATION_SKIP 
+  - docker build -t $FINAL_IMAGE_NAME . --build-arg CI_REGISTRY_USER=$CI_REGISTRY_USER
+                                        --build-arg CI_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD
+                                        --build-arg NWNX_ADMINISTRATION_SKIP=$NWNX_ADMINISTRATION_SKIP
                                         --build-arg NWNX_CHAT_SKIP=$NWNX_CHAT_SKIP
                                         --build-arg NWNX_CORE_LOG_LEVEL=$NWNX_CORE_LOG_LEVEL
                                         --build-arg NWNX_CORE_SKIP_ALL=$NWNX_CORE_SKIP_ALL
