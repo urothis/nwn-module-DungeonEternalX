@@ -4,7 +4,8 @@ services:
   - docker:19.03.1-dind
 
 variables:
-  FINAL_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx:latest
+  FINAL_NWSERVER_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/nwserver:latest
+  FINAL_DISDEX_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/disdex:latest
 
 stages:
   - Build
@@ -41,13 +42,12 @@ build:dex:
     - DungeonEternalX.mod
     expire_in: 1 week
 
-deploy:docker:
+deploy:dex:
   stage: Deploy
   only:
   - master
   script:
-  - docker build -t $FINAL_IMAGE_NAME . --build-arg CI_REGISTRY_USER=$CI_REGISTRY_USER
-                                        --build-arg CI_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD
+  - docker build -t $FINAL_IMAGE_NAME -f nwserver.dockerfile . 
                                         --build-arg NWNX_ADMINISTRATION_SKIP=$NWNX_ADMINISTRATION_SKIP
                                         --build-arg NWNX_CHAT_SKIP=$NWNX_CHAT_SKIP
                                         --build-arg NWNX_CORE_LOG_LEVEL=$NWNX_CORE_LOG_LEVEL
@@ -86,4 +86,13 @@ deploy:docker:
                                         --build-arg NWN_RELOADWHENEMPTY=$NWN_RELOADWHENEMPTY
                                         --build-arg NWN_SERVERVAULT=$NWN_SERVERVAULT                             
   - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
-  - docker push $FINAL_IMAGE_NAME && docker image rm $FINAL_IMAGE_NAME
+  - docker push $FINAL_NWSERVER_IMAGE_NAME && docker image rm $FINAL_NWSERVER_IMAGE_NAME
+
+deploy:disdex:
+  stage: Deploy
+  only:
+  - master
+  script:
+  - docker build -t $FINAL_DISDEX_IMAGE_NAME -f disdex.dockerfile .
+  - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+  - docker push $FINAL_DISDEX_IMAGE_NAME && docker image rm $FINAL_DISDEX_IMAGE_NAME
