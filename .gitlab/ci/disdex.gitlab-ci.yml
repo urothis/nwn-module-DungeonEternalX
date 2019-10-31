@@ -1,5 +1,5 @@
 Container:DisDex:
-  stage: Deploy
+  stage: Deploy DisDex
   only:
   - master
   script:
