@@ -46,7 +46,7 @@ deploy:docker:
   only:
   - master
   script:
-  - env | sed '/^DOCKER_ENV_CI_SERVER_TLS_CA_FILE=/,/^$/d' > .env
+  - env | sed '/^DOCKER_ENV_CI_SERVER_TLS_CA_FILE=/,/^$/d' > gitlab.env
   - docker build -t $FINAL_IMAGE_NAME .
   - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   - docker push $FINAL_IMAGE_NAME && docker image rm $FINAL_IMAGE_NAME
