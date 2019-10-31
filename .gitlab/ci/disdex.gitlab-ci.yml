@@ -1,0 +1,20 @@
+build:disdex:
+  stage: Build
+  image: golang:1.13.0  
+  script:
+    - cd disdex
+    - go build -o disdexBinary
+    - mv disdexBinary $CI_PROJECT_DIR/disdexBinary
+  artifacts:
+    paths:
+    - disdexBinary
+    expire_in: 1 week
+
+deploy:disdex:
+  stage: Deploy
+  only:
+  - master
+  script:
+  - docker build -t $FINAL_DISDEX_IMAGE_NAME -f disdex.dockerfile .
+  - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+  - docker push $FINAL_DISDEX_IMAGE_NAME && docker image rm $FINAL_DISDEX_IMAGE_NAME 
