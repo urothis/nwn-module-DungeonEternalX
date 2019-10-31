@@ -1,17 +1,5 @@
-build:
-  stage: Build
-  image: golang:1.13.0  
-  script:
-    - cd disdex
-    - go build -o disdexBinary
-    - mv disdexBinary $CI_PROJECT_DIR/disdexBinary
-  artifacts:
-    paths:
-    - disdexBinary
-    expire_in: 1 week
-
-deploy:disdex:
-  stage: Deploy
+container upload:
+  stage: Deploy DisDex
   only:
   - master
   script:

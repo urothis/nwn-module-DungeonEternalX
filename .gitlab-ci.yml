@@ -4,12 +4,15 @@ services:
   - docker:19.03.1-dind
 
 stages:
-  - Build
-  - Deploy
+  - Build Module
+  - Deploy Module
+  - Deploy DisDex
 
 variables:
   FINAL_NWSERVER_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/nwserver:latest
   FINAL_DISDEX_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/disdex:latest
+  MODULE_NAME: DungeonEternalX.mod
+  MODULE_REPO: https://github.com/urothis/nwn-module-DungeonEternalX.git
 
 include:
   - local: .gitlab/ci/disdex.gitlab-ci.yml

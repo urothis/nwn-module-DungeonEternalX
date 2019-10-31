@@ -1,5 +1,7 @@
-build:
-  stage: Build
+  - Deploy DisDex
+
+Build:
+  stage: Build Module
   image: 
     name: squattingmonk/nasher:latest
     entrypoint: [""]
@@ -7,18 +9,18 @@ build:
     - dpkg --add-architecture i386
     - apt-get update
     - apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 -y
-    - git clone https://github.com/urothis/nwn-module-DungeonEternalX.git
-    - cd nwn-module-DungeonEternalX
+    - git clone $MODULE_REPO
+    - cd $_
     - "nasher config --nssFlags:'-n /nwn/data -o'"
     - nasher pack
-    - cp DungeonEternalX.mod $CI_PROJECT_DIR/DungeonEternalX.mod
+    - cp $MODULE_NAME $CI_PROJECT_DIR/$MODULE_NAME
   artifacts:
     paths:
-    - DungeonEternalX.mod
+    - $MODULE_NAME
     expire_in: 1 week
 
-deploy:dex:
-  stage: Deploy
+Deploy:
+  stage: Deploy Module
   only:
   - master
   script:
