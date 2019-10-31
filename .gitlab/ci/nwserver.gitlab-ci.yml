@@ -1,6 +1,4 @@
-  - Deploy DisDex
-
-Build:
+Build:Module:
   stage: Build Module
   image: 
     name: squattingmonk/nasher:latest
@@ -19,7 +17,7 @@ Build:
     - $MODULE_NAME
     expire_in: 1 week
 
-Deploy:
+Container:Module:
   stage: Deploy Module
   only:
   - master

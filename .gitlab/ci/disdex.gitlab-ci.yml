@@ -1,5 +1,5 @@
-container upload:
-  stage: Deploy DisDex
+Container:DisDex:
+  stage: Deploy
   only:
   - master
   script:
