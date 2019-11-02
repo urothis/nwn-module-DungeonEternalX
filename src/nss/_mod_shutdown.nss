@@ -8,7 +8,7 @@ void main() {
     // send out the webhook
     ModDownWebhook();
     // write to log
-    WriteTimestampedLogEntry("*****SERVER RESTART*****")); 
+    WriteTimestampedLogEntry("*****SERVER RESTART*****"); 
     
     // testing out portal
     object oPC = GetFirstPC();
