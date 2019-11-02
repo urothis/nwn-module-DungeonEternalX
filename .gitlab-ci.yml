@@ -4,7 +4,7 @@ services:
   - docker:19.03.1-dind
 
 stages:
-  - Testing
+  - Test Module
   - Build Module
   - Deploy Module
   - Deploy DisDex

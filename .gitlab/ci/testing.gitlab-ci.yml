@@ -1,3 +1,5 @@
-Testing:
-  stage: Testing
+Test:Module:
+  stage: Test Module
   image: hello-world:latest
+  script:
+  - ls
