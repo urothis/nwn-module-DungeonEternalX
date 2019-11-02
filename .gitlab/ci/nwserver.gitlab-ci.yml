@@ -1,5 +1,5 @@
 Build:Module:
-  stage: Build Module
+  stage: Build
   image: 
     name: squattingmonk/nasher:latest
     entrypoint: [""]
@@ -23,7 +23,7 @@ Build:Module:
       - src/**/*
 
 Container:Module:
-  stage: Deploy Module
+  stage: Deploy
   only:
   - master
   script:
@@ -67,8 +67,5 @@ Container:Module:
                                         -t $FINAL_NWSERVER_IMAGE_NAME .                        
   - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   - docker push $FINAL_NWSERVER_IMAGE_NAME && docker image rm $FINAL_NWSERVER_IMAGE_NAME
-  only:
-    changes:
-      - nwserver.dockerfile
-      - nasher.cfg
-      - src/**/*
+  dependencies:
+    - Build:Module
