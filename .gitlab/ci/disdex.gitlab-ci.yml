@@ -2,6 +2,7 @@ Test:DisDex:
   stage: Test
   image: golang:1.11
   script:
+    - cd disdex
     - go test
   only:
     changes:
