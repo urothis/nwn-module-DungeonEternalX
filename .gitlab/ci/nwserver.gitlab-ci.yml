@@ -4,9 +4,6 @@ Build:Module:
     name: squattingmonk/nasher:latest
     entrypoint: [""]
   script:
-    - dpkg --add-architecture i386
-    - apt-get update
-    - apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 -y
     - git clone $MODULE_REPO
     - cd $FOLDER_NAME
     - "nasher config --nssFlags:'-n /nwn/data -o'"
