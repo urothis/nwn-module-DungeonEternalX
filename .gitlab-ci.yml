@@ -4,10 +4,9 @@ services:
   - docker:19.03.1-dind
 
 stages:
-  - Test Module
-  - Build Module
-  - Deploy Module
-  - Deploy DisDex
+  - Test
+  - Build
+  - Deploy
 
 variables:
   FINAL_NWSERVER_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/nwserver:latest
