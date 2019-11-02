@@ -1,3 +1,13 @@
+Test:DisDex:
+  stage: Test
+  image: golang:1.11
+  script:
+    - go test
+  only:
+    changes:
+      - disdex.dockerfile
+      - disdex/**/*
+
 Container:DisDex:
   stage: Deploy
   only:

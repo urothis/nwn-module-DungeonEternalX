@@ -47,7 +47,7 @@ func initDiscord() {
 	errCheck("error retrieving account", err)
 
 	botID = user.ID
-	Discord.AddHandler(replyHandler)
+	Discord.AddHandler(ReplyHandler)
 	Discord.AddHandler(func(discord *discordgo.Session, ready *discordgo.Ready) {
 		err = discord.UpdateStatus(0, "DungeonEternalX")
 		if err != nil {
@@ -74,7 +74,7 @@ func errCheck(msg string, err error) {
 	}
 }
 
-func replyHandler(discord *discordgo.Session, message *discordgo.MessageCreate) {
+func ReplyHandler(discord *discordgo.Session, message *discordgo.MessageCreate) {
 	user := message.Author
 	if user.ID == botID || user.Bot {
 		//Do nothing because the bot is talking
