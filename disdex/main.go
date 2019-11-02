@@ -15,22 +15,24 @@ func checkENV() (err error) {
 	if os.Getenv("DISDEX_REDIS_PORT") == "" {
 		log.WithFields(log.Fields{"DISDEX_REDIS_PORT": "nil"}).Fatal("disdex:core:env")
 	}
+	if os.Getenv("DISDEX_DISCORD_KEY") == "" {
+		log.WithFields(log.Fields{"DISDEX_DISCORD_KEY": "nil"}).Fatal("disdex:core:env")
+	}
 	return
 }
 
 func main() {
 	// load the core config here
-	//err := checkENV()
-	//if err != nil {
-	//	return
-	//}
+	err := checkENV()
+	if err != nil {
+		return
+	}
 
 	// Initialize
 	log.WithFields(log.Fields{"Booted": 1}).Info("disdex")
 
-	//go InitRedis()
-	//go initDiscord()
-	go InitDockerPull()
+	go InitRedis()
+	go initDiscord()
 
 	// wait until signal received.
 	done := make(chan os.Signal, 1)
