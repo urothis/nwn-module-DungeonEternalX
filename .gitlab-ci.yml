@@ -4,6 +4,7 @@ services:
   - docker:19.03.1-dind
 
 stages:
+  - Testing
   - Build Module
   - Deploy Module
   - Deploy DisDex
@@ -16,5 +17,6 @@ variables:
   FOLDER_NAME: nwn-module-DungeonEternalX
 
 include:
+  - local: .gitlab/ci/testing.gitlab-ci.yml
   - local: .gitlab/ci/disdex.gitlab-ci.yml
   - local: .gitlab/ci/nwserver.gitlab-ci.yml
