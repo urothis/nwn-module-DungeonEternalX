@@ -69,3 +69,8 @@ Container:Module:
   - docker push $FINAL_NWSERVER_IMAGE_NAME && docker image rm $FINAL_NWSERVER_IMAGE_NAME
   dependencies:
     - Build:Module
+  only:
+    changes:
+      - nwserver.dockerfile
+      - nasher.cfg
+      - src/**/*
