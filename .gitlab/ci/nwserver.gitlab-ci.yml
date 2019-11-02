@@ -16,6 +16,11 @@ Build:Module:
     paths:
     - $MODULE_NAME
     expire_in: 1 week
+  only:
+    changes:
+      - nwserver.dockerfile
+      - nasher.cfg
+      - src/**/*
 
 Container:Module:
   stage: Deploy Module
