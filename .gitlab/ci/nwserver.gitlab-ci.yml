@@ -62,3 +62,8 @@ Container:Module:
                                         -t $FINAL_NWSERVER_IMAGE_NAME .                        
   - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   - docker push $FINAL_NWSERVER_IMAGE_NAME && docker image rm $FINAL_NWSERVER_IMAGE_NAME
+  only:
+    changes:
+      - nwserver.dockerfile
+      - nasher.cfg
+      - src/**/*
