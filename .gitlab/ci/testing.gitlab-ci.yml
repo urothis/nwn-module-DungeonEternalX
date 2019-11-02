@@ -1,6 +1,5 @@
 Test:Module:
   stage: Test
-  image: hello-world:latest
+  image: docker:latest
   script:
-  - ls
-  allow_failure: true
+  - exit 0
