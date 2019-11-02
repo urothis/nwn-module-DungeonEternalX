@@ -12,14 +12,14 @@ Test:DisDex:
 Container:DisDex:
   stage: Deploy
   only:
-  - master
+    - master
   before_script:
     - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   script:
-  - docker pull $FINAL_DISDEX_IMAGE_NAME:latest || true
-  - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $FINAL_DISDEX_IMAGE_NAME:$CI_COMMIT_SHA --tag $FINAL_DISDEX_IMAGE_NAME:latest -f disdex.dockerfile .
-  - docker push $FINAL_DISDEX_IMAGE_NAME:$CI_COMMIT_SHA
-  - docker push $FINAL_DISDEX_IMAGE_NAME:latest
+    - docker pull $FINAL_DISDEX_IMAGE_NAME:latest || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $FINAL_DISDEX_IMAGE_NAME:$CI_COMMIT_SHA --tag $FINAL_DISDEX_IMAGE_NAME:latest -f disdex.dockerfile .
+    - docker push $FINAL_DISDEX_IMAGE_NAME:$CI_COMMIT_SHA
+    - docker push $FINAL_DISDEX_IMAGE_NAME:latest
   only:
     changes:
       - disdex.dockerfile

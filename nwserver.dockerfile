@@ -81,4 +81,3 @@ ENV NWN_SERVERVAULT=${NWN_SERVERVAULT}
 ARG NWNX_CORE_SHUTDOWN_SCRIPT
 ENV NWNX_CORE_SHUTDOWN_SCRIPT=${NWNX_CORE_SHUTDOWN_SCRIPT}
 COPY $CI_PROJECT_DIR/DungeonEternalX.mod /nwn/home/server/modules/DungeonEternalX.mod
-CMD sh -c '/nwn/run-server.sh' 
