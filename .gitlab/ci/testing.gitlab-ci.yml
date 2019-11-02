@@ -3,3 +3,4 @@ Test:Module:
   image: hello-world:latest
   script:
   - ls
+  allow_failure: true
