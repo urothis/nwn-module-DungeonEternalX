@@ -9,12 +9,12 @@ import (
 )
 
 func checkENV() (err error) {
-	if os.Getenv("DISDEX_REDIS_HOST") == "" {
-		log.WithFields(log.Fields{"DISDEX_REDIS_HOST": "nil"}).Fatal("disdex:core:env")
-	}
-	if os.Getenv("DISDEX_REDIS_PORT") == "" {
-		log.WithFields(log.Fields{"DISDEX_REDIS_PORT": "nil"}).Fatal("disdex:core:env")
-	}
+	//if os.Getenv("DISDEX_REDIS_HOST") == "" {
+	//	log.WithFields(log.Fields{"DISDEX_REDIS_HOST": "nil"}).Fatal("disdex:core:env")
+	//}
+	//if os.Getenv("DISDEX_REDIS_PORT") == "" {
+	//	log.WithFields(log.Fields{"DISDEX_REDIS_PORT": "nil"}).Fatal("disdex:core:env")
+	//}
 	if os.Getenv("DISDEX_DISCORD_KEY") == "" {
 		log.WithFields(log.Fields{"DISDEX_DISCORD_KEY": "nil"}).Fatal("disdex:core:env")
 	}
@@ -31,7 +31,7 @@ func main() {
 	// Initialize
 	log.WithFields(log.Fields{"Booted": 1}).Info("disdex")
 
-	go InitRedis()
+	//go InitRedis()
 	go initDiscord()
 
 	// wait until signal received.
