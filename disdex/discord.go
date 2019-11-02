@@ -41,7 +41,7 @@ func initDiscord() {
 
 	log.WithFields(log.Fields{"Connected": "1"}).Info("disdex.Discord")
 
-	Discord, err = discordgo.New("Bot " + os.Getenv("DISDEX_DISCORD_BOT_KEY"))
+	Discord, err = discordgo.New("Bot " + os.Getenv("DISDEX_DISCORD_KEY"))
 	errCheck("error creating discord session", err)
 	user, err := Discord.User("@me")
 	errCheck("error retrieving account", err)
