@@ -66,6 +66,7 @@ Container:Module:
                                           --build-arg NWN_PVP=$NWN_PVP
                                           --build-arg NWN_RELOADWHENEMPTY=$NWN_RELOADWHENEMPTY
                                           --build-arg NWN_SERVERVAULT=$NWN_SERVERVAULT     
+                                          --build-arg NWNX_CORE_SHUTDOWN_SCRIPT=$NWNX_CORE_SHUTDOWN_SCRIPT
                                           -t $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
                                           -t $FINAL_NWSERVER_IMAGE_NAME:latest .          
     - docker push $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
