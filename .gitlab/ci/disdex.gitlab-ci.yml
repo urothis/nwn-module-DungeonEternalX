@@ -1,4 +1,4 @@
-Test:DisDex:
+Test DisDex:
   stage: Test
   image: golang:1.11
   script:
@@ -9,7 +9,7 @@ Test:DisDex:
       - disdex.dockerfile
       - disdex/**/*
 
-Container:DisDex:
+Deploy DisDex:
   stage: Deploy
   only:
     - master
