@@ -16,6 +16,5 @@ variables:
   FOLDER_NAME: nwn-module-DungeonEternalX
 
 include:
-  - local: .gitlab/ci/testing.gitlab-ci.yml
   - local: .gitlab/ci/disdex.gitlab-ci.yml
   - local: .gitlab/ci/nwserver.gitlab-ci.yml

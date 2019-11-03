@@ -1,4 +1,10 @@
-Build:Module:
+  Test Module:
+  stage: Test
+  image: docker:19.03.1-dind
+  script:
+    - exit 0
+
+Build Module:
   stage: Build
   image: 
     name: squattingmonk/nasher:latest
@@ -9,66 +15,66 @@ Build:Module:
     - "nasher config --nssFlags:'-n /nwn/data -o'"
     - nasher pack
     - cp $MODULE_NAME $CI_PROJECT_DIR/$MODULE_NAME
-  artifacts:
-    paths:
-      - $MODULE_NAME
-    expire_in: 1 week
   only:
     changes:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  artifacts:
+    paths:
+      - $MODULE_NAME
+    expire_in: 1 week
 
-Container:Module:
+Deploy Module:
   stage: Deploy
-  only:
-    - master
   before_script:
     - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
-    - docker build -f nwserver.dockerfile --build-arg NWNX_ADMINISTRATION_SKIP=$NWNX_ADMINISTRATION_SKIP
-                                          --build-arg NWNX_CHAT_SKIP=$NWNX_CHAT_SKIP
-                                          --build-arg NWNX_CORE_LOG_LEVEL=$NWNX_CORE_LOG_LEVEL
-                                          --build-arg NWNX_CORE_SKIP_ALL=$NWNX_CORE_SKIP_ALL
-                                          --build-arg NWNX_CREATURE_SKIP=$NWNX_CREATURE_SKIP
-                                          --build-arg NWNX_SQL_DATABASE=$NWNX_SQL_DATABASE
-                                          --build-arg NWNX_SQL_HOST=$NWNX_SQL_HOST
-                                          --build-arg NWNX_SQL_PASSWORD=$NWNX_SQL_PASSWORD
-                                          --build-arg NWNX_SQL_SKIP=$NWNX_SQL_SKIP
-                                          --build-arg NWNX_SQL_TYPE=$NWNX_SQL_TYPE
-                                          --build-arg NWNX_SQL_USERNAME=$NWNX_SQL_USERNAME
-                                          --build-arg NWNX_TIME_SKIP=$NWNX_TIME_SKIP
-                                          --build-arg NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED=$NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED
-                                          --build-arg NWNX_TWEAKS_DISABLE_PAUSE=$NWNX_TWEAKS_DISABLE_PAUSE
-                                          --build-arg NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG=$NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG
-                                          --build-arg NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST=$NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST
-                                          --build-arg NWNX_TWEAKS_SKIP=$NWNX_TWEAKS_SKIP
-                                          --build-arg NWNX_WEBHOOK_PRIVATE_CHANNEL=$NWNX_WEBHOOK_PRIVATE_CHANNEL
-                                          --build-arg NWNX_WEBHOOK_PUBLIC_CHANNEL=$NWNX_WEBHOOK_PUBLIC_CHANNEL
-                                          --build-arg NWNX_WEBHOOK_SKIP=$NWNX_WEBHOOK_SKIP
-                                          --build-arg NWN_AUTOSAVEINTERVAL=$NWN_AUTOSAVEINTERVAL
-                                          --build-arg NWN_DIFFICULTY=$NWN_DIFFICULTY
-                                          --build-arg NWN_DMPASSWORD=$NWN_DMPASSWORD
-                                          --build-arg NWN_ELC=$NWN_ELC
-                                          --build-arg NWN_GAMETYPE=$NWN_GAMETYPE
-                                          --build-arg NWN_ILR=$NWN_ILR
-                                          --build-arg NWN_MAXCLIENTS=$NWN_MAXCLIENTS
-                                          --build-arg NWN_MAXLEVEL=$NWN_MAXLEVEL
-                                          --build-arg NWN_MINLEVEL=$NWN_MINLEVEL
-                                          --build-arg NWN_MODULE=$NWN_MODULE
-                                          --build-arg NWN_ONEPARTY=$NWN_ONEPARTY
-                                          --build-arg NWN_PAUSEANDPLAY=$NWN_PAUSEANDPLAY
-                                          --build-arg NWN_PORT=$NWN_PORT
-                                          --build-arg NWN_PUBLICSERVER=$NWN_PUBLICSERVER
-                                          --build-arg NWN_PVP=$NWN_PVP
-                                          --build-arg NWN_RELOADWHENEMPTY=$NWN_RELOADWHENEMPTY
-                                          --build-arg NWN_SERVERVAULT=$NWN_SERVERVAULT     
-                                          --build-arg NWNX_CORE_SHUTDOWN_SCRIPT=$NWNX_CORE_SHUTDOWN_SCRIPT
-                                          -t $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
-                                          -t $FINAL_NWSERVER_IMAGE_NAME:latest .          
+    - docker build -f nwserver.dockerfile 
+        --build-arg NWNX_ADMINISTRATION_SKIP=$NWNX_ADMINISTRATION_SKIP
+        --build-arg NWNX_CHAT_SKIP=$NWNX_CHAT_SKIP
+        --build-arg NWNX_CORE_LOG_LEVEL=$NWNX_CORE_LOG_LEVEL
+        --build-arg NWNX_CORE_SKIP_ALL=$NWNX_CORE_SKIP_ALL
+        --build-arg NWNX_CREATURE_SKIP=$NWNX_CREATURE_SKIP
+        --build-arg NWNX_SQL_DATABASE=$NWNX_SQL_DATABASE
+        --build-arg NWNX_SQL_HOST=$NWNX_SQL_HOST
+        --build-arg NWNX_SQL_PASSWORD=$NWNX_SQL_PASSWORD
+        --build-arg NWNX_SQL_SKIP=$NWNX_SQL_SKIP
+        --build-arg NWNX_SQL_TYPE=$NWNX_SQL_TYPE
+        --build-arg NWNX_SQL_USERNAME=$NWNX_SQL_USERNAME
+        --build-arg NWNX_TIME_SKIP=$NWNX_TIME_SKIP
+        --build-arg NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED=$NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED
+        --build-arg NWNX_TWEAKS_DISABLE_PAUSE=$NWNX_TWEAKS_DISABLE_PAUSE
+        --build-arg NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG=$NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG
+        --build-arg NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST=$NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST
+        --build-arg NWNX_TWEAKS_SKIP=$NWNX_TWEAKS_SKIP
+        --build-arg NWNX_WEBHOOK_PRIVATE_CHANNEL=$NWNX_WEBHOOK_PRIVATE_CHANNEL
+        --build-arg NWNX_WEBHOOK_PUBLIC_CHANNEL=$NWNX_WEBHOOK_PUBLIC_CHANNEL
+        --build-arg NWNX_WEBHOOK_SKIP=$NWNX_WEBHOOK_SKIP
+        --build-arg NWN_AUTOSAVEINTERVAL=$NWN_AUTOSAVEINTERVAL
+        --build-arg NWN_DIFFICULTY=$NWN_DIFFICULTY
+        --build-arg NWN_DMPASSWORD=$NWN_DMPASSWORD
+        --build-arg NWN_ELC=$NWN_ELC
+        --build-arg NWN_GAMETYPE=$NWN_GAMETYPE
+        --build-arg NWN_ILR=$NWN_ILR
+        --build-arg NWN_MAXCLIENTS=$NWN_MAXCLIENTS
+        --build-arg NWN_MAXLEVEL=$NWN_MAXLEVEL
+        --build-arg NWN_MINLEVEL=$NWN_MINLEVEL
+        --build-arg NWN_MODULE=$NWN_MODULE
+        --build-arg NWN_ONEPARTY=$NWN_ONEPARTY
+        --build-arg NWN_PAUSEANDPLAY=$NWN_PAUSEANDPLAY
+        --build-arg NWN_PORT=$NWN_PORT
+        --build-arg NWN_PUBLICSERVER=$NWN_PUBLICSERVER
+        --build-arg NWN_PVP=$NWN_PVP
+        --build-arg NWN_RELOADWHENEMPTY=$NWN_RELOADWHENEMPTY
+        --build-arg NWN_SERVERVAULT=$NWN_SERVERVAULT     
+        --build-arg NWNX_CORE_SHUTDOWN_SCRIPT=$NWNX_CORE_SHUTDOWN_SCRIPT
+        -t $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
+        -t $FINAL_NWSERVER_IMAGE_NAME:latest .
+  script:
     - docker push $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
     - docker push $FINAL_NWSERVER_IMAGE_NAME:latest                                                        
   dependencies:
-    - Build:Module
+    - Build Module
   only:
     changes:
       - nwserver.dockerfile

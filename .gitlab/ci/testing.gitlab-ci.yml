@@ -1,5 +1,0 @@
-Test:Module:
-  stage: Test
-  image: docker:19.03.1-dind
-  script:
-    - exit 0
