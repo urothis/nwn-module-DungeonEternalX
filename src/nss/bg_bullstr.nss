@@ -5,30 +5,28 @@
 #include "x2_i0_spells"
 
 // Manages Cooldown for BG bull str
-void BgBullCooldown (object oPC)
-{
-    if (!(GetHasSpell(SPELLABILITY_BG_BULLS_STRENGTH, oPC)) && !(GetLocalInt(oPC, "BullStrReset")))
-    {
+void BgBullCooldown (object oPC) {
+    if (!(GetHasSpell(SPELLABILITY_BG_BULLS_STRENGTH, oPC)) && !(GetLocalInt(oPC, "BullStrReset"))) {
         IncrementRemainingFeatUses(oPC, FEAT_BULLS_STRENGTH);
     }
     SetLocalInt(OBJECT_SELF, "BullStrReset", 1);
     DelayCommand(60.0, DeleteLocalInt(oPC, "BullStrReset"));
 }
 
-void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack)
-{
+void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack) {
     if (!GetIsObjectValid(oPC)) return;
 
     int nAcInc = 0; // Fiendish servant ac buff
 
-    if (GetHasFeat(FEAT_EPIC_EPIC_FIEND, oPC)) // Epic fiendish servant feat increases BG ab by 1, +1 ac per 3 MAX ab
-    {
+    // Epic fiendish servant feat increases BG ab by 1, +1 ac per 3 MAX ab
+    if (GetHasFeat(FEAT_EPIC_EPIC_FIEND, oPC))  {
         nAttack += 1;
         nMaxAttack += 1;
         nAcInc = (nMaxAttack/4)+5;
     }
 
-    float fDur = IntToFloat(6*nMaxAttack);  // Duration = nMaxAttack rounds
+    // Duration = nMaxAttack rounds
+    float fDur = IntToFloat(6*nMaxAttack);  
     float fCurrentHp, fMaxHp, fPercent;
     float fDelay = 0.2;
 
@@ -38,12 +36,9 @@ void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack)
     object oTarget = GetFirstObjectInShape(SHAPE_SPHERE, fRadius, GetLocation(oPC));
 
     // Continue Loop until Max AB is reached or no Objects left.
-    while(GetIsObjectValid(oTarget))
-    {
-        if (spellsIsTarget(oTarget, SPELL_TARGET_SELECTIVEHOSTILE, OBJECT_SELF))//&&(GetIsPC(oTarget)))
-        {
-            if (GetHasFeat(FEAT_EPIC_EPIC_FIEND, oPC))
-            {
+    while(GetIsObjectValid(oTarget)) {
+        if (spellsIsTarget(oTarget, SPELL_TARGET_SELECTIVEHOSTILE, OBJECT_SELF)) {
+            if (GetHasFeat(FEAT_EPIC_EPIC_FIEND, oPC)) {
                 effect eDmg = EffectDamage(8*nMaxAttack, DAMAGE_TYPE_MAGICAL, DAMAGE_POWER_NORMAL);
                 ApplyEffectToObject(DURATION_TYPE_INSTANT, eDmg, oTarget);
                 ApplyEffectToObject(DURATION_TYPE_INSTANT, eVis, oPC);
@@ -55,16 +50,15 @@ void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack)
             fPercent = (fCurrentHp/fMaxHp)*100.0;
             if (fPercent < 20.0) nAttack += 1;
             if (fPercent < 60.0) nAttack += 1;
-            if ((fPercent < 90.0) || (GetHasFeat(FEAT_EPIC_EPIC_FIEND, oPC)))
-            {
+            if ((fPercent < 90.0) || (GetHasFeat(FEAT_EPIC_EPIC_FIEND, oPC))) {
                 nAttack += 2;
                 DelayCommand(fDelay, ApplyEffectToObject(DURATION_TYPE_INSTANT, eVis, oPC));
                 ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eBeam, oTarget, 2.0);
                 fDelay += 0.2;
             }
-            if (GetHasFeat(FEAT_EPIC_REPUTATION, oPC)) // Epic reputation feat grants:
-            {                                         //     -3 Skills, -2 Saves to Target (-1 saves self)
-                nAttack += 1;
+
+            if (GetHasFeat(FEAT_EPIC_REPUTATION, oPC)) {// Epic reputation feat grants:                                                     
+                nAttack += 1; //     -3 Skills, -2 Saves to Target (-1 saves self)
 
                 effect eSaves = EffectSavingThrowDecrease(SAVING_THROW_ALL, 2, SAVING_THROW_TYPE_ALL);
                 effect eSkills = EffectSkillDecrease(SKILL_ALL_SKILLS, 3);
@@ -73,6 +67,7 @@ void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack)
                 eLinkEnemy = ExtraordinaryEffect(eLinkEnemy);
 
                 effect eLoop = GetFirstEffect(oTarget);
+
                 if (!GetLocalInt(oTarget, "BgRepPenalty")) // if Target already has this effect, don't stack it
                 {
                     ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eBeam, oTarget, 2.0);
@@ -93,25 +88,18 @@ void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack)
     eAcInc = ExtraordinaryEffect(eAcInc);
     eLinkSelf = ExtraordinaryEffect(eLinkSelf);
 
-// Due to stacking problems, Duration has been reduced to one minute. The lines below are no longer ussed.
-/*    if (GetLocalInt(oPC, "HasBgAb"))  // Alrdy has buff, decrease ab and increase to refresh Duration
-    {
+    // Due to stacking problems, Duration has been reduced to one minute. The lines below are no longer ussed.
+    if (GetLocalInt(oPC, "HasBgAb")) { // Alrdy has buff, decrease ab and increase to refresh Duration
         effect eAttDec = EffectAttackDecrease(GetLocalInt(oPC, "HasBgAb"));
         eAttDec = ExtraordinaryEffect(eAttDec);
         ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eAttDec, oPC, 180.0);
         ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eLinkSelf, oPC, 180.0);
         DelayCommand(180.0, DeleteLocalInt(oPC, "HasBgAb"));
-    }
-    else
-    {
+    } else {
         ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eLinkSelf, oPC, 180.0);
         SetLocalInt(oPC, "HasBgAb", nAttack);
         DelayCommand(180.0, DeleteLocalInt(oPC, "HasBgAb"));
     }
-*/
-
-    // Give AB & AC
-    ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eLinkSelf, oPC, 60.0);
 
     // Apply save penalties for Epic Reputation
     if (GetHasFeat(FEAT_EPIC_REPUTATION, oPC)) // Self Penalty from epic reputation feat (-1 saves)
@@ -122,6 +110,7 @@ void BlackGuardPulse(int nMaxAttack, object oPC, float fRadius, int nAttack)
 
         ApplyEffectToObject(DURATION_TYPE_TEMPORARY, eSaves, oPC, fDur+24.0);
     }
+
     // Display AB bonus
     if (nAttack > 1) FloatingTextStringOnCreature("Blackguard " + IntToString(nAttack) + " AB", oPC, FALSE);
 }
@@ -159,6 +148,7 @@ void main()
 
     DelayCommand(0.2, BlackGuardPulse(nMaxAttack, oPC, fRadius, nAttack));
 
+    // prob here
     float fCooldown = 60.0;
     DelayCommand(fCooldown , BgBullCooldown(oPC));// Add cooldown
 }
