@@ -930,7 +930,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.09811104834079742
+          "value": 0.09811200201511383
         },
         "XPosition": {
           "type": "float",
@@ -938,7 +938,7 @@
         },
         "YOrientation": {
           "type": "float",
-          "value": -0.9951754808425903
+          "value": -0.9951753616333008
         },
         "YPosition": {
           "type": "float",
@@ -2970,7 +2970,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.141509771347046
+          "value": 3.141508817672729
         },
         "CloseLockDC": {
           "type": "byte",
@@ -3186,7 +3186,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.141551494598389
+          "value": -3.141550540924072
         },
         "CloseLockDC": {
           "type": "byte",
@@ -5216,7 +5216,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -0.02454362437129021
+          "value": -0.02454362064599991
         },
         "BodyBag": {
           "type": "byte",
@@ -8366,7 +8366,210 @@
   },
   "TriggerList": {
     "type": "list",
-    "value": []
+    "value": [
+      {
+        "__struct_id": 1,
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Cursor": {
+          "type": "byte",
+          "value": 1
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 10
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 3,
+              "PointX": {
+                "type": "float",
+                "value": -4.063201904296875
+              },
+              "PointY": {
+                "type": "float",
+                "value": -16.51372909545898
+              },
+              "PointZ": {
+                "type": "float",
+                "value": 5.02500057220459
+              }
+            },
+            {
+              "__struct_id": 3,
+              "PointX": {
+                "type": "float",
+                "value": -0.050262451171875
+              },
+              "PointY": {
+                "type": "float",
+                "value": -16.7989616394043
+              },
+              "PointZ": {
+                "type": "float",
+                "value": 5.02500057220459
+              }
+            },
+            {
+              "__struct_id": 3,
+              "PointX": {
+                "type": "float",
+                "value": 0.0
+              },
+              "PointY": {
+                "type": "float",
+                "value": 0.0
+              },
+              "PointZ": {
+                "type": "float",
+                "value": 5.025000095367432
+              }
+            },
+            {
+              "__struct_id": 3,
+              "PointX": {
+                "type": "float",
+                "value": -3.852157592773438
+              },
+              "PointY": {
+                "type": "float",
+                "value": -1.186851501464844
+              },
+              "PointZ": {
+                "type": "float",
+                "value": 5.02500057220459
+              }
+            }
+          ]
+        },
+        "HighlightHeight": {
+          "type": "float",
+          "value": 3.0
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": "FancyDoor"
+        },
+        "LinkedToFlags": {
+          "type": "byte",
+          "value": 1
+        },
+        "LoadScreenID": {
+          "type": "word",
+          "value": 0
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "RIDG-ROC"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 0
+        },
+        "ScriptHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "ScriptOnEnter": {
+          "type": "resref",
+          "value": ""
+        },
+        "ScriptOnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "ScriptUserDefine": {
+          "type": "resref",
+          "value": ""
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "RIDGROC"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "blueprint003"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 10
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 0
+        },
+        "Type": {
+          "type": "int",
+          "value": 1
+        },
+        "XOrientation": {
+          "type": "float",
+          "value": 0.0
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 159.6001281738281
+        },
+        "YOrientation": {
+          "type": "float",
+          "value": 0.0
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 60.77715682983398
+        },
+        "ZOrientation": {
+          "type": "float",
+          "value": 0.0
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      }
+    ]
   },
   "VarTable": {
     "type": "list",
@@ -8496,7 +8699,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": -0.02457648515701294
+          "value": -0.02457743883132935
         },
         "XPosition": {
           "type": "float",
@@ -8622,7 +8825,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02455193549394608
+          "value": 0.02455288916826248
         },
         "XPosition": {
           "type": "float",
@@ -8630,7 +8833,7 @@
         },
         "YOrientation": {
           "type": "float",
-          "value": -0.9996985793113708
+          "value": -0.9996985197067261
         },
         "YPosition": {
           "type": "float",
@@ -8769,6 +8972,126 @@
         "ZPosition": {
           "type": "float",
           "value": 4.999997138977051
+        }
+      },
+      {
+        "__struct_id": 5,
+        "Appearance": {
+          "type": "byte",
+          "value": 1
+        },
+        "Description": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "HasMapNote": {
+          "type": "byte",
+          "value": 1
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "MapNote": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Ridgetown - Old City (CR10-12)"
+          }
+        },
+        "MapNoteEnabled": {
+          "type": "byte",
+          "value": 1
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "WP_RIDGROC"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": ""
+        },
+        "XOrientation": {
+          "type": "float",
+          "value": 0.0
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 157.5685272216797
+        },
+        "YOrientation": {
+          "type": "float",
+          "value": 1.0
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 52.37767791748047
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 5.02500057220459
+        }
+      },
+      {
+        "__struct_id": 5,
+        "Appearance": {
+          "type": "byte",
+          "value": 1
+        },
+        "Description": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "HasMapNote": {
+          "type": "byte",
+          "value": 0
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "MapNote": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "MapNoteEnabled": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "WP_RIDGROC"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": ""
+        },
+        "XOrientation": {
+          "type": "float",
+          "value": 0.0
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 157.5685272216797
+        },
+        "YOrientation": {
+          "type": "float",
+          "value": 1.0
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 52.37767791748047
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 5.02500057220459
         }
       }
     ]
