@@ -31,9 +31,9 @@ const string sSpeech_PlayerID   = "SpeechPlayerID_";
 void SendChatLogMessage(object oRecipient, string sMessage, object oSender = OBJECT_INVALID, int nChannel = 4)
 {
     if (!GetIsObjectValid(oSender)) return;
-    if (FindSubString(sMessage, "¬")!=-1) return;
+    if (FindSubString(sMessage, "ï¿½")!=-1) return;
     if (nChannel == 4 && !GetIsObjectValid(oRecipient)) return;
-    SetLocalString(oSender, "NWNX!CHAT!SPEAK", ObjectToString(oSender)+"¬"+ObjectToString(oRecipient)+"¬"+IntToString(nChannel)+"¬"+sMessage);
+    SetLocalString(oSender, "NWNX!CHAT!SPEAK", ObjectToString(oSender)+"ï¿½"+ObjectToString(oRecipient)+"ï¿½"+IntToString(nChannel)+"ï¿½"+sMessage);
 }
 
 void InitSpeech()
@@ -849,7 +849,7 @@ void ShowInfo(object oPlayer, object oGetInfoFrom)
         sMessage += COLOR_ORANGE+NFO11+COLOR_END+COLOR_LT_BLUE+sSubrace+COLOR_END+NEWLINE;
         sMessage += COLOR_ORANGE+"Character Value Rating: "+COLOR_END+FloatToString(1.0+GetCVRating(oGetInfoFrom),0,2)+NEWLINE;
         sMessage += COLOR_ORANGE+"Player Fame: "+COLOR_END+COLOR_WHITE+sFameInfo+COLOR_ORANGE+" Ranking: "+COLOR_WHITE+sFameRanking+COLOR_END+NEWLINE;
-        int nKills  = GetLocalInt(oGetInfoFrom, "PKER");
+        int nKills  = GetLocalInt(oGetInfoFrom, "Kills");
         string sPKer = "Kills: " + IntToString(nKills);
         sMessage += COLOR_ORANGE+"PvP "+COLOR_END+COLOR_GREEN+sPKer+COLOR_END/*+COLOR_RED+sPKed+COLOR_END*/+NEWLINE;
     }
