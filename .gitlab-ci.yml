@@ -19,3 +19,4 @@ variables:
 include:
   - local: .gitlab/ci/disdex.gitlab-ci.yml
   - local: .gitlab/ci/prod-nwserver.gitlab-ci.yml
+  - local: .gitlab/ci/dev-nwserver.gitlab-ci.yml
