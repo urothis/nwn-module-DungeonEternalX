@@ -23,4 +23,5 @@ Deploy DisDex:
     changes:
       - disdex.dockerfile
       - disdex/**/*
+  only:
   - master

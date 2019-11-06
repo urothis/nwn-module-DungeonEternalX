@@ -6,6 +6,7 @@ Test Prod Module:
   only:
     changes:
       - src/**/*
+  only:
   - master
 
 Build Prod Module:
@@ -24,6 +25,7 @@ Build Prod Module:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  only:
   - master
   artifacts:
     paths:
@@ -85,4 +87,5 @@ Deploy Prod Module:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  only:
   - master

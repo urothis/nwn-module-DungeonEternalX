@@ -6,6 +6,7 @@ Test Dev Module:
   only:
     changes:
       - src/**/*
+  only:
   - dev
 
 Build Dev Module:
@@ -25,6 +26,7 @@ Build Dev Module:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  only:
   - dev
   artifacts:
     paths:
@@ -86,4 +88,5 @@ Deploy Dev Module:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  only:
   - dev
