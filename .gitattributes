@@ -1,1 +1,2 @@
-src/nss/*.nss linguist-language=C
+*.nss linguist-language=c
+*.nss text diff=c
