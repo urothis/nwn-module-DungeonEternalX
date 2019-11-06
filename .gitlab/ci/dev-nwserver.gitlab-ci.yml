@@ -82,7 +82,7 @@ Deploy Dev Module:
     - docker push $FINAL_DEV_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
     - docker push $FINAL_DEV_NWSERVER_IMAGE_NAME:latest                                                        
   dependencies:
-    - Build Module
+    - Build Dev Module
   only:
     changes:
       - nwserver.dockerfile
