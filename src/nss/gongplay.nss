@@ -1,4 +1,3 @@
-void main()
-{
-PlaySound("as_cv_gongring2");
+void main() {
+    PlaySound("as_cv_gongring2");
 }
