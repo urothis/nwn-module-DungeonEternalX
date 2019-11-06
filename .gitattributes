@@ -1,1 +1,1 @@
-*.nss linguist-language=C
+src/nss/*.nss linguist-language=C
