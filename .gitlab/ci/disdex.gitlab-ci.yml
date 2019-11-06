@@ -8,6 +8,7 @@ Test DisDex:
     changes:
       - disdex.dockerfile
       - disdex/**/*
+  only:
   - master
 
 Deploy DisDex:
