@@ -1,8 +1,12 @@
-Test Module:
+Test Dev Module:
   stage: Test
   image: docker:19.03.1-dind
   script:
     - exit 0
+  only:
+    changes:
+      - src/**/*
+  - dev
 
 Build Dev Module:
   stage: Build
@@ -17,11 +21,11 @@ Build Dev Module:
     - nasher pack
     - cp $MODULE_NAME $CI_PROJECT_DIR/$MODULE_NAME
   only:
-    - dev
     changes:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  - dev
   artifacts:
     paths:
       - $MODULE_NAME
@@ -78,8 +82,8 @@ Deploy Dev Module:
   dependencies:
     - Build Module
   only:
-    - dev
     changes:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  - dev

@@ -1,8 +1,12 @@
-Test Module:
+Test Prod Module:
   stage: Test
   image: docker:19.03.1-dind
   script:
     - exit 0
+  only:
+    changes:
+      - src/**/*
+  - master
 
 Build Prod Module:
   stage: Build
@@ -16,11 +20,11 @@ Build Prod Module:
     - nasher pack
     - cp $MODULE_NAME $CI_PROJECT_DIR/$MODULE_NAME
   only:
-    - master
     changes:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  - master
   artifacts:
     paths:
       - $MODULE_NAME
@@ -77,8 +81,8 @@ Deploy Prod Module:
   dependencies:
     - Build Module
   only:
-    - master
     changes:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  - master
