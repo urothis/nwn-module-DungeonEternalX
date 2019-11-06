@@ -1,16 +1,22 @@
-Test Module:
+Test Dev Module:
   stage: Test
   image: docker:19.03.1-dind
   script:
     - exit 0
+  only:
+    changes:
+      - src/**/*
+  only:
+  - dev
 
-Build Module:
+Build Dev Module:
   stage: Build
   image: 
     name: squattingmonk/nasher:latest
     entrypoint: [""]
   script:
     - git clone $MODULE_REPO
+    - git checkout dev
     - cd $FOLDER_NAME
     - "nasher config --nssFlags:'-n /nwn/data -o'"
     - nasher pack
@@ -20,12 +26,14 @@ Build Module:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  only:
+  - dev
   artifacts:
     paths:
       - $MODULE_NAME
     expire_in: 1 week
 
-Deploy Module:
+Deploy Dev Module:
   stage: Deploy
   before_script:
     - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
@@ -62,21 +70,23 @@ Deploy Module:
         --build-arg NWN_MODULE=$NWN_MODULE
         --build-arg NWN_ONEPARTY=$NWN_ONEPARTY
         --build-arg NWN_PAUSEANDPLAY=$NWN_PAUSEANDPLAY
-        --build-arg NWN_PORT=$NWN_PORT
+        --build-arg NWN_PORT=5122
         --build-arg NWN_PUBLICSERVER=$NWN_PUBLICSERVER
         --build-arg NWN_PVP=$NWN_PVP
         --build-arg NWN_RELOADWHENEMPTY=$NWN_RELOADWHENEMPTY
         --build-arg NWN_SERVERVAULT=$NWN_SERVERVAULT     
         --build-arg NWNX_CORE_SHUTDOWN_SCRIPT=$NWNX_CORE_SHUTDOWN_SCRIPT
-        -t $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
-        -t $FINAL_NWSERVER_IMAGE_NAME:latest .
+        -t $FINAL_DEV_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
+        -t $FINAL_DEV_NWSERVER_IMAGE_NAME:latest .
   script:
-    - docker push $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
-    - docker push $FINAL_NWSERVER_IMAGE_NAME:latest                                                        
+    - docker push $FINAL_DEV_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
+    - docker push $FINAL_DEV_NWSERVER_IMAGE_NAME:latest                                                        
   dependencies:
-    - Build Module
+    - Build Dev Module
   only:
     changes:
       - nwserver.dockerfile
       - nasher.cfg
       - src/**/*
+  only:
+  - dev
