@@ -3,6 +3,7 @@
 #include "_webhook"
 
 void main() {
+    BootAllPC();
     // end db session
     dbSessionEnd();
 
@@ -11,5 +12,4 @@ void main() {
 
     // write to log
     WriteTimestampedLogEntry("*****SERVER RESTART*****");
-    BootAllPC();
 }

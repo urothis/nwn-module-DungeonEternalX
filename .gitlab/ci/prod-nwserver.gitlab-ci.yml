@@ -4,7 +4,7 @@ Test Module:
   script:
     - exit 0
 
-Build Module:
+Build Prod Module:
   stage: Build
   image: 
     name: squattingmonk/nasher:latest
@@ -16,6 +16,7 @@ Build Module:
     - nasher pack
     - cp $MODULE_NAME $CI_PROJECT_DIR/$MODULE_NAME
   only:
+    - master
     changes:
       - nwserver.dockerfile
       - nasher.cfg
@@ -25,7 +26,7 @@ Build Module:
       - $MODULE_NAME
     expire_in: 1 week
 
-Deploy Module:
+Deploy Prod Module:
   stage: Deploy
   before_script:
     - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
@@ -68,14 +69,15 @@ Deploy Module:
         --build-arg NWN_RELOADWHENEMPTY=$NWN_RELOADWHENEMPTY
         --build-arg NWN_SERVERVAULT=$NWN_SERVERVAULT     
         --build-arg NWNX_CORE_SHUTDOWN_SCRIPT=$NWNX_CORE_SHUTDOWN_SCRIPT
-        -t $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
-        -t $FINAL_NWSERVER_IMAGE_NAME:latest .
+        -t $FINAL_PROD_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA 
+        -t $FINAL_PROD_NWSERVER_IMAGE_NAME:latest .
   script:
-    - docker push $FINAL_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
-    - docker push $FINAL_NWSERVER_IMAGE_NAME:latest                                                        
+    - docker push $FINAL_PROD_NWSERVER_IMAGE_NAME:$CI_COMMIT_SHA
+    - docker push $FINAL_PROD_NWSERVER_IMAGE_NAME:latest                                                        
   dependencies:
     - Build Module
   only:
+    - master
     changes:
       - nwserver.dockerfile
       - nasher.cfg

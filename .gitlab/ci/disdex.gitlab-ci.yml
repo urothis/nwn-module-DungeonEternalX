@@ -21,6 +21,7 @@ Deploy DisDex:
     - docker push $FINAL_DISDEX_IMAGE_NAME:$CI_COMMIT_SHA
     - docker push $FINAL_DISDEX_IMAGE_NAME:latest
   only:
+    - master
     changes:
       - disdex.dockerfile
       - disdex/**/*
