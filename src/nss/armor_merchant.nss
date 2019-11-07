@@ -1,4 +1,3 @@
-void main()
-{
-BeginConversation("armor_merch_c");
+void main() {
+    BeginConversation("armor_merch_c");
 }
