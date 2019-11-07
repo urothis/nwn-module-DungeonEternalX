@@ -461,6 +461,25 @@
                     "__struct_id": 0,
                     "CR": {
                       "type": "float",
+                      "value": 53.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Metal Guard"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "humanoid_shield"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
                       "value": 30.0
                     },
                     "FACTION": {
@@ -3222,6 +3241,25 @@
                       "type": "resref",
                       "value": "manticore001"
                     }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 11.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Will-O-Wisp"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "creature001"
+                    }
                   }
                 ]
               },
@@ -4087,7 +4125,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 20.0
+                            "value": 26.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -4106,7 +4144,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 20.0
+                            "value": 26.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -4125,7 +4163,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 20.0
+                            "value": 26.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -4182,7 +4220,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 20.0
+                            "value": 26.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -4201,7 +4239,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 20.0
+                            "value": 26.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -4290,6 +4328,25 @@
                           "RESREF": {
                             "type": "resref",
                             "value": "undeadelf"
+                          }
+                        },
+                        {
+                          "__struct_id": 0,
+                          "CR": {
+                            "type": "float",
+                            "value": 15.0
+                          },
+                          "FACTION": {
+                            "type": "cexostring",
+                            "value": "Hostile"
+                          },
+                          "NAME": {
+                            "type": "cexostring",
+                            "value": "Vampire"
+                          },
+                          "RESREF": {
+                            "type": "resref",
+                            "value": "vampire"
                           }
                         }
                       ]

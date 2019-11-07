@@ -516,7 +516,7 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "Comment": {
                 "type": "cexostring",
@@ -524,15 +524,38 @@
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -592,10 +615,6 @@
             },
             {
               "__struct_id": 1,
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
               "X": {
                 "type": "float",
                 "value": -0.5955581665039062
@@ -738,19 +757,38 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -944,19 +982,38 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -1150,19 +1207,38 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -1356,19 +1432,38 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -1562,19 +1657,38 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -1783,19 +1897,38 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 120
+                "value": 121
               },
               "CR": {
                 "type": "float",
-                "value": 36.0
+                "value": 39.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll002"
+                "value": "gnoll006"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
+              }
+            },
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 122
+              },
+              "CR": {
+                "type": "float",
+                "value": 39.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "gnoll010"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 1
               }
             }
           ]
@@ -2457,7 +2590,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.0001427253009751439
+          "value": 0.0001439173938706517
         },
         "XPosition": {
           "type": "float",
@@ -2582,7 +2715,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 4.020531559945084e-05
+          "value": 4.115898991585709e-05
         },
         "XPosition": {
           "type": "float",

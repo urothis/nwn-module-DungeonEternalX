@@ -66,7 +66,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 2.613082642710651e-06
+          "value": 2.613080368973897e-06
         },
         "CloseLockDC": {
           "type": "byte",
@@ -513,7 +513,7 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "Comment": {
                 "type": "cexostring",
@@ -521,38 +521,15 @@
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -742,11 +719,11 @@
         },
         "XPosition": {
           "type": "float",
-          "value": 22.69241333007812
+          "value": 21.81901168823242
         },
         "YPosition": {
           "type": "float",
-          "value": 54.40457153320312
+          "value": 53.96787643432617
         },
         "ZPosition": {
           "type": "float",
@@ -770,7 +747,7 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "Comment": {
                 "type": "cexostring",
@@ -778,38 +755,15 @@
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -1027,38 +981,23 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
+              },
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -1080,6 +1019,10 @@
           "value": [
             {
               "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
               "X": {
                 "type": "float",
                 "value": -0.063690185546875
@@ -1252,38 +1195,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -1477,38 +1401,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -1702,38 +1607,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -1927,38 +1813,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -2152,38 +2019,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -2377,38 +2225,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -2602,38 +2431,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -2827,38 +2637,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -3052,38 +2843,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -3277,38 +3049,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -3502,38 +3255,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -3727,38 +3461,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -3971,38 +3686,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -4196,38 +3892,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -4425,38 +4102,19 @@
               "__struct_id": 0,
               "Appearance": {
                 "type": "int",
-                "value": 121
+                "value": 90
               },
               "CR": {
                 "type": "float",
-                "value": 40.0
+                "value": 53.0
               },
               "ResRef": {
                 "type": "resref",
-                "value": "gnoll006"
+                "value": "humanoid_shield"
               },
               "SingleSpawn": {
                 "type": "byte",
                 "value": 0
-              }
-            },
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 122
-              },
-              "CR": {
-                "type": "float",
-                "value": 40.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "gnoll010"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 1
               }
             }
           ]
@@ -4895,7 +4553,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.092480182647705
+          "value": 3.092477798461914
         },
         "BodyBag": {
           "type": "byte",
@@ -5353,7 +5011,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.092481374740601
+          "value": -3.09247899055481
         },
         "BodyBag": {
           "type": "byte",
@@ -5793,6 +5451,1151 @@
         "Z": {
           "type": "float",
           "value": 0.3999997973442078
+        }
+      },
+      {
+        "__struct_id": 9,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 7
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -3.09247899055481
+        },
+        "BodyBag": {
+          "type": "byte",
+          "value": 0
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 15
+        },
+        "Description": {
+          "id": 14594,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Bound in iron and with a heavy lock, this heavy chest was obviously meant to protect something of value."
+          }
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 15
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 16
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 5
+        },
+        "HasInventory": {
+          "type": "byte",
+          "value": 1
+        },
+        "HP": {
+          "type": "short",
+          "value": 15
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 0
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5348,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Chest"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnInvDisturbed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": "s_genlootmed"
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUsed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 25
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 365
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Static": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rschest1high"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "rschest1high"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 0
+        },
+        "Type": {
+          "type": "byte",
+          "value": 0
+        },
+        "Useable": {
+          "type": "byte",
+          "value": 1
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 7.750244140625
+        },
+        "Y": {
+          "type": "float",
+          "value": 47.25945281982422
+        },
+        "Z": {
+          "type": "float",
+          "value": 0.5683836936950684
+        }
+      },
+      {
+        "__struct_id": 9,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 7
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -3.09247899055481
+        },
+        "BodyBag": {
+          "type": "byte",
+          "value": 0
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 15
+        },
+        "Description": {
+          "id": 14594,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Bound in iron and with a heavy lock, this heavy chest was obviously meant to protect something of value."
+          }
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 15
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 16
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 5
+        },
+        "HasInventory": {
+          "type": "byte",
+          "value": 1
+        },
+        "HP": {
+          "type": "short",
+          "value": 15
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 0
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5348,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Chest"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnInvDisturbed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": "s_genlootmed"
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUsed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 25
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 365
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Static": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rschest1high"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "rschest1high"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 0
+        },
+        "Type": {
+          "type": "byte",
+          "value": 0
+        },
+        "Useable": {
+          "type": "byte",
+          "value": 1
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 10.05632019042969
+        },
+        "Y": {
+          "type": "float",
+          "value": 63.67716598510742
+        },
+        "Z": {
+          "type": "float",
+          "value": 1.399992227554321
+        }
+      },
+      {
+        "__struct_id": 9,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 7
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -3.09247899055481
+        },
+        "BodyBag": {
+          "type": "byte",
+          "value": 0
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 15
+        },
+        "Description": {
+          "id": 14594,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Bound in iron and with a heavy lock, this heavy chest was obviously meant to protect something of value."
+          }
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 15
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 16
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 5
+        },
+        "HasInventory": {
+          "type": "byte",
+          "value": 1
+        },
+        "HP": {
+          "type": "short",
+          "value": 15
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 0
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5348,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Chest"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnInvDisturbed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": "s_genlootmed"
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUsed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 25
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 365
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Static": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rschest1high"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "rschest1high"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 0
+        },
+        "Type": {
+          "type": "byte",
+          "value": 0
+        },
+        "Useable": {
+          "type": "byte",
+          "value": 1
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 50.10258865356445
+        },
+        "Y": {
+          "type": "float",
+          "value": 7.247005462646484
+        },
+        "Z": {
+          "type": "float",
+          "value": 0.5683836936950684
+        }
+      },
+      {
+        "__struct_id": 9,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 7
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -3.09247899055481
+        },
+        "BodyBag": {
+          "type": "byte",
+          "value": 0
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 15
+        },
+        "Description": {
+          "id": 14594,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Bound in iron and with a heavy lock, this heavy chest was obviously meant to protect something of value."
+          }
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 15
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 16
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 5
+        },
+        "HasInventory": {
+          "type": "byte",
+          "value": 1
+        },
+        "HP": {
+          "type": "short",
+          "value": 15
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 0
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5348,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Chest"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnInvDisturbed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": "s_genlootmed"
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUsed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 25
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 365
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Static": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rschest1high"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "rschest1high"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 0
+        },
+        "Type": {
+          "type": "byte",
+          "value": 0
+        },
+        "Useable": {
+          "type": "byte",
+          "value": 1
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 107.3102569580078
+        },
+        "Y": {
+          "type": "float",
+          "value": 43.51303863525391
+        },
+        "Z": {
+          "type": "float",
+          "value": 1.399992227554321
+        }
+      },
+      {
+        "__struct_id": 9,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 7
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -3.09247899055481
+        },
+        "BodyBag": {
+          "type": "byte",
+          "value": 0
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 15
+        },
+        "Description": {
+          "id": 14594,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Bound in iron and with a heavy lock, this heavy chest was obviously meant to protect something of value."
+          }
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 15
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 16
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 5
+        },
+        "HasInventory": {
+          "type": "byte",
+          "value": 1
+        },
+        "HP": {
+          "type": "short",
+          "value": 15
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 0
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5348,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Chest"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnInvDisturbed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": "s_genlootmed"
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUsed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 25
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 365
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Static": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rschest1high"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "rschest1high"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 0
+        },
+        "Type": {
+          "type": "byte",
+          "value": 0
+        },
+        "Useable": {
+          "type": "byte",
+          "value": 1
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 114.3450622558594
+        },
+        "Y": {
+          "type": "float",
+          "value": 63.77140808105469
+        },
+        "Z": {
+          "type": "float",
+          "value": 1.399992227554321
         }
       }
     ]
@@ -6459,7 +7262,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": -2.661545840965118e-05
+          "value": -2.923806277976837e-05
         },
         "XPosition": {
           "type": "float",
