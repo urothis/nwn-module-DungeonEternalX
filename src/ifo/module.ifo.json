@@ -1427,6 +1427,20 @@
           "type": "resref",
           "value": "vfxmachine"
         }
+      },
+      {
+        "__struct_id": 6,
+        "Area_Name": {
+          "type": "resref",
+          "value": "area053"
+        }
+      },
+      {
+        "__struct_id": 6,
+        "Area_Name": {
+          "type": "resref",
+          "value": "area054"
+        }
       }
     ]
   },

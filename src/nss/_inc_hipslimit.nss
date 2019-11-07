@@ -30,7 +30,7 @@ void DoHideCheck(float nTimeLeft)
 
             if (nHiding)
             {
-                if (nTimeHide > 0.0 && nTimeHide!=10.0)
+                if (nTimeHide > 0.0 && nTimeHide!=26.0)
                 {
                     SetLocalInt(oPC, "AUTO_HIDE", TRUE);
                     SetActionMode(oPC, ACTION_MODE_STEALTH, FALSE);
@@ -46,7 +46,7 @@ void DoHideCheck(float nTimeLeft)
             if (nHideMe)
             {
                 SetLocalInt(oPC, "AUTO_HIDE", FALSE);
-                SetLocalFloat(oPC, "TIME_HIDDEN", 6.0);
+                SetLocalFloat(oPC, "TIME_HIDDEN", 24.0);
                 if (!nHiding)
                     SetActionMode(oPC, ACTION_MODE_STEALTH, TRUE);
             }
@@ -70,5 +70,5 @@ void DoHideCheck(float nTimeLeft)
 
 void main()
 {
-    DoHideCheck(6.0-THINK_DELAY); //think for persistant checks
+    DoHideCheck(24.0-THINK_DELAY); //think for persistant checks
 }
