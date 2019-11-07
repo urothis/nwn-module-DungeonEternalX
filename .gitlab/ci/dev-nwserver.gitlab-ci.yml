@@ -38,7 +38,7 @@ Deploy Dev Module:
   before_script:
     - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
     - docker build -f nwserver.dockerfile
-        --build-arg NWNX_CORE_LOG_LEVEL=5
+        --build-arg NWNX_CORE_LOG_LEVEL=3
         --build-arg NWNX_CORE_SHUTDOWN_SCRIPT=$NWNX_CORE_SHUTDOWN_SCRIPT
         --build-arg NWNX_ADMINISTRATION_SKIP=n
         --build-arg NWNX_CHAT_SKIP=n
