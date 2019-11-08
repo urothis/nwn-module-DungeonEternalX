@@ -1,4 +1,5 @@
 #include "_webhook"
+#include "nwnx_util"
 // TODO complete this
 /////////////
 // conforming to github.com/sirupsen/logrus loglevels
@@ -65,7 +66,7 @@ struct Log GetLogData(string sKey,string sValue,string sMessage,int nLogLevel) {
     return logData;
 }
 
-void LogWebook(string sKey, string sValue, string sMessage, int nLogLevel) {
+void LogWebhook(string sKey, string sValue, string sMessage, int nLogLevel) {
   // cause we call it twice
   string sName = GetName(GetModule());
 
@@ -90,4 +91,7 @@ void LogWebook(string sKey, string sValue, string sMessage, int nLogLevel) {
   NWNX_WebHook_SendWebHookHTTPS("discordapp.com", NWNX_Util_GetEnvironmentVariable("NWNX_WEBHOOK_PUBLIC_CHANNEL"), sConstructedMsg);
 }
 
-void Log(string sKey = "", string sValue = "", string sMessage = "", int nLogLevel = 0) { LogWebook(sKey,sValue,sMessage,nLogLevel); }
+void Log(string sKey = "", string sValue = "", string sMessage = "", int nLogLevel = 0) {
+    int nDesiredLog = StringToInt(NWNX_Util_GetEnvironmentVariable("our_custom_log__level_variable"));
+    if (nLogLevel => nDesiredLog) LogWebhook(sKey,sValue,sMessage,nLogLevel); 
+}
