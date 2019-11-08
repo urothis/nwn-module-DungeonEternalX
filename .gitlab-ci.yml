@@ -9,7 +9,8 @@ stages:
   - Deploy
 
 variables:
-  FINAL_NWSERVER_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/nwserver
+  FINAL_PROD_NWSERVER_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/prod-nwserver
+  FINAL_DEV_NWSERVER_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/dev-nwserver
   FINAL_DISDEX_IMAGE_NAME: registry.gitlab.com/urothis/nwn-module-dungeoneternalx/disdex
   MODULE_NAME: DungeonEternalX.mod
   MODULE_REPO: https://github.com/urothis/nwn-module-DungeonEternalX.git
@@ -17,4 +18,5 @@ variables:
 
 include:
   - local: .gitlab/ci/disdex.gitlab-ci.yml
-  - local: .gitlab/ci/nwserver.gitlab-ci.yml
+  - local: .gitlab/ci/prod-nwserver.gitlab-ci.yml
+  - local: .gitlab/ci/dev-nwserver.gitlab-ci.yml

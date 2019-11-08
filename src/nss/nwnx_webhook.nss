@@ -1,4 +1,4 @@
-/// @defgroup webhook Webhook
+/// @addtogroup webhook Webhook
 /// @brief Send messages to external entities through web hooks.
 /// @{
 /// @file nwnx_webhook.nss
@@ -41,4 +41,3 @@ void NWNX_WebHook_ResendWebHookHTTPS(string host, string path, string sMessage, 
 {
     DelayCommand(delay, NWNX_WebHook_SendWebHookHTTPS(host, path, sMessage));
 }
-

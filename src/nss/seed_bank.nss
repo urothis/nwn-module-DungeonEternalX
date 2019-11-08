@@ -279,7 +279,6 @@ void HandleSelection()
 
         case PAGE_DONATE_XP_MENU:
             SetNextPage(iOptionSelected); // TURN TO NEW PAGE
-            SetShowMessage("Silly customer, you cannot deposit pocket lint!", PAGE_MENU_GOLD);
             return;
 
         case PAGE_MENU_GOLD:
@@ -319,8 +318,6 @@ void HandleSelection()
             return;
 
         case PAGE_DEPOSIT_XP:
-            SetShowMessage("We have disabled the EXP deposit system.", PAGE_MENU_GOLD);
-            return;
             if (nXPOnPC < 100)
             {
                 SetShowMessage("Silly customer, you cannot deposit shame!", PAGE_MENU_XP);
@@ -802,4 +799,3 @@ void main()
          break;
    }
 }
-

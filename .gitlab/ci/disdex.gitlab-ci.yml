@@ -8,11 +8,11 @@ Test DisDex:
     changes:
       - disdex.dockerfile
       - disdex/**/*
+  only:
+  - master
 
 Deploy DisDex:
   stage: Deploy
-  only:
-    - master
   before_script:
     - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   script:
@@ -24,3 +24,5 @@ Deploy DisDex:
     changes:
       - disdex.dockerfile
       - disdex/**/*
+  only:
+  - master
