@@ -49,7 +49,9 @@ void main()
     else if (nCurrentHP < nMaxHP)
     {
         if (fDist > 6.0) ClearAllActions();
-        ActionCastSpellAtObject(SPELL_HEAL, oMaster, METAMAGIC_ANY, TRUE);
+        ActionCastFakeSpellAtObject(SPELL_HEAL, oMaster);
+        effect eEffect = EffectHeal(150);
+        ApplyEffectToObject(DURATION_TYPE_INSTANT, eEffect, oMaster);
     }
     else if (fDist < 1.0)
     {
