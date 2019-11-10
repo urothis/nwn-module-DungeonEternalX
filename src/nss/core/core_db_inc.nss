@@ -1,8 +1,9 @@
+// MIT License
+// (c) 2019 urothis
 #include "nwnx_time"
 #include "nwnx_redis_short"
+#include "core_const"
 #include "core_log"
-
-const string MODULENAME = DungeonEternalX;
 
 // convert object types to data types.
 string objectTypeString(object oObject) {
@@ -29,9 +30,14 @@ string dbLocationObject(object oObject) {
   Log("db", sType, sUUID,0);
   return MODULENAME + ":" + sType + ":"+ sUUID + ":"; 
 }
-
+l
 // this is super useful to grab a specific object for pubsub.
 string dbLocationUUID(string sUUID) {
   object oObject = GetObjectByUUID(sUUID);
-  return GetModuleName()+":"+objectTypeString(oObject)+":"+GetObjectUUID(oObject)+":";
+  if (GetIsObjectValid(oObject)) {
+    Log("db", objectTypeString(oObject),sUUID,0);
+    return GetModuleName()+":"+objectTypeString(oObject)+":"+GetObjectUUID(oObject)+":";
+  }
+  Log("db", objectTypeString(oObject),sUUID,3);
+  return OBJECT_INVALID;
 }
