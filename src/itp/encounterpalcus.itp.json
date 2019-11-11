@@ -216,6 +216,33 @@
                 "type": "byte",
                 "value": 2
               },
+              "LIST": {
+                "type": "list",
+                "value": [
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Legion_Defense"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "legion_defense"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Legion_Infestation"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "legion_infestati"
+                    }
+                  }
+                ]
+              },
               "STRREF": {
                 "type": "dword",
                 "value": 6690

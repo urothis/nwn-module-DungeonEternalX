@@ -1124,6 +1124,17 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "Legion Infestation Bite"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "legioninfestatio"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "Mam Bite"
                     },
                     "RESREF": {
@@ -1989,6 +2000,17 @@
                   },
                   {
                     "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Abyssal Lich Properties"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "abyssallichpro"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
                     "RESREF": {
                       "type": "resref",
                       "value": "it_creitem011"
@@ -2535,6 +2557,17 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "formquen_prop001"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Frost Giant Skin"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "frostgiantskibn"
                     }
                   },
                   {
@@ -5622,11 +5655,209 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "Animated Armor Properties"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedarmorpro"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Chainmail"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedchainma"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Chainmail Helmet"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedchainmel"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Cloak2"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedcloak2"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Halfplate"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedhalfplat"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Scalemail"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedscalema"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Scalemail Helmet"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedscalem6"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Templar Armor"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedhalfp001"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Templar Helm"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedtemplarh"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Tower Shield"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedtowershi"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "AnimatedFullplate"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedfullplat"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Cleric Spell Rings"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "clericspellrings"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "Flask Of Ruin"
                     },
                     "RESREF": {
                       "type": "resref",
                       "value": "coo_flaskofruin"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "improvedundeadpr"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "improvedundeadpr"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "SORC_SPELL_RINGS"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "sorc_spell_rings"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Armor"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirarmor"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Chamber Key"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirchamberkey"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Cloak"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmircloak"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Helm"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirhelm"
                     }
                   }
                 ]
@@ -6127,6 +6358,17 @@
                       "type": "resref",
                       "value": "massdislike"
                     }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Soul Gem"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "soulgem"
+                    }
                   }
                 ]
               },
@@ -6164,6 +6406,17 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "pes_ud1ic002"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Compact Armguard"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "compactarmguard"
                     }
                   },
                   {
@@ -6274,6 +6527,72 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "it_polyhid009"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Relic Bastard Sword"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "relicbastardswor"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Relic Greataxe"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "relicgreataxe"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Relic Greatsword"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "relicgreatsword"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Relic Halberd"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "relichalberd"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Relic Longsword"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "reliclongsword"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "vagranttouch"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "vagranttouch"
                     }
                   }
                 ]
@@ -8964,6 +9283,17 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "axe"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Bastard Of The Shadows"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "bastardoftheshad"
                     }
                   },
                   {

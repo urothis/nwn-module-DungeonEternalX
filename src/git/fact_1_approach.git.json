@@ -72,6 +72,10 @@
           "type": "byte",
           "value": 60
         },
+        "Comment": {
+          "type": "cexostring",
+          "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+        },
         "Conversation": {
           "type": "resref",
           "value": ""
@@ -272,7 +276,919 @@
   },
   "Encounter List": {
     "type": "list",
-    "value": []
+    "value": [
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "Comment": {
+          "type": "cexostring",
+          "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 81
+              },
+              "Comment": {
+                "type": "cexostring",
+                "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+              },
+              "CR": {
+                "type": "float",
+                "value": 37.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "legiondefense"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 3
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.5630817413330078
+              },
+              "Y": {
+                "type": "float",
+                "value": 2.973003387451172
+              },
+              "Z": {
+                "type": "float",
+                "value": 4.768789768218994
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 3.497440814971924
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.05920982360839844
+              },
+              "Y": {
+                "type": "float",
+                "value": -4.316083908081055
+              },
+              "Z": {
+                "type": "float",
+                "value": 4.435649394989014
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 5.507816314697266
+              },
+              "Y": {
+                "type": "float",
+                "value": -5.655133247375488
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.6523185968399048
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 6.558206558227539
+              },
+              "Y": {
+                "type": "float",
+                "value": 3.178848266601562
+              },
+              "Z": {
+                "type": "float",
+                "value": 4.286669254302979
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Legion_Defense"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 4
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 4
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 120
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 13.17892551422119
+              },
+              "Y": {
+                "type": "float",
+                "value": 30.12899589538574
+              },
+              "Z": {
+                "type": "float",
+                "value": -5.7220458984375e-06
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 23.22536087036133
+              },
+              "Y": {
+                "type": "float",
+                "value": 27.11445808410645
+              },
+              "Z": {
+                "type": "float",
+                "value": -5.7220458984375e-06
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Legion_Defense"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "legion_defense"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 17.01092910766602
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 12.83826160430908
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 81
+              },
+              "CR": {
+                "type": "float",
+                "value": 37.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "legiondefense"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 5
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 3
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.5422821044921875
+              },
+              "Y": {
+                "type": "float",
+                "value": 8.966224670410156
+              },
+              "Z": {
+                "type": "float",
+                "value": -3.346407890319824
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.02873543277382851
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.199007123708725
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02499985136091709
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.7409477233886719
+              },
+              "Y": {
+                "type": "float",
+                "value": -5.131427764892578
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02500005997717381
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 17.85965919494629
+              },
+              "Y": {
+                "type": "float",
+                "value": -5.178977966308594
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.03640224784612656
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 17.92714500427246
+              },
+              "Y": {
+                "type": "float",
+                "value": 2.683788299560547
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.9675112962722778
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Legion_Defense"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 4
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 2
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 120
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 38.60617065429688
+              },
+              "Y": {
+                "type": "float",
+                "value": 64.14986419677734
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.08284258842468262
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Legion_Defense"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "legion_defense"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 20.46986961364746
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 40.76700592041016
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 81
+              },
+              "CR": {
+                "type": "float",
+                "value": 37.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "legiondefense"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 5
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 3
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -14.28997611999512
+              },
+              "Y": {
+                "type": "float",
+                "value": -3.351905822753906
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02500000037252903
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.000911712646484375
+              },
+              "Y": {
+                "type": "float",
+                "value": -4.977203369140625
+              },
+              "Z": {
+                "type": "float",
+                "value": 1.404861688613892
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 2.028399467468262
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.3136615753173828
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.1090621948242188
+              },
+              "Z": {
+                "type": "float",
+                "value": 2.241959095001221
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -14.273681640625
+              },
+              "Y": {
+                "type": "float",
+                "value": 1.973320007324219
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.08725913614034653
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Legion_Defense"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 4
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 2
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 120
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 15.71852684020996
+              },
+              "Y": {
+                "type": "float",
+                "value": 95.66349029541016
+              },
+              "Z": {
+                "type": "float",
+                "value": 2.947399139404297
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Legion_Defense"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "legion_defense"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 25.41765022277832
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 82.59020233154297
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 81
+              },
+              "CR": {
+                "type": "float",
+                "value": 37.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "legiondefense"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 5
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 3
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.3111457824707031
+              },
+              "Y": {
+                "type": "float",
+                "value": -7.849464416503906
+              },
+              "Z": {
+                "type": "float",
+                "value": 2.34473991394043
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 13.67720413208008
+              },
+              "Y": {
+                "type": "float",
+                "value": -7.92449951171875
+              },
+              "Z": {
+                "type": "float",
+                "value": 2.755809545516968
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 14.37968063354492
+              },
+              "Y": {
+                "type": "float",
+                "value": 2.537315368652344
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.516021728515625
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.2933883666992188
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.1840133666992188
+              },
+              "Z": {
+                "type": "float",
+                "value": 1.477428197860718
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 1.144276976585388
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Legion_Defense"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 4
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 2
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 120
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 54.10325241088867
+              },
+              "Y": {
+                "type": "float",
+                "value": 99.77306365966797
+              },
+              "Z": {
+                "type": "float",
+                "value": 4.999994277954102
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Legion_Defense"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "legion_defense"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 43.03386688232422
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 82.5953369140625
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      }
+    ]
   },
   "List": {
     "type": "list",
@@ -297,7 +1213,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.117040872573853
+          "value": 3.117040395736694
         },
         "BodyBag": {
           "type": "byte",
@@ -731,6 +1647,10 @@
     "value": [
       {
         "__struct_id": 0,
+        "Comment": {
+          "type": "cexostring",
+          "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+        },
         "Name": {
           "type": "cexostring",
           "value": "FAID"
@@ -849,7 +1769,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02454979158937931
+          "value": 0.02455026842653751
         },
         "XPosition": {
           "type": "float",
@@ -909,7 +1829,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02454979158937931
+          "value": 0.02455026842653751
         },
         "XPosition": {
           "type": "float",
@@ -969,7 +1889,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02454979158937931
+          "value": 0.02455026842653751
         },
         "XPosition": {
           "type": "float",
