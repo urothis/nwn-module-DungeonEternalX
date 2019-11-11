@@ -1,0 +1,474 @@
+ASSASSIN
+
+All assassin spells have been altered. The feats " epic improved sneak attack" modify most of the spells. 
+All spells are subject to spell failure and counter, although you shouldn't lose any use if this happens. 
+The cast range on all spells remains the same.
+
+GHOSTLY VISAGE: Old bonuses removed, now gives:
++1 AB/Disc at lvl 14
++2 AB/Disc and AC at lvl 20 ( AC not granted if PM lvl is 10+ )
++1 AB/Disc at level 25
+Added conceal equal to Assassin level +10. Lasts until death.
+
+INVISIBILITY: "Mark Target" - Can now only be cast on hostile targets. 
+Unlimited uses, 40 second cooldown. 
+Target receives -1 ac penalty per 6 levels of assassin. 
+Effect lasts 3 rounds. 
+After 3 rounds, the mark explodes dealing 15+ Assassin level + (6 times the number of epic sneak feats). 
+Cooldown reduced by 2 seconds per epic sneak feat taken. 
+This ability is cast instantly ( no cast time )
+
+IMPROVED INVISIBILITY: "Assassinate" - Can now only be cast on hostile targets. 
+Unlimited uses, 60 second cooldown. 
+Damages the target for: 20+ ( 2 * assassin lvls ) + ( 8 * epic sneak feats ). 
+If target survives, their body is weakened and they receive -2 fort save for 60 seconds. 
+Does not stack with itself. 
+Cooldown reduced by 4 seconds per epic sneak feat taken.
+
+DARKNESS: A bunch of deadly assassin friends of yours strike in the darkness, 
+dealing damage or even killing weakened foes ( it works similar to PWKill ). 
+If enemies in the targeted are have low health they are killed 
+( Target health must be less then 40 + ( 2 * assn lvl ) + 10 * epic sneak feats taken ). 
+If the target survives, it takes damage: 20 + Assassin level. Cooldown of 60 seconds.
+-
+-
+-
+BARBARIAN
+
+Rages: The Level modifier is ues to calculate the different bonuses and penalties
+- LevelModifier: Level/10 +2
+- Duration: ( Lvl Mod * CON mod )
+Mighty rage and Barbarian Rage stack. 
+Thundering and Terrifying Rage are applied to Barbarian Rage. 
+Barbarian Rages do not work with Blade Thirst, Divine Favor or Divine Wrath.
+
+Barbarian Rage/Greater Rage
+-2ac lvl <15, -1 AC lvl <40, -0 AC lvl 40
++2ab lvl <15, +4ab lvl <40, +6ab lvl 40
++(con mod/2 ) discipline
++(lvl mod * 2) STR/CON
++(3+lvl mod) will save
+
+Thundering Rage
+-Main weapon gains On Hit Deafness ( DC=14+ LevelModifier * 2
+-Gain ( 3 + LevelModifier ) Reflex Saves
+-Add 2d6, 2d8, 2d10 or 2d12 Sonic Damage to your attacks. (LevelMod 3, 4,  5, 6)
+
+Terrifying Rage
+Terrifying Rage pulse every 4 rounds for duration of rage
+DC = BarbLvl + IntimidateSkill/4  vs Will
+Duration of effect is LvlMod -2 (2-4 rounds)
+If level <= BarbLvl = Fear (Duration-1) rounds (1-3), % chance of Fear Paralysis
+If level <= (BarbLlv 2) = AC/Saves Decreased by 2 fo 2-4 rounds.
+
+Only base skill points count. 
+However the feats " Skill Focus Intimidate" and "Epic Skill Focus Intimidate" count in the calculation.
+
+Mighty rage
+Weapons gain 2d8, 2d10 or 2d12 Massive Criticals damage ( lvlmod 4, 5, 6)
++(barblvlbarblvl)/8 Temporary Hitpoints ( 50-200 )
++(lvlmod-2) AB (2-4)
++lvlmod Fort Saves (4-6)
++lvlmod Taunt (4-6)
+1+ lvlmod Elemental Resistance (5-7)  ( Acid, Cold, Electrical, Fire)
+-
+-
+-
+BARD
+
+Bard & Curse song
+Lingering Song and Curse Song duration is: Base Duration +10 Rounds
+Lasting Song Duration is: Base Duration * 10
+Lasting Curse Duration is: Base Duration * 2
+Curse does NOT effect friendly targets.
+
+When you sing for yourself it is the standard vanilla song.
+
+Song for friends and curse for enemy:
+
+lvl 1-5: AB 1, AC 0, Skill 0
+lvl 6-10: AB 1, AC 0, Skill 1
+lvl 11-15: AB 1, AC 1, Skill 1
+lvl 16-24: AB 1, AC 2, Skill 2
+lvl 25-29: AB 1, AC 3, Skill 3
+lvl 30: AB 2, AC 4, Skill 4
+
+A bard with 10 or more palemaster levels will recieve a penalty to their heal skill.
+-
+-
+-
+BLACKGUARD
+
+Bulls Strength
+Prerequisite: 13 STR, 13 CHA ( 3 use / day )
+
+"The blackguard draws unholy energies from wounded creatures nearby. 
+(radius increases by BG lvl) The more wounded creatures around him, the more power the blackguard will gain."
+
+This ability is cast instantly ( no cast time ).
+
+Attack Bonus: Blackguard Bullstrength increases AB by at least 1 and more AB depending on wounded creatures nearby ( player only ).
+Max Attack Bonus increase: 1+1 at lvl 10. Max AB increases continue every 4 levels.
+
+Max AB after lvl 10: (BG lvl-10) / 4 + 2
+
+lvl 2-9: +1 AB
+lvl 10-12: +2 AB
+lvl 14-17: +3 AB
+lvl 18-21: +4 AB
+lvl 22-25: +5 AB
+lvl 26-29: +6 AB
+lvl 30: +7 AB
+
+Some classes will modify the Max AB, but it will never go under 1 Max AB: (With 10+ lvls of BG the base AB gain increases to +2)
+
+Fighter: +1
+Ranger: -1
+Druid: -2
+Barbarian: -3
+Cleric: -5
+Paladin: -5
+
+Blackguard bull strength now has one use and recharges every 60 seconds (can be used every minute). 
+The bull str buff will last for 60 seconds. 
+Enemies within range of the BG using bull strenght will grant:
+
+Player with < 90% HP: +2 AB
+Player with < 60% HP: +3 AB
+Player with < 20% HP: +4 AB
+
+Example: One player with < 60% and another with < 20% will allow you to gain 1+3+4 (+8 AB). 
+Three players with < 90% will allow you to gain 1+2+2+2 ( +7 AB ). 
+Five enemies with  >90% will allow you to gain +1 AB only. 
+(With 10+ lvls of BG the base AB gain increases to +2)
+Feat Modifications with BG bull strength:
+
+Epic Fiendish Servant
+Grants +1 to the min and max AB calculation, and damages all enemies hit. 
+Any enemy hit will now grant at least +2 AB to the BG, regardless of enemy health 
+(that is, the percent threshold increases from 90% to 100% ).
+-Damage equivalent to: the max AB the BG can attain multiplied by 8.
+-Grants 1 AC for every 4 max AB from bulls strength ( A level 26 BG would get +1 AC )
+
+Epic Reputation
+"Your vile reputation emanates corruption into the very soil you walk on. Nearby enemies can be corrupted apon a flick of your wrist"
+- Your Bull Strength ability decreases your saves by 1 due to your evil nature, but will also decrease the saves of enemies by 2 and their skills by 3.
+-Lasts five rounds at lvl 10, and one additional round every four BG lvls after (Epic Fiendish Servant adds +1 round). Lasts four rounds if < 10 BG.
+
+BLACKGUARD CONTAGION - Lay on Unholy Hands
+Like the vampiric touch spell ( but without the touch attack).
+Target creature takes negative damage, this is applied to the blackguard as healeffect.
+-Amount: (1d3+1) * BG lvl
+- 3 uses/day. Damage capped  at 40
+
+Full amount damage and half amount heal if cast against hostile. 
+Half amount damage and full amount heal if cast against neutral. 
+Spells will never damage or heal more than current hitpoints of target.
+
+INFLICT SERIOUS / CRITICAL WOUNDS
+3 uses / day each spell
+Please see spell changes (Necromancy)
+-
+-
+-
+CHAMPION OF TORM
+
+Divine Wrath(3/day)
+
+-Added will save decrease (equivalent to 1 + 1 per 5 CoT levels)
+-AC Penalty: -1 per 5 CoT levels
+-Divine Damage Bonus (an increase of +2 to all levels)
+-Duration Increase (an additional 30 seconds per use)
+-Does not stack with Divine Favour, Barbarian Rage or Blade Thirst
+-
+-
+-
+DRUID
+
+Natures balance now gives a bonus to discipline and conceal to the caster.
+
+Discipline Bonus = 2 + Four times the caster's pure bonus
+Conceal Bonus = 20 + Five times the caster's pure bonus
+These effects last one round per caster level and are undispellable
+-
+-
+-
+DWARVEN DEFENDER
+
+Fighter Feat-Enhancer (Item) 
+Taking feats grants the fighter various bonuses. They stack with the feat itself. 
+(All bonuses are magical enhancements and count toward the magical enhancement caps.) 
+Activate with Item. 30 Turns duration. 
+
+Skill Focus: Discipline
++2 Discipline 
+Prerequisite: 4 Fighter or DD
+
+Great Fortitude
++2 Fortitude 
+Prerequisite: 4 Fighter or DD
+
+Iron Will
++2 Will 
+Prerequisite: 4 Fighter or DD
+
+Lightning Reflexes 
++2 Reflex 
+Prerequisite: 4 Fighter or DD
+
+Dirty Fighting 
++1 Attack Bonus every 4 DD Levels.
+Prerequisite: 25 STR or DEX
+Limitations: No RDD, Monk, or PM levels.
+
+Epic Will
++4 Will 
+Prerequisite: 20 Fighter or DD
+
+Epic Reflexes
++4 Reflex 
+Prerequisite: 20 Fighter or DD
+
+Dwarven Defender only bonuses:
+
+Discipline
++4 (STR>25)
++4+WISmod+DEXmod to a max of 10 (DEX>25)
+
+AC
++1 AC at levels 12, 18
++2 AC at levels 24, 30
+No monk, RDD, or Pale Master
+
+Damage
++1 magical damage every 8 levels of DD
+
+Fighter Dodge (Item)
+
+Prerequisite: 25 Str, 13 Con, 13 Int, 16 Fighter, no Monk, no PM 
+Specifics: The character add his constitution bonus to his Dodge AC for 
+a number of rounds equal to the constitution bonus. This ability may be 
+activated 3x/day, plus the character's constitution modifier. 
+Paladins receive -1 AC penalty, RDDs and Clerics receive -2 AC penalty, DD receives a -4 AC penalty.
+Limitations: Dex based Dwarven Defenders cannot use the Fighter Dodge Item.
+-
+-
+-
+FIGHTER
+
+Fighter Feat-Enhancer (Item)
+Taking feats grants the fighter various bonuses. They stack with the feat itself. 
+(All bonuses are magical enhancements and count toward the magical enhancement caps.) 
+Activate with Item. 30 Turns duration. 
+
+Improved Parry
+Prerequisite: 25 STR
+5 + (1 Natural AC every 5 Fighter Levels.)
+Limitations: No RDD, Monk, or PM levels.
+-Or- 
+Prerequisite: 25 DEX 
+5 + (1 Natural AC Every 10 Fighter Levels.)
+Limitations: No RDD, Monk, or PM levels.
+
+Dirty Fighting 
++1 Attack Bonus every 10 Fighter Levels.
+Prerequisite: 25 STR or DEX
+Limitations: No RDD, Monk, or PM levels.
+
+Skill Focus: Discipline
++2 Discipline 
+Prerequisite: 4 Fighter or DD
+
+Great Fortitude
++2 Fortitude 
+Prerequisite: 4 Fighter or DD
+
+Iron Will
++2 Will 
+Prerequisite: 4 Fighter or DD
+
+Lightning Reflexes 
++2 Reflex 
+Prerequisite: 4 Fighter or DD
+
+Epic Will 
++4 Will 
+Prerequisite: 20 Fighter or DD
+
+Epic Reflexes
++4 Reflex 
+Prerequisite: 20 Fighter or DD
+
+Fighter Dodge (Item)
+
+Prerequisite: 25 Str, 13 Con, 13 Int, 16 Fighter, no Monk, no PM 
+Specifics: The character add his constitution bonus to his Dodge AC for 
+a number of rounds equal to the constitution bonus. This ability may be 
+activated 3x/day, plus the character's constitution modifier. 
+Paladins receive -1 AC penalty, RDDs and Clerics receive -2 AC penalty, DD receives a -4 AC penalty.
+Limitations: Dex based Dwarven Defenders cannot use the Fighter Dodge Item.
+-
+-
+-
+HARPER SCOUT
+
+Special level 5 Harper Scout Items
+
+Harper Scout's Sight (potion)
+See invisible and Ultravision
+Indispelable, 12 Turns
+
+Harper Scout's Cunning (potion)
++10 skills to open locks, search, disable trap, move silently, pick pocket, set trap, and hide
+Duration: 10 Turns
+
+Regular Potions empowered for level 5 Harper Scout:
+Amplify Pots: +30 listen (Duration doubled)
+Claryaudience: +10 listen / +30 Spot (Duration doubled)
+Clarity: Duration doubled
+Find Traps: Disarm Radius is increased
+
+====================
+
+Harper Scout's abilities:
+
+Tymora's Smile (3/day - Indispelable) 
++5 universal saves
+-1 save every 3 monk levels
+Duration: 10 Turns
+
+Eagle's splendor (3/day - Indispelable) 
++4 Charisma
+Duration: 1 Hour / lvl
+
+Cat's grace (3/day - Indispelable) 
++4 Dexterity
+Duration: 1 Hour / lvl
+
+Invisibility (5/day)
+50% conceal
+Duration: 12 Turns
+-
+-
+-
+PALADIN
+
+Divine Favor
++1ab and damage per 3 pally lvls(max 5 at 15)
+Does not stack with Blade Thirst, Barbarian Rage or Divine Wrath
+Double duration(x4 with extend spell)
+Indispelable if cast without monk speed
+
+Holy Sword
++2 ab at 16 and +3 at 26
+lvl 14-20: +1d6 divine damage
+lvl 21-30: +1d8 divine damage
+lvl 31-40: +1d12 divine damage
+-
+-
+-
+PALE MASTER
+
+Palemaster Summons are improved:
+The summon used is based on the characters Necromancy pure bonus, 
+the total number of PM levels, and the conjuration spell focus feats.
+A 10/30 wizard/palemaster with epic spell focus conjuration can summon 
+a Dracolich, for example.
+-
+-
+-
+PURPLE DRAGON KNIGHT
+
+Rallying Cry(3/day) 
++3ab and lasts for constitution modifier
+
+Final Stand(1/day) 
+10 hp per constitution modifier when below 50%hp
+
+Oath of Wrath(Once per (PDK lvl x 2) rounds)
++2 ab for 5 rounds on targeted enemy
+
+Inspire Courage(2/day) 
++3 Disc for 10 rounds
+
+Heroic shield
++1 Ac
+-
+-
+-
+PURE CASTER
+
+Pure bonus is a dc bonus granted to pure druids, sorcs or wizards. 
+
+pure bonus = lvl/10 - 1-4 
+
+for schooled wizards using their school it is lvl/5 -1-8 
+
+Sorcerers gain a 50% bonus to pure bonus (max pure bonus +6) 
+
+Pale master lvls apply at a 2/3 ratio towards pure bonus for Necromancy spells ONLY. 
+For example a necromancy focus 30 wizard/10 pale master would have a +7 bonus 
+to necromancy and a +3 bonus to all other schools
+-
+-
+-
+RANGER
+
+Base +3 ac for all lvl 40 characters if dual-weilding, using a two handed weapon or 
+ranged weapon as long as you have no monk and are not a large subrace
+
+Ranger lvl 9+ recieves +2ac to all calculations for melee weapons
+
+Dual-Wielding
++1 apr and +3 shield ac
+Prerequisite:22 Str
+If Str is less then 22 gain +1apr and shield ac instead
+
+Two-Handed
++1 apr and +2 shield ac
+Prerequisite:22 Str
+If Str is less then 22 gain +1apr and shield ac instead
+
+Blade Thirst
++1ab per 5 ranger lvls(max 3 at 15)
+Does not stack with Divine Favor, Divine Wrath or Barbarian Rage
+Double duration(x4 with extend spell)
+Indispelable if cast without monk speed
+
+Ranger Dodge (Item)
+Prerequisite: 13 Wis, 15 Ranger, no Monk levels 
+Specifics: The character add his wisdom bonus to his Dodge AC for a number of 
+rounds equal to the wisdom bonus. 
+
+This ability may be activated 3x/day, plus the character's wisdom modifier.
+-
+-
+-
+SHIFTER
+
+Iron golem form for golem shape shifters has been modded for DeX 
+
+base str =38 
+
+Added Greatsword 
+Enhancement +6 
+keen 
+bludge- 2d12 
+magic -2d6 
+on hit daze dc 26 ( 50%- 2 rounds) 
+vampiric regeneration +8 
+
+DR increased to 20/+6
+-
+-
+-
+WEAPON MASTER
+
+"Epic weapon masters can swing their weapons with such power and speed that 
+the sound alone has been known to kill lesser foes." 
+
+-Bonus sonic damage equivalent to the weapon master superior weapon attack bonus (SWAB).
+-Discipline bonus equal to SWAB-2
+-If str is more than 21: AC increase equivalent to SWAB. Removed if 16+ fighter lvls present.
+-If str is less than 22: AC increased based on SWAB (AC caps at +2)
+-AB increases by one at 28 levels of weapon master.

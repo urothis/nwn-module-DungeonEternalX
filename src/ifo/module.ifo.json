@@ -1562,7 +1562,7 @@
   },
   "Mod_OnPlrChat": {
     "type": "resref",
-    "value": "_mod_player_chat"
+    "value": ""
   },
   "Mod_OnPlrDeath": {
     "type": "resref",

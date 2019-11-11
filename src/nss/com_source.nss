@@ -332,18 +332,14 @@ const string PC_COMMAND_PRIMARY_SCRIPTS = "com_s_";
 //////////////////////////////Declarations//////////////////////////////////////
 
 //Master function for Player Chat Command program. For On Player Chat event
-void MRPlayerChat();
+void MRPlayerChat(object oPC, string sMessage);
 
 //Master function for On Activate Item event
 void MROnActivateItem();
 
 ///////////////////////////////Definition//////////////////////////////////////
 
-void MRPlayerChat()
-{
-    object oPC = GetPCChatSpeaker();
-    string sMessage = GetPCChatMessage();
-
+void MRPlayerChat(object oPC, string sMessage) {
     //Determine if its one of my commands
     string sSlash = GetSubString(sMessage, 0, 1);
 
