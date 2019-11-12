@@ -3,6 +3,8 @@
 #include "fame_inc"
 #include "give_custom_exp"
 #include "pc_inc"
+#include "nw_i0_2q4luskan"
+
 
 int GetRewardCount(object oKiller, object oBoss)
 {
@@ -12,8 +14,10 @@ int GetRewardCount(object oKiller, object oBoss)
     return nCount;
 }
 
-void main()
+ void main()
 {
+
+
     object oBoss = OBJECT_SELF;
     object oKiller = GetLastKiller();
     if (GetIsObjectValid(GetMaster(oKiller))) oKiller = GetMaster(oKiller);
@@ -67,6 +71,11 @@ void main()
             LootCreateBossbag(oBoss, sTag);
             GiveAllPartyMembersFame(oKiller, 4.0, 2.0, "PvE", TRUE, TRUE);
         }
+    }
+    else if (sTag == "VELMIR")
+    {
+        LootCreateBossbag(oBoss, sTag);
+        GiveAllPartyMembersFame(oKiller, 75.0, 25.0, "PvE", TRUE, TRUE);
     }
     else if (GetLocalInt(oBoss, "BOSS"))
     {

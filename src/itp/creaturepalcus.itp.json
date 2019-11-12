@@ -461,7 +461,7 @@
                     "__struct_id": 0,
                     "CR": {
                       "type": "float",
-                      "value": 53.0
+                      "value": 81.0
                     },
                     "FACTION": {
                       "type": "cexostring",
@@ -726,6 +726,30 @@
                     "ID": {
                       "type": "byte",
                       "value": 35
+                    },
+                    "LIST": {
+                      "type": "list",
+                      "value": [
+                        {
+                          "__struct_id": 0,
+                          "CR": {
+                            "type": "float",
+                            "value": 37.0
+                          },
+                          "FACTION": {
+                            "type": "cexostring",
+                            "value": "Hostile"
+                          },
+                          "NAME": {
+                            "type": "cexostring",
+                            "value": "Legion Defense"
+                          },
+                          "RESREF": {
+                            "type": "resref",
+                            "value": "legiondefense"
+                          }
+                        }
+                      ]
                     },
                     "STRREF": {
                       "type": "dword",
@@ -3179,6 +3203,25 @@
                           "RESREF": {
                             "type": "resref",
                             "value": "spidgiant001"
+                          }
+                        },
+                        {
+                          "__struct_id": 0,
+                          "CR": {
+                            "type": "float",
+                            "value": 49.0
+                          },
+                          "FACTION": {
+                            "type": "cexostring",
+                            "value": "Hostile"
+                          },
+                          "NAME": {
+                            "type": "cexostring",
+                            "value": "Legion Infestation"
+                          },
+                          "RESREF": {
+                            "type": "resref",
+                            "value": "legioninfestatio"
                           }
                         },
                         {
@@ -6496,6 +6539,25 @@
                     "__struct_id": 0,
                     "CR": {
                       "type": "float",
+                      "value": 6.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Small Rat"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "smallrat"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
                       "value": 755.0
                     },
                     "FACTION": {
@@ -6509,6 +6571,25 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "dryad_hulk"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 196.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "valmirboss"
                     }
                   }
                 ]
@@ -7274,6 +7355,63 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "hashish_bgolem"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 1097.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Lich, Frostbringer"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "hex_mage_skele3"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 1097.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Lich, Grand Incinerator"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "hex_mage_skele"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 1097.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Lich, Thunderlord"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "hex_mage_skele2"
                     }
                   },
                   {
@@ -8280,6 +8418,101 @@
               "LIST": {
                 "type": "list",
                 "value": [
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 40.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Chainmail"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedchainma"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 49.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Fullplate"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedfullpla"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 64.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Halfplate"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedhalfplat"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 56.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Scalemail"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedscalema"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 74.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Animated Templar"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "animatedtemplar"
+                    }
+                  },
                   {
                     "__struct_id": 0,
                     "CR": {

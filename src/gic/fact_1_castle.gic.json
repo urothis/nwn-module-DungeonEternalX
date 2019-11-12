@@ -25,7 +25,23 @@
   },
   "Encounter List": {
     "type": "list",
-    "value": []
+    "value": [
+      {
+        "__struct_id": 7
+      },
+      {
+        "__struct_id": 7
+      },
+      {
+        "__struct_id": 7
+      },
+      {
+        "__struct_id": 7
+      },
+      {
+        "__struct_id": 7
+      }
+    ]
   },
   "List": {
     "type": "list",

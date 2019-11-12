@@ -14,7 +14,7 @@
   },
   "ChallengeRating": {
     "type": "float",
-    "value": 53.0
+    "value": 81.0
   },
   "ClassList": {
     "type": "list",
@@ -50,7 +50,7 @@
   },
   "CurrentHitPoints": {
     "type": "short",
-    "value": 520
+    "value": 680
   },
   "DecayTime": {
     "type": "dword",
@@ -134,7 +134,7 @@
   },
   "HitPoints": {
     "type": "short",
-    "value": 520
+    "value": 680
   },
   "Int": {
     "type": "byte",
@@ -168,11 +168,11 @@
   },
   "MaxHitPoints": {
     "type": "short",
-    "value": 640
+    "value": 800
   },
   "NaturalAC": {
     "type": "byte",
-    "value": 31
+    "value": 51
   },
   "NoPermDeath": {
     "type": "byte",
@@ -200,7 +200,7 @@
   },
   "Race": {
     "type": "byte",
-    "value": 13
+    "value": 10
   },
   "refbonus": {
     "type": "short",
