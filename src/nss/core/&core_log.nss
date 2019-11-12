@@ -89,6 +89,7 @@ void LogWebhook(string sKey, string sValue, string sMessage, int nLogLevel) {
   NWNX_WebHook_SendWebHookHTTPS("discordapp.com", NWNX_Util_GetEnvironmentVariable("NWNX_WEBHOOK_PUBLIC_CHANNEL"), sConstructedMsg);
 }
 
+// Log stuff, 0 = debug | 1 = info | 2=warn | 3 = error | 4 = fatal | 5 = panic
 void Log(string sMessage = "", int nLogLevel = 0, string sKey = "", string sValue = "") {
     int nDesiredLog = StringToInt(NWNX_Util_GetEnvironmentVariable("our_custom_log__level_variable"));
     if (nLogLevel => nDesiredLog) LogWebhook(sKey,sValue,sMessage,nLogLevel); 

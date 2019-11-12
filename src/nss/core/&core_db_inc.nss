@@ -2,10 +2,21 @@
 // (c) 2019 urothis
 #include "nwnx_time"
 #include "nwnx_redis_short"
-#include "core_const"
-#include "core_log"
+#include "&core_const"
+#include "&core_log"
+// helper functions
+// return hash entry as int
+int HashInt(string sPath, string sKey);
+int HashInt(string sPath, string sKey) { return NWNX_Redis_GetResultAsInt(HGET(sPath,sKey)); }
+// return hash entry as float
+float HashFloat(string sPath, string sKey);
+float HashFloat(string sPath, string sKey) { return NWNX_Redis_GetResultAsFloat(HGET(sPath,sKey)); }
+// return hash entry as string
+string HashString(string sPath, string sKey);
+string HashString(string sPath, string sKey) { return NWNX_Redis_GetResultAsString(HGET(sPath,sKey)); }
 
-// convert object types to data types.
+// convert object types to data type strings.
+string objectTypeString(object oObject);
 string objectTypeString(object oObject) {
   if (oObject == GetModule()) return "server"; // server
   switch(GetObjectType(oObject)) {
@@ -23,15 +34,17 @@ string objectTypeString(object oObject) {
   }
 }
 
-// get db location for object
+// get db path for object
+string dbLocationObject(object oObject);
 string dbLocationObject(object oObject) { 
   string sType = objectTypeString(oObject);
   string sUUID = GetObjectUUID(oObject);
   Log("db", sType, sUUID,0);
-  return MODULENAME + ":" + sType + ":"+ sUUID + ":"; 
+  return MODULENAME + ":" + sType + ":"+ sUUID; 
 }
-l
-// this is super useful to grab a specific object for pubsub.
+
+// get the path to an object from a uuid
+string dbLocationUUID(string sUUID);
 string dbLocationUUID(string sUUID) {
   object oObject = GetObjectByUUID(sUUID);
   if (GetIsObjectValid(oObject)) {
