@@ -67,31 +67,37 @@ struct Page PageEntry(struct Entry entry1, struct Entry entry2, struct Entry ent
     return page;
 }
 
-void SetPageText(struct Page convo, object oObject) {
-    // not pretty, but it should work
-    SetCustomToken(4200,convo.header);
+void SetPageText(object oPC, string sTitle, int nOffset = 0) {
+    int nEntryCount = NWNX_Data_Array_Size(3, oPC, "convo");
+    int nTopIndex = nOffset * 6;
+    int nBotIndex = nTop + 6;
+    int nToken = 4201;
 
-    string text1 = convo.entry1text;
-    if(text1 == "") SetEntryHidden(oObject,1);
-    SetCustomToken(4201,text1);
+    // set the title
+    SetCustomToken(nToken,sTitle);
 
-    string text2 = convo.entry2text;
-    if(text2 == "") SetEntryHidden(oObject,2);
-    SetCustomToken(4202,text2);
+    string sText;
+    int nCount;
+    int i = nTopIndex;
+    while (i < nBotIndex) {
+        nToken++;        
+        // every convo position will be iterated here
+        sText = NWNX_Data_Array_At_Str(oPC,"conv",i);        
+        if (sText != "") SetCustomToken(nToken,sText);
+        else SetEntryHidden(oObject,nCount);        
+        // for all 6 indexes
+        nCount++;
+        i++;
+    }
 
-    string text3 = convo.entry3text;
-    if(text3 == "") SetEntryHidden(oObject,3);
-    SetCustomToken(4203,text3);
+    // previous
+    if (!nOffset) SetEntryHidden(oObject,7);
+    else SetCustomToken(4207,"Prev");
 
-    string text4 = convo.entry4text;
-    if(text4 == "") SetEntryHidden(oObject,4);
-    SetCustomToken(4204,text4);
+    // next
+    if (NWNX_Data_Array_At_Str(oPC,"conv",i) != "") SetEntryHidden(oObject,8);
+    else SetCustomToken(4208,"Next");
 
-    string text5 = convo.entry5text;
-    if(text5 == "") SetEntryHidden(oObject,5);
-    SetCustomToken(4205,text5);
-
-    string text6 = convo.entry6text;
-    if(text6 == "") SetEntryHidden(oObject,6);
-    SetCustomToken(4206,text6);
+    // exit
+    SetCustomToken(4209,"Exit");
 }
