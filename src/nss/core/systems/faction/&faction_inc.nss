@@ -2,10 +2,15 @@
 // (c) 2019 urothis
 #include "&player_inc"
 //////////
+// guild set locations
+string guildsetDBLocation();
+string guildsetDBLocation() { return MODULENAME + ":guild"; }
 // guild db location
 string guildDBLocation(string sGuildID);
 string guildDBLocation(string sGuildID) { return MODULENAME + ":" +sGuildID; }
-
+//////////
+// helper functions
+//////////
 // Add value to the core guild hash
 void guildSet(string sGuildID, string sKey, string sValue);
 void guildSet(string sGuildID, string sKey, string sValue) { HMSET(guildDBLocation(sGuildID),sKey,sValue); }
@@ -25,26 +30,61 @@ float guildGetFloat(string sGuildID, string sKey) { return HashFloat(guildDBLoca
 //////////
 // guild base functions
 //////////
+// sets
+//////////
+// add a guild to the set
+void addGuild(string sGuildID);
+void addGuild(string sGuildID) { SADD(guildsetDBLocation(),sGuildID); }
+// how many guilds exist
+int guildCount()
+int guildCount() { return SCARD(guildsetDBLocation()); }
+
+//////////
+// sorted sets
+//////////
+// add or remove a value from the playercount
+void modifyGuildMemberCount(string sGuildID, int nOffset);
+void modifyGuildMemberCount(string sGuildID, int nOffset) { ZADD(guildsetDBLocation() + ":memberCount",sGuildID,nOffset); }
+// return the guild member count
+int getGuildMemberCount(string sGuildID);
+int getGuildMemberCount(string sGuildID) { return ZSCORE(guildsetDBLocation() + ":memberCount",sGuildID); }
+// get what ranking the guild is in member count
+int getGuildMemberCountPosition(string sGuildID);
+int getGuildMemberCountPosition(string sGuildID) { return ZRANK(guildsetDBLocation() + ":memberCount",sGuildID); }
+
+//////////
+// modify player
+//////////
 // get oPC guild id
 string getGuild(object oPC);
 string getGuild(object oPC) { return playerGetValue(oPC, "guild_id"); }
-
 // get guild name
 string getGuildName(string sGuildID);
 string getGuildName(string sGuildID) { return guildGetString(sGuildID, "name")}
+// set the players guild
+void setGuild(object oPC, string sGuildID);
+void setGuild(object oPC, string sGuildID) { 
+  playerSetValue(oPC, "guild_id", sGuildID);
+  modifyGuildMemberCount(sGuildID, 1);
+}
+// remove player from guild
+void remGuild(object oPC) {
+  playerSetValue(oPC, "", sGuildID);
+  modifyGuildMemberCount(sGuildID, -1);  
+}
 
+//////////
+// modify guild
+//////////
 // set guild name
 void setGuildName(string sGuildID, string sNewName);
 void setGuildName(string sGuildID, string sNewName) { guildSet(sGuildID,"name",sNewName); }
-
 // get guild owner uuid
 string getGuildOwner(string sGuildID);
 string getGuildOwner(string sGuildID) { return guildGetString(sGuildID,"owner"); }
-
 // is sUUID the guild owner
 int isGuildOwner(string sUUID, string sGuildID);
 int isGuildOwner(string sUUID, string sGuildID) { return sGuildID != sUUID }
-
 // set the guild owner
 void setGuildOwner(object oOldOwner, object oNewOwner);
 void setGuildOwner(object oOldOwner, object oNewOwner) {
@@ -56,20 +96,12 @@ void setGuildOwner(object oOldOwner, object oNewOwner) {
     FloatingTextStringOnCreature("You are not the owner of " + sGuildName,oOldOwner); 
     // do nothing
     return;
-  } else {
-    // alert those involved
-    FloatingTextStringOnCreature("You are now the owner of " + sGuildName,oNewOwner); 
-    FloatingTextStringOnCreature("You have transferred ownership of " + sGuildName,oOldOwner);
-    // set the new guild owner
-    HMSET(sGuildDB,"owner",GetObjectUUID(oNewOwner));
   }
-}
-
-// set the players guild
-void setGuild(object oPC, string sGuildID);
-void setGuild(object oPC, string sGuildID) { 
-  playerSetValue(oPC, "guild_id", sGuildID);
-  // TODO alot of things to set here
+  // alert those involved
+  FloatingTextStringOnCreature("You are now the owner of " + sGuildName,oNewOwner); 
+  FloatingTextStringOnCreature("You have transferred ownership of " + sGuildName,oOldOwner);
+  // set the new guild owner
+  HMSET(sGuildDB,"owner",GetObjectUUID(oNewOwner));
 }
 
 //////////
@@ -79,9 +111,12 @@ void setGuild(object oPC, string sGuildID) {
 void newGuild(object oPC, string sName);
 void newGuild(object oPC, string sName) {
   // new guild with a random uuid
-  string sGuildDB = guildDBLocation(GetRandomUUID());
+  string sUUID = GetRandomUUID();
+  string sGuildDB = guildDBLocation(sUUID);
   // set the guild id on the original member
-  AddPlayerToGuild(object oPC, string sGuildID, 1);
+  setGuild(oPC, sUUID);
+  // add guild to set
+  addGuild(sGuildID);
   // core values we want to store
   HMSET(sGuildDB,"name",sName);
   // the first owner

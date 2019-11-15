@@ -54,3 +54,7 @@ string dbLocationUUID(string sUUID) {
   Log("db", objectTypeString(oObject),sUUID,3);
   return OBJECT_INVALID;
 }
+
+// get the path to a cd key
+string dbLocationCDKEY(object oPC);
+string dbLocationCDKEY(object oPC) { return GetModuleName()+":cd-key:"+GetObjectUUID(oObject)+":"+GetPCPublicCDKey(oPC); }
