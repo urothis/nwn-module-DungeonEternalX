@@ -35,6 +35,17 @@ int GetRewardCount(object oKiller, object oBoss)
         DEXRewardXP(oKiller, oBoss);
         LootCreateBossbag(oBoss, sTag);
     }
+    if (sTag == "VGUARD")
+    {
+        LootCreateBossbag(oBoss, sTag);
+        GiveAllPartyMembersFame(oKiller, 4.0, 2.0, "PvE", TRUE, TRUE);
+        SpeakString("" + GetName(oKiller) + " is attacking Velmir's Keep! Come and KILL them! ", TALKVOLUME_SHOUT);
+    }
+    if (sTag == "VELMIR")
+    {
+        LootCreateBossbag(oBoss, sTag);
+        GiveAllPartyMembersFame(oKiller, 75.0, 25.0, "PvE", TRUE, TRUE);
+    }
     if (sTag == "BOSS_GNOLL")
     {
         LootCreateBossbag(oBoss, sTag);
@@ -71,11 +82,6 @@ int GetRewardCount(object oKiller, object oBoss)
             LootCreateBossbag(oBoss, sTag);
             GiveAllPartyMembersFame(oKiller, 4.0, 2.0, "PvE", TRUE, TRUE);
         }
-    }
-    else if (sTag == "VELMIR")
-    {
-        LootCreateBossbag(oBoss, sTag);
-        GiveAllPartyMembersFame(oKiller, 75.0, 25.0, "PvE", TRUE, TRUE);
     }
     else if (GetLocalInt(oBoss, "BOSS"))
     {

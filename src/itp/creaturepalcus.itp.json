@@ -734,7 +734,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 37.0
+                            "value": 44.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -3209,7 +3209,7 @@
                           "__struct_id": 0,
                           "CR": {
                             "type": "float",
-                            "value": 49.0
+                            "value": 72.0
                           },
                           "FACTION": {
                             "type": "cexostring",
@@ -6349,6 +6349,25 @@
                     "__struct_id": 0,
                     "CR": {
                       "type": "float",
+                      "value": 88.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "GoD Defender"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "goddefender"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
                       "value": 334.0
                     },
                     "FACTION": {
@@ -6590,6 +6609,25 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "valmirboss"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 122.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Keep Guardian"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirkeepguardi"
                     }
                   }
                 ]
@@ -8530,6 +8568,25 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "appearancecha002"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "CR": {
+                      "type": "float",
+                      "value": 8.0
+                    },
+                    "FACTION": {
+                      "type": "cexostring",
+                      "value": "Hostile"
+                    },
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Baby Spider"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "babyspider"
                     }
                   },
                   {
