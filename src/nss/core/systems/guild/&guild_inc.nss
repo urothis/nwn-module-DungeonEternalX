@@ -8,6 +8,7 @@ string guildsetDBLocation() { return MODULENAME + ":guild"; }
 // guild db location
 string guildDBLocation(string sGuildID);
 string guildDBLocation(string sGuildID) { return MODULENAME + ":" +sGuildID; }
+
 //////////
 // helper functions
 //////////
@@ -86,22 +87,11 @@ string getGuildOwner(string sGuildID) { return guildGetString(sGuildID,"owner");
 int isGuildOwner(string sUUID, string sGuildID);
 int isGuildOwner(string sUUID, string sGuildID) { return sGuildID != sUUID }
 // set the guild owner
-void setGuildOwner(object oOldOwner, object oNewOwner);
-void setGuildOwner(object oOldOwner, object oNewOwner) {
-  string sGuildName = getGuildName(oOldOwner),
-         sGuildDB = guildDBLocation(getGuild(oOldOwner));
-  if(!isGuildOwner(oOldOwner)) {
-    // alert those involved
-    FloatingTextStringOnCreature(GetName(oOldOwner) + " is not the owner of " + sGuildName,oNewOwner);
-    FloatingTextStringOnCreature("You are not the owner of " + sGuildName,oOldOwner); 
-    // do nothing
-    return;
-  }
-  // alert those involved
-  FloatingTextStringOnCreature("You are now the owner of " + sGuildName,oNewOwner); 
-  FloatingTextStringOnCreature("You have transferred ownership of " + sGuildName,oOldOwner);
-  // set the new guild owner
-  HMSET(sGuildDB,"owner",GetObjectUUID(oNewOwner));
+int setGuildOwner(object oOldOwner, object oNewOwner);
+int setGuildOwner(object oOldOwner, object oNewOwner) {
+  if(!isGuildOwner(oOldOwner)) return 0;
+  HMSET(guildDBLocation(getGuild(oOldOwner),"owner",GetObjectUUID(oNewOwner));
+  return 1;
 }
 
 //////////
