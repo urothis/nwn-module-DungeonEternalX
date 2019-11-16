@@ -223,6 +223,17 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "GoD_Defense"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "god_defense"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "Legion_Defense"
                     },
                     "RESREF": {

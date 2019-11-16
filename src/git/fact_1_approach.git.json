@@ -74,7 +74,7 @@
         },
         "Comment": {
           "type": "cexostring",
-          "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+          "value": ""
         },
         "Conversation": {
           "type": "resref",
@@ -285,7 +285,7 @@
         },
         "Comment": {
           "type": "cexostring",
-          "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+          "value": ""
         },
         "CreatureList": {
           "type": "list",
@@ -298,7 +298,7 @@
               },
               "Comment": {
                 "type": "cexostring",
-                "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+                "value": ""
               },
               "CR": {
                 "type": "float",
@@ -1213,7 +1213,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.117040395736694
+          "value": 3.117039918899536
         },
         "BodyBag": {
           "type": "byte",
@@ -1649,7 +1649,7 @@
         "__struct_id": 0,
         "Comment": {
           "type": "cexostring",
-          "value": "This encounter is for empty faction defense. To make attacking a non-existing faction worthwhile. "
+          "value": ""
         },
         "Name": {
           "type": "cexostring",
@@ -1769,7 +1769,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02455026842653751
+          "value": 0.02455074526369572
         },
         "XPosition": {
           "type": "float",
@@ -1829,7 +1829,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02455026842653751
+          "value": 0.02455074526369572
         },
         "XPosition": {
           "type": "float",
@@ -1889,7 +1889,7 @@
         },
         "XOrientation": {
           "type": "float",
-          "value": 0.02455026842653751
+          "value": 0.02455074526369572
         },
         "XPosition": {
           "type": "float",

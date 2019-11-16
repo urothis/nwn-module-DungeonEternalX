@@ -14,7 +14,7 @@
   },
   "ChallengeRating": {
     "type": "float",
-    "value": 49.0
+    "value": 72.0
   },
   "ClassList": {
     "type": "list",
@@ -40,6 +40,17 @@
           "type": "short",
           "value": 20
         }
+      },
+      {
+        "__struct_id": 2,
+        "Class": {
+          "type": "int",
+          "value": 5
+        },
+        "ClassLevel": {
+          "type": "short",
+          "value": 6
+        }
       }
     ]
   },
@@ -61,7 +72,7 @@
   },
   "CurrentHitPoints": {
     "type": "short",
-    "value": 600
+    "value": 1200
   },
   "DecayTime": {
     "type": "dword",
@@ -104,7 +115,7 @@
         "__struct_id": 131072,
         "EquippedRes": {
           "type": "resref",
-          "value": "x2_it_creitem015"
+          "value": "legioninfestati"
         }
       }
     ]
@@ -145,7 +156,7 @@
   },
   "HitPoints": {
     "type": "short",
-    "value": 600
+    "value": 1200
   },
   "Int": {
     "type": "byte",
@@ -179,7 +190,7 @@
   },
   "MaxHitPoints": {
     "type": "short",
-    "value": 1100
+    "value": 1760
   },
   "NaturalAC": {
     "type": "byte",
