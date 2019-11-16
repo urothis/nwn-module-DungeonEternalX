@@ -1,6 +1,0 @@
-void main()
-{
-object oPC = GetNearestCreature(CREATURE_TYPE_REPUTATION, REPUTATION_TYPE_ENEMY | PLAYER_CHAR_IS_PC, OBJECT_SELF, 1, CREATURE_TYPE_PERCEPTION, PERCEPTION_SEEN);
-ActionAttack(oPC, FALSE);
-ActionEquipMostDamagingMelee();
-}
