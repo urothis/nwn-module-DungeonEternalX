@@ -91,6 +91,9 @@ void main() {
     // event 429 handler
     NWNX_Events_SubscribeEvent("NWNX_ON_WEBHOOK_FAILED", "_event_webhook");
 
+    // set chat script
+    NWNX_Chat_RegisterChatScript("_mod_player_chat");
+
     // webhook
     ModLoadWebhook();
 

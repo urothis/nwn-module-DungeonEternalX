@@ -1441,6 +1441,27 @@
           "type": "resref",
           "value": "area054"
         }
+      },
+      {
+        "__struct_id": 6,
+        "Area_Name": {
+          "type": "resref",
+          "value": "velmircave"
+        }
+      },
+      {
+        "__struct_id": 6,
+        "Area_Name": {
+          "type": "resref",
+          "value": "velmirskeep001"
+        }
+      },
+      {
+        "__struct_id": 6,
+        "Area_Name": {
+          "type": "resref",
+          "value": "velmirskeep2"
+        }
       }
     ]
   },
@@ -1562,7 +1583,7 @@
   },
   "Mod_OnPlrChat": {
     "type": "resref",
-    "value": "_mod_player_chat"
+    "value": ""
   },
   "Mod_OnPlrDeath": {
     "type": "resref",
