@@ -988,6 +988,17 @@
                         },
                         {
                           "__struct_id": 0,
+                          "NAME": {
+                            "type": "cexostring",
+                            "value": "GoD Defender Shield"
+                          },
+                          "RESREF": {
+                            "type": "resref",
+                            "value": "goddefendershiel"
+                          }
+                        },
+                        {
+                          "__struct_id": 0,
                           "RESREF": {
                             "type": "resref",
                             "value": "ashmto003"
@@ -2700,6 +2711,17 @@
                     "RESREF": {
                       "type": "resref",
                       "value": "lathanderskin"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Legion Infestation"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "legioninfestati"
                     }
                   },
                   {
@@ -5798,6 +5820,39 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "GoD Defender"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "goddefender"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "GoD Defender Helm"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "goddefenderhelm"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "GoD Defender Sword"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "goddefendersword"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "improvedundeadpr"
                     },
                     "RESREF": {
@@ -5853,11 +5908,44 @@
                     "__struct_id": 0,
                     "NAME": {
                       "type": "cexostring",
+                      "value": "Velmir Guardian Armor"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirguardianar"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Guardian Helm"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirguardian"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
                       "value": "Velmir Helm"
                     },
                     "RESREF": {
                       "type": "resref",
                       "value": "velmirhelm"
+                    }
+                  },
+                  {
+                    "__struct_id": 0,
+                    "NAME": {
+                      "type": "cexostring",
+                      "value": "Velmir Keep Guardian"
+                    },
+                    "RESREF": {
+                      "type": "resref",
+                      "value": "velmirkeepguardi"
                     }
                   }
                 ]
@@ -7707,6 +7795,17 @@
                           "RESREF": {
                             "type": "resref",
                             "value": "it_igolem01"
+                          }
+                        },
+                        {
+                          "__struct_id": 0,
+                          "NAME": {
+                            "type": "cexostring",
+                            "value": "Legion Defense"
+                          },
+                          "RESREF": {
+                            "type": "resref",
+                            "value": "legiondefense"
                           }
                         },
                         {
