@@ -1,0 +1,183 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 0
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 10
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 376084
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "This Halberd as it names says was made with a goal of helping whoever uses it hunt down dragons and kill em.\n\nThough not as effective as the Dragon Slayer. This weapon is still deadly to a dragon in the proper hands"
+    }
+  },
+  "Description": {
+    "type": "cexolocstring",
+    "value": {
+      "0": ""
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 0
+  },
+  "LocalizedName": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "Dragons Bane"
+    }
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 22
+  },
+  "ModelPart2": {
+    "type": "byte",
+    "value": 23
+  },
+  "ModelPart3": {
+    "type": "byte",
+    "value": 43
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 51
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": [
+      {
+        "__struct_id": 0,
+        "ChanceAppear": {
+          "type": "byte",
+          "value": 100
+        },
+        "CostTable": {
+          "type": "byte",
+          "value": 4
+        },
+        "CostValue": {
+          "type": "word",
+          "value": 13
+        },
+        "Param1": {
+          "type": "byte",
+          "value": 0
+        },
+        "Param1Value": {
+          "type": "byte",
+          "value": 13
+        },
+        "PropertyName": {
+          "type": "word",
+          "value": 18
+        },
+        "Subtype": {
+          "type": "word",
+          "value": 11
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ChanceAppear": {
+          "type": "byte",
+          "value": 100
+        },
+        "CostTable": {
+          "type": "byte",
+          "value": 2
+        },
+        "CostValue": {
+          "type": "word",
+          "value": 5
+        },
+        "Param1": {
+          "type": "byte",
+          "value": 255
+        },
+        "Param1Value": {
+          "type": "byte",
+          "value": 0
+        },
+        "PropertyName": {
+          "type": "word",
+          "value": 6
+        },
+        "Subtype": {
+          "type": "word",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 0,
+        "ChanceAppear": {
+          "type": "byte",
+          "value": 100
+        },
+        "CostTable": {
+          "type": "byte",
+          "value": 24
+        },
+        "CostValue": {
+          "type": "word",
+          "value": 3
+        },
+        "Param1": {
+          "type": "byte",
+          "value": 5
+        },
+        "Param1Value": {
+          "type": "byte",
+          "value": 11
+        },
+        "PropertyName": {
+          "type": "word",
+          "value": 48
+        },
+        "Subtype": {
+          "type": "word",
+          "value": 21
+        }
+      }
+    ]
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "DragonBane3"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "dragonbane3"
+  }
+}

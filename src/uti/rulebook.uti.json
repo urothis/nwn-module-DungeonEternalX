@@ -1,0 +1,81 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 0
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 74
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 1
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "What is a Dungeon Master (DM) and how can I become one?\n-----------------------------\nA Dungeon Master (DM) is an executive member of the player community and is thus empowered to make sure that the rules [of the server] are being followed. A DM helps players, documents and solves technical problems, settles arguments and holds events.\nThe DM title is not a rank and a DM does not hold any privileges. The title and post of a DM are only given to those players who are ready and willing to serve the player community as well as being trusted by the said community. The special DM functions help ease and optimise the DM's ability to help others. The abilities as a player do not hold any special value when selecting a DM, although knowledge of the game, Neverwinter Nights, and Dungeon Eternal X (DeX) is required.\nA DM may not give other players an advantage over others - an exception being [publicly] announced events such as competitions and challenges. The DM must hold events in compliance with the server rules and any extensions thereof. Problems concerning DMs can be discussed with an Administrator. One can also approach any other member of staff to hasten a certain process. Please do not publicly complain about a DM in-game or on the forums.\n\nBug usage/exploiting.\n-----------------------------\nPlayers are not permitted to make use of bugs - nor are players allowed to tell other of their existence and how to replicate them. Any kind of action which manipulates the mechanics of the game or which trigger anything that was not intentionally coded to be a part of the game is illegal and not permitted. Actions which may not be undertaken by players due to their illegality are referenced here. Any of those not listed are either intentionally not listed or are unknown. A player must report a bug or problem to a member of staff immediately with a detailed description of what was done/what can be done to replicate it should he/she find any bugs or problem within the game.\n\nCode of Conduct/Name rules.\n-----------------------------\nOffensive, racist or pornographic nicknames, normal names or comments are not permitted. One should not use the name of an already existing NPC. One should not pass oneself off as another player or an NPC. This also includes using language associated with other factions of which one is not a member of.\n\nTreat each player with politely, decently and with respect. A player can be an evil and malicious character without treating an opposing player unfairly. Publicly slandering or belittling is not permitted. Please attempt to solve a problem concerning a player(s) acting against the rules via private messages. Please contact a member of staff should this fail.\n\nPvP Rules (Player versus Player).\n-----------------------------\nPvP is allowed in all areas without any pvp restrictions (so in all full PvP areas). There need not be a prior reason to pvp nor is KoS dependent on level differences. KoS means one can attack a player without having a reason to. The Arena is an exception where the consent of the/another player(s) is needed. Disrupting a fight is not permitted. Hostile actions towards other players are not allowed in any no PvP areas - using technical loopholes shall be considered as exploiting/bug usage (if action is due to a lock on then this is permitted)\n\nFactions:\n-----------------------------\nAs faction's direction and policy is solely determined by the faction leader. The faction leaders must ensure that all faction members abide by the server rules, and a faction leader may be informed by a DM of any rule breaking undertaken by faction members. One player may not be in two factions at the same time.\n\nOfficial factions are those which have ten or more active members for over a month and can persuade the administrators that the said faction could bring advantages to the server. An administrator has the right to disband (officially) a faction should it no longer be able to meet these requirements. The term \"active\" is relative - the amount of server activity is taken into account when determining whether or not a faction can be classed under the aforementioned terminology.\n\nKnown Bugs and illegal actions:\n-----------------------------\n> Avoiding death or robbery (pick pocketing) by logging off.\n> Repeatedly changing a player from \"like\" to \"dislike\" and vice versa.\n> Manipulating the game's mechanics with the use of W,A,S and D keys e.g. scroll warping or 'run gunning' (this refers to both ranged and melee run gun).\n> Manipulating objects or NPCs e.g. casting invisibility on them.\n> Filling up one's inventory with worthless objects.\n> Intentionally shortening the taunting process (quick taunting).\n> Performing other/multiple actions whilst in counter mode/countering (counter bugging)."
+    }
+  },
+  "Description": {
+    "type": "cexolocstring",
+    "value": {
+      "0": ""
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "Rule Book v4.0"
+    }
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 7
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 60
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "RuleBook"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "rulebook"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 12000
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 77
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 12000
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "id": 13307,
+    "type": "cexolocstring",
+    "value": {
+      "0": "12000 GP\n\nUnlike their more common cousin, fire opals are full of vibrant hues: hot yellows, oranges, and reds so bright they almost cast their own light. Some believe that these gems derive their glow from a supernatural source, and not a few sages have claimed that each gem is a tiny portal to the Elemental Plane of Fire. However, scholars claim it is just the way the gem refracts the light around it."
+    }
+  },
+  "Description": {
+    "type": "cexolocstring",
+    "value": {
+      "0": ""
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "id": 13306,
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 9
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 57
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "GEM_12000"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "gem_12000"
+  }
+}

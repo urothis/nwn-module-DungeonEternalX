@@ -1,0 +1,1780 @@
+//::////////////////////////////////////////////////////////////////////////:://
+//:: SIMTools V3.0 Speech Integration & Management Tools Version 3.0        :://
+//:: Created By: FunkySwerve                                                :://
+//:: Created On: April 4 2006                                               :://
+//:: Last Updated: March 27 2007                                            :://
+//:: With Thanks To:                                                        :://
+//:: Dumbo - for his amazing plugin                                         :://
+//:: Virusman - for Linux versions, and for the reset plugin, and for       :://
+//::    his excellent events plugin, without which this update would not    :://
+//::    be possible                                                         :://
+//:: Dazzle - for his script samples                                        :://
+//:: Butch - for the emote wand scripts                                     :://
+//:: The DMFI project - for the languages conversions and many of the emotes:://
+//:: Lanessar and the players of the Myth Drannor PW - for the new languages:://
+//:: The players and DMs of Higher Ground for their input and playtesting   :://
+//::////////////////////////////////////////////////////////////////////////:://
+
+#include "fame_charvalue"
+#include "db_inc"
+#include "fky_chat_const"
+#include "fky_chat_config"
+#include "fky_chat_misc"
+#include "fky_chat_vfx"
+#include "seed_faction_inc"
+#include "inc_tokenizer"
+#include "_functions"
+
+const string sSpeech_SpeechList = "SpeechList_";
+const string sSpeech_PlayerID   = "SpeechPlayerID_";
+
+void SendChatLogMessage(object oRecipient, string sMessage, object oSender = OBJECT_INVALID, int nChannel = 4)
+{
+    if (!GetIsObjectValid(oSender)) return;
+    if (FindSubString(sMessage, "�")!=-1) return;
+    if (nChannel == 4 && !GetIsObjectValid(oRecipient)) return;
+    SetLocalString(oSender, "NWNX!CHAT!SPEAK", ObjectToString(oSender)+"�"+ObjectToString(oRecipient)+"�"+IntToString(nChannel)+"�"+sMessage);
+}
+
+void InitSpeech()
+{
+    int nCount;
+    object oMod = GetModule();
+
+    //if (PROCESS_NPC_SPEECH) SetLocalString(oMod, "NWNX!CHAT!LOGNPC", "1");
+    //if (PROCESS_NPC_SPEECH && IGNORE_SILENT_CHANNELS) SetLocalString(oMod,"NWNX!CHAT!IGNORESILENT","1");
+    if (SEND_CHANNELS_TO_CHAT_LOG)
+    {
+        SetLocalObject(oMod, "FKY_CHT_MESSENGER", GetObjectByTag("DM_GHOST"));
+    }
+    SetCustomToken(1701, COLOR_END);
+    SetCustomToken(1702, COLOR_GREEN);
+    SetCustomToken(1703, COLOR_RED);
+    SetCustomToken(1704, COLOR_RED2);
+    SetCustomToken(1705, COLOR_WHITE);
+    SetCustomToken(1706, COLOR_BLUE);
+    SetCustomToken(1707, COLOR_PURPLE);
+    SetCustomToken(1708, COLOR_LT_PURPLE);
+    SetCustomToken(1709, COLOR_LT_GREEN);
+    SetCustomToken(1710, COLOR_ORANGE);
+    SetCustomToken(1711, COLOR_GOLD);
+    SetCustomToken(1712, COLOR_YELLOW);
+    SetCustomToken(1713, COLOR_LT_BLUE);
+    SetCustomToken(1714, COLOR_LT_BLUE2);
+    SetCustomToken(1715, EMOTE_SYMBOL);
+    SetCustomToken(1716, COMMAND_SYMBOL);
+}
+/*
+string Speech_GetSpacer()
+{
+    return GetLocalString(GetModule(), "NWNX!CHAT!SPACER");
+}
+*/
+
+void Speech_OnClientEnter(object oPlayer)
+{
+  if( !GetIsObjectValid(oPlayer) ) return;
+
+  object oMod = GetModule();
+  SetLocalString(oPlayer, "NWNX_CHAT_GETID", ObjectToString(oPlayer));
+  string sID = GetLocalString(oPlayer, "NWNX_CHAT_GETID");
+  int nID = StringToInt(sID);
+  if( nID != -1)
+  {
+    SetLocalObject(oMod, sSpeech_SpeechList + sID, oPlayer);
+    SetLocalInt(oPlayer, sSpeech_PlayerID, nID);
+  }
+  DeleteLocalString(oPlayer, "NWNX_CHAT_GETID");
+}
+
+void Speech_OnClientExit(object oPlayer)
+{
+  if( !GetIsObjectValid(oPlayer) ) return;
+
+  int nID = GetLocalInt(oPlayer, sSpeech_PlayerID);
+  DeleteLocalInt(oPlayer, sSpeech_PlayerID);
+  DeleteLocalObject(GetModule(), sSpeech_SpeechList + IntToString(nID));
+}
+
+object Speech_GetPlayer(int nID)
+{
+  return GetLocalObject(GetModule(), sSpeech_SpeechList + IntToString(nID));
+}
+
+string Speech_GetChannel(int nChannel)
+{
+    string sChannel;
+
+    switch(nChannel)
+    {
+        case 1: sChannel = TALK; break;
+        case 2: sChannel = SHOUT; break;
+        case 3: sChannel = WHISPER; break;
+        case 4: sChannel = TELL; break;
+        case 5: sChannel = SERVER; break;
+        case 6: sChannel = PARTY; break;
+        case 14: sChannel = DM; break;
+        case 17: sChannel = TALK; break;
+        case 18: sChannel = SHOUT; break;
+        case 19: sChannel = WHISPER; break;
+        case 20: sChannel = TELL; break;
+        case 21: sChannel = SERVER; break;
+        case 22: sChannel = PARTY; break;
+        case 30: sChannel = DM; break;
+        default: sChannel = UNKNOWN; break;
+    }
+    return sChannel;
+}
+
+object GetMessenger()
+{
+    return GetLocalObject(GetModule(), "FKY_CHT_MESSENGER");
+}
+
+void DoLogging(object oSender, string sTarget, int nChan, string sLogText)
+{
+    string sLogMessage = GetName(oSender) + "(" + GetPCPlayerName(oSender) + ")" + sTarget + "[" + Speech_GetChannel(nChan) + "] " + sLogText + "\n";
+    //SetLocalString(oSender, "NWNX!CHAT!LOG", sLogMessage);
+    dbLogMsg(SQLEncodeSpecialChars(sLogMessage), "CHAT", dbGetTRUEID(oSender), dbGetDEXID(oSender),dbGetLIID(oSender),dbGetPLID(oSender), "logchat");
+}
+
+void DoCleanup(object oSender)
+{
+    //DeleteLocalString(oSender, "NWNX!CHAT!TEXT");
+    //DeleteLocalString(oSender, "NWNX!CHAT!SUPRESS");
+    //DeleteLocalString(oSender, "NWNX!CHAT!LOG");
+    return;
+}
+
+string GetSkillName(int nSkill)
+{
+    string sSkill;
+    switch (nSkill)
+    {
+        case 0: sSkill = SKILL0; break;
+        case 1: sSkill = SKILL1; break;
+        case 2: sSkill = SKILL2; break;
+        case 3: sSkill = SKILL3; break;
+        case 4: sSkill = SKILL4; break;
+        case 5: sSkill = SKILL5; break;
+        case 6: sSkill = SKILL6; break;
+        case 7: sSkill = SKILL7; break;
+        case 8: sSkill = SKILL8; break;
+        case 9: sSkill = SKILL9; break;
+        case 10: sSkill = SKILL10; break;
+        case 11: sSkill = SKILL11; break;
+        case 12: sSkill = SKILL12; break;
+        case 13: sSkill = SKILL13; break;
+        case 14: sSkill = SKILL14; break;
+        case 15: sSkill = SKILL15; break;
+        case 16: sSkill = SKILL16; break;
+        case 17: sSkill = SKILL17; break;
+        case 18: sSkill = SKILL18; break;
+        case 19: sSkill = SKILL19; break;
+        case 20: sSkill = SKILL20; break;
+        case 21: sSkill = SKILL21; break;
+        case 22: sSkill = SKILL22; break;
+        case 23: sSkill = SKILL23; break;
+        case 24: sSkill = SKILL24; break;
+        case 25: sSkill = SKILL25; break;
+        case 26: sSkill = SKILL26; break;
+        default: sSkill = ""; break;
+    }
+    return sSkill;
+}
+
+string GetClassName(int nClass)
+{
+    string sClass;
+    switch (nClass)
+    {
+        case 0: sClass = CLASS0; break;
+        case 1: sClass = CLASS1; break;
+        case 2: sClass = CLASS2; break;
+        case 3: sClass = CLASS3; break;
+        case 4: sClass = CLASS4; break;
+        case 5: sClass = CLASS5; break;
+        case 6: sClass = CLASS6; break;
+        case 7: sClass = CLASS7; break;
+        case 8: sClass = CLASS8; break;
+        case 9: sClass = CLASS9; break;
+        case 10: sClass = CLASS10; break;
+        case 27: sClass = CLASS27; break;
+        case 28: sClass = CLASS28; break;
+        case 29: sClass = CLASS29; break;
+        case 30: sClass = CLASS30; break;
+        case 31: sClass = CLASS31; break;
+        case 32: sClass = CLASS32; break;
+        case 33: sClass = CLASS33; break;
+        case 34: sClass = CLASS34; break;
+        case 35: sClass = CLASS35; break;
+        case 36: sClass = CLASS36; break;
+        case 37: sClass = CLASS37; break;
+        default: sClass = ""; break;
+    }
+    return sClass;
+}
+
+int ModifiedGetIsSkillSuccessful(object oPC, int nSkill, int nDC)
+{
+    int nReturn;
+    int nRank = GetSkillRank(nSkill, oPC);
+    int nRoll = d20();
+    if (SILENT_LORE_CHECKS)
+    {
+        if ((nRank + nRoll) < nDC) return FALSE;
+        else return TRUE;
+    }
+    else
+    {
+        string sSign;
+        if (nRank >= 0) sSign = "+";
+        else sSign = "-";
+        string sSuccess;
+        if ((nRank + 20)< nDC)
+        {
+            sSuccess = IMPOSSIBLE;
+            nReturn = FALSE;
+        }
+        else if ((nRank + nRoll) < nDC)
+        {
+            sSuccess = FAILED;
+            nReturn = FALSE;
+        }
+        else
+        {
+            sSuccess = SUCCESS;
+            nReturn = TRUE;
+        }
+        FloatingTextStringOnCreature(COLOR_PURPLE+GetName(oPC)+COLOR_END+" : "+GetSkillName(nSkill)+" : "+sSuccess+" : ("+IntToString(nRoll)+sSign+IntToString(abs(nRank))+" = "+IntToString(nRoll+nRank)+VERSUS+IntToString(nDC)+")", oPC, FALSE);
+        return nReturn;
+    }
+}
+
+void DoSkillCheck(object oPC, int nSkill, int nDC)
+{
+    int nRank = GetSkillRank(nSkill, oPC);
+    int nRoll = d20();
+    string sSign;
+    if (nRank >= 0) sSign = "+";
+    else sSign = "-";
+    string sSuccess;
+    if ((nRank + 20) < nDC) sSuccess = COLOR_RED+IMPOSSIBLE+COLOR_END;
+    else if ((nRank + nRoll) < nDC) sSuccess = COLOR_RED+FAILED+COLOR_END;
+    else sSuccess = COLOR_GREEN+SUCCESS+COLOR_END;
+    AssignCommand(oPC, SpeakString(ESCAPE_STRING+COLOR_PURPLE+GetName(oPC)+COLOR_END+" : "+GetSkillName(nSkill)+" : "+sSuccess+" : ("+IntToString(nRoll)+sSign+IntToString(abs(nRank))+" = "+IntToString(nRoll+nRank)+VERSUS+IntToString(nDC)+")"));
+}
+
+void ListEmotes(object oPlayer)
+{   string sMessage;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"agree "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ag"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"bark "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bk"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"beg "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bg"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"belch "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bh"+COLOR_END+COLOR_WHITE+") (male only)"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"bend "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"bored "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bo"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"bow "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bw"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"burp "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"bp"+COLOR_END+COLOR_WHITE+") (male only)"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"bye "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"cantrip "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ca"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"cast "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"cs"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"celebrate "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"cl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"chat "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ct"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"chant "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"cn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"cheer "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ch"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"choke "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"chortle "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"cr"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"chuckle "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ck"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"collapse "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"co"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"cough "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"cg"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"cry "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"curtsy "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"cy"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"dance "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"da"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"dead "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"dd"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"demand "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"dm"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"die "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"di"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"dodge "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"dg"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"drink "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"dr"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"drunk "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"dn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"duck "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"dk"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"exhausted "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ex"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"fall "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"fl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"fatigue "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"fa"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"fiddle "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"fi"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"fidget "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"fg"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"flop "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"fp"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"giggle "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"gi"+COLOR_END+COLOR_WHITE+") (female only)"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"goodbye "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"gb"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"goodnight "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"gt"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"greet "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"gr"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"groan "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"gn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"guffaw "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"gw"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"hello "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"hl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"hiccup "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"hp"+COLOR_END+COLOR_WHITE+") (male only)"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"hooray "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"hy"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"hoot "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ht"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"howl "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"hw"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"hum "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"hm"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"kneel "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"kn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"laugh "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"la"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"lie "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"look "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"lk"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"meditate "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"md"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"meow "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"mw"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"moan "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"mn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"mock "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"mk"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"moo "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"mo"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"nap "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"np"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"no "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"nod "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"nd"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"nope "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"ouch "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ow"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"peer "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"pe"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"plead "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"pl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"pray "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"pr"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"prone "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"pn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"puke "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"pu"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"read "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"re"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"rest "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"rt"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"roar "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"rr"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"salute "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sa"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"scan "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sn"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"scratch "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sc"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"scream "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sm"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"screech "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"shift "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sh"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sing "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sg"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sip "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sit "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"si"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sleep "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"smoke "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sk"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"snarl "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sneeze "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sz"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"snore "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sob "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sb"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"spasm "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sp"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"spit "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"steal "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"st"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"stoop "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"so"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"stretch "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sr"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"sway "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sy"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"swipe "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"sw"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"talk "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"tl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"taunt "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ta"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"threaten "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"th"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"tired "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"ti"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"toast "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"tt"+COLOR_END+COLOR_WHITE+") (male only)"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"trip "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"tp"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"vomit "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"vm"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"wail "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"wl"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"wave "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"wa"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"weep "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"wp"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"whistle "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"wh"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"woozy "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"wz"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"worship "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"wo"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+EMOTE_SYMBOL+"yawn "+COLOR_END+COLOR_WHITE+"("+COLOR_END+COLOR_PURPLE+EMOTE_SYMBOL+"yw"+COLOR_END+COLOR_WHITE+")"+COLOR_END+NEWLINE;
+    SendMessageToPC(oPlayer, sMessage);
+}
+
+void ListHelp(object oPlayer)
+{
+    string sMessage;
+    sMessage = COLOR_PURPLE+COMMAND1+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+COMMAND2+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d4 "+COLOR_END+COLOR_WHITE+COMMAND2_1+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d6 "+COLOR_END+COLOR_WHITE+COMMAND3+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d8 "+COLOR_END+COLOR_WHITE+COMMAND4+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d10 "+COLOR_END+COLOR_WHITE+COMMAND4_1+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d12 "+COLOR_END+COLOR_WHITE+COMMAND5+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d20 "+COLOR_END+COLOR_WHITE+COMMAND6+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d100 "+COLOR_END+COLOR_WHITE+COMMAND7+COLOR_END+NEWLINE;
+    if (VerifyDMKey(oPlayer) || VerifyAdminKey(oPlayer)) sMessage += COLOR_GREEN + COMMAND_SYMBOL + "playerinfo "+COLOR_END+COLOR_WHITE+COMMAND9+COLOR_END+NEWLINE;
+    else sMessage += COLOR_GREEN + COMMAND_SYMBOL + "playerinfo "+COLOR_END+COLOR_WHITE+COMMAND10+COLOR_END;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpac "+COLOR_END+COLOR_WHITE+COMMAND11+COLOR_END+NEWLINE;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpco "+COLOR_END+COLOR_WHITE+COMMAND12+COLOR_END+NEWLINE;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpel "+COLOR_END+COLOR_WHITE+COMMAND13+COLOR_END+NEWLINE;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpev "+COLOR_END+COLOR_WHITE+COMMAND14+COLOR_END+NEWLINE;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpfi "+COLOR_END+COLOR_WHITE+COMMAND15+COLOR_END+NEWLINE;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpho "+COLOR_END+COLOR_WHITE+COMMAND16+COLOR_END+NEWLINE;
+    if (ENABLE_WEAPON_VISUALS) sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "wpnone "+COLOR_END+COLOR_WHITE+COMMAND50+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "help "+COLOR_END+COLOR_WHITE+COMMAND40+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "list emotes "+COLOR_END+COLOR_WHITE+COMMAND17+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "list ignored "+COLOR_END+COLOR_WHITE+COMMAND19+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "lfg, lfp "+COLOR_END+COLOR_WHITE+COMMAND22+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "partylevels (pl) "+COLOR_END+COLOR_WHITE+"= Shows levels for all party members"+COLOR_END+NEWLINE;
+    //sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "setpass PASSWORD "+COLOR_END+COLOR_WHITE+"= Sets your password so you can access on-line statistics for your account."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN + COMMAND_SYMBOL + "dislike "+COLOR_END+COLOR_WHITE+" = sets the target permantent to dislike."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN + COMMAND_SYMBOL + "undislike "+COLOR_END+COLOR_WHITE+" = sets the target permantent to like."+COLOR_END+NEWLINE;
+    //sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "d "+COLOR_END+COLOR_WHITE+" = sets all characters logged into the server to dislike."+COLOR_END+NEWLINE;
+    //sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "da "+COLOR_END+COLOR_WHITE+" = sets all characters in current area to dislike."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "skillcheck "+COLOR_END+COLOR_WHITE+COMMAND33+COLOR_LT_PURPLE+COMMAND_SYMBOL+"skillcheck "+COMMAND33b+COLOR_END+COLOR_WHITE+COMMAND33c+COLOR_LT_PURPLE+COMMAND_SYMBOL+"skillcheck 3 20"+COLOR_END+COLOR_WHITE+COMMAND33d+COLOR_LT_PURPLE+COMMAND_SYMBOL+"skillslist"+COLOR_END+COLOR_WHITE+COMMAND33e+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE + COMMAND_SYMBOL + "skillslist "+COLOR_END+COLOR_WHITE+COMMAND34+COLOR_LT_PURPLE+COMMAND_SYMBOL+"skillcheck"+COLOR_END+COLOR_WHITE+COMMAND34b+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN + COMMAND_SYMBOL + "ignore "+COLOR_END+COLOR_WHITE+COMMAND35+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN + COMMAND_SYMBOL + "unignore "+COLOR_END+COLOR_WHITE+COMMAND36+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN + COMMAND_SYMBOL + "summon attack "+COLOR_END+COLOR_WHITE+COMMAND37+COLOR_END+NEWLINE;
+    SendMessageToPC(oPlayer, sMessage);
+}
+
+
+void ListDMHelp(object oPlayer)
+{
+    string sMessage;
+    sMessage = COLOR_PURPLE+DMCOMMAND1+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+COMMAND2+COLOR_END+NEWLINE;
+    //sMessage += COLOR_GREEN+"dm_align_chaos "+COLOR_END+COLOR_WHITE+DMCOMMAND43+COLOR_LT_GREEN+"dm_align_chaos "+DMCOMMAND44+COLOR_END+COLOR_WHITE+DMCOMMAND45+COLOR_END+NEWLINE;
+    //sMessage += COLOR_GREEN+"dm_align_evil "+COLOR_END+COLOR_WHITE+DMCOMMAND46+COLOR_LT_GREEN+"dm_align_evil "+DMCOMMAND44+COLOR_END+COLOR_WHITE+DMCOMMAND45+COLOR_END+NEWLINE;
+    //sMessage += COLOR_GREEN+"dm_align_good "+COLOR_END+COLOR_WHITE+DMCOMMAND47+COLOR_LT_GREEN+"dm_align_good "+DMCOMMAND44+COLOR_END+COLOR_WHITE+DMCOMMAND45+COLOR_END+NEWLINE;
+    //sMessage += COLOR_GREEN+"dm_align_law "+COLOR_END+COLOR_WHITE+DMCOMMAND48+COLOR_LT_GREEN+"dm_align_law "+DMCOMMAND44+COLOR_END+COLOR_WHITE+DMCOMMAND45+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_bandm "+COLOR_END+COLOR_WHITE+DMCOMMAND2+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_banplayer "+COLOR_END+COLOR_WHITE+DMCOMMAND3+COLOR_END+NEWLINE;
+    //sMessage += COLOR_GREEN+"dm_banaccount "+COLOR_END+COLOR_WHITE+DMCOMMAND3+COLOR_END+NEWLINE;
+    //sMessage += COLOR_GREEN+"dm_bancdkey "+COLOR_END+COLOR_WHITE+DMCOMMAND3+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_bantemp LENGTH PERIOD REASON "+COLOR_END+COLOR_WHITE+" bans player temporarily. Length can be any number, Period should be DAY or HOUR, always give a reason"+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_banshout_temp "+COLOR_END+COLOR_WHITE+DMCOMMAND5+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_banshout_perm "+COLOR_END+COLOR_WHITE+DMCOMMAND6+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_boot "+COLOR_END+COLOR_WHITE+DMCOMMAND79+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_change_appear "+COLOR_END+COLOR_WHITE+DMCOMMAND7+COLOR_LT_GREEN+"dm_change_appear ("+DMCOMMAND7b+")"+COLOR_END+COLOR_WHITE+DMCOMMAND7c+COLOR_LT_GREEN+"dm_change_appear 8"+COLOR_END+COLOR_WHITE+DMCOMMAND7d+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_change_appear base "+COLOR_END+COLOR_WHITE+DMCOMMAND8+COLOR_LT_GREEN+"dm_change_appear"+COLOR_END+COLOR_WHITE+DMCOMMAND8b+COLOR_LT_GREEN+"dm_change_appear"+COLOR_END+COLOR_WHITE+DMCOMMAND8c+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_create (resref) "+COLOR_END+COLOR_WHITE+DMCOMMAND9+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_freeze "+COLOR_END+COLOR_WHITE+DMCOMMAND10+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_fx "+COLOR_END+COLOR_WHITE+DMCOMMAND11+COLOR_LT_GREEN+"dm_fx ("+DMCOMMAND11b+") 0 0"+COLOR_END+COLOR_WHITE+DMCOMMAND11c+COLOR_LT_GREEN+"dm_vfx 28 0 0"+COLOR_END+COLOR_WHITE+" ."+COLOR_END+NEWLINE;
+    sMessage += COLOR_WHITE+DMCOMMAND11d+COLOR_LT_GREEN+"dm_fx ("+DMCOMMAND11b+") ("+DMCOMMAND11e+") ("+DMCOMMAND11f+") (E/S/SE)"+COLOR_END+COLOR_WHITE+DMCOMMAND11g+COLOR_LT_GREEN+"dm_vfx 209 1 300 ."+COLOR_END+NEWLINE;
+    sMessage += COLOR_WHITE+DMCOMMAND11h+COLOR_LT_GREEN+"dm_vfx 209 1 300 E"+COLOR_END+COLOR_WHITE+DMCOMMAND11i+COLOR_LT_GREEN+"dm_vfx 209 2 0"+COLOR_END+COLOR_WHITE+DMCOMMAND11j+COLOR_LT_GREEN+"dm_fx_list_*"+COLOR_END+COLOR_WHITE+DMCOMMAND11k+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_fx_list_* "+COLOR_END+COLOR_WHITE+DMCOMMAND12+COLOR_LT_PURPLE+"dur, bea, eye, imp, com, fnf"+COLOR_END+COLOR_WHITE+DMCOMMAND12b+COLOR_LT_PURPLE+"dm_fx_list_fnf"+COLOR_END+COLOR_WHITE+DMCOMMAND12c+COLOR_LT_PURPLE+"dm_fx_list_dur"+COLOR_END+COLOR_WHITE+DMCOMMAND12d+COLOR_LT_PURPLE+"dm_fx_list_bea"+COLOR_END+COLOR_WHITE+DMCOMMAND12e+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_fx_loc "+COLOR_END+COLOR_WHITE+DMCOMMAND13+COLOR_LT_GREEN+"dm_fx"+COLOR_END+COLOR_WHITE+DMCOMMAND13b+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_fx_rem "+COLOR_END+COLOR_WHITE+DMCOMMAND14+COLOR_LT_GREEN+"dm_fx command."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_getbanlist "+COLOR_END+COLOR_WHITE+DMCOMMAND15+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_getbanreason "+COLOR_END+COLOR_WHITE+DMCOMMAND16+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_givexp "+COLOR_END+COLOR_WHITE+DMCOMMAND16_1+COLOR_LT_GREEN+"dm_givexp ("+DMCOMMAND16_1b+")"+COLOR_END+COLOR_WHITE+DMCOMMAND16_1c+COLOR_LT_GREEN+"dm_givexp 500"+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_givelevel "+COLOR_END+COLOR_WHITE+DMCOMMAND16_2+COLOR_LT_GREEN+"dm_givelevel ("+DMCOMMAND16_2b+")"+COLOR_END+COLOR_WHITE+DMCOMMAND16_2c+COLOR_LT_GREEN+"dm_givelevel 2"+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_takexp "+COLOR_END+COLOR_WHITE+DMCOMMAND16_3+COLOR_LT_GREEN+"dm_takexp ("+DMCOMMAND16_3b+")"+COLOR_END+COLOR_WHITE+DMCOMMAND16_3c+COLOR_LT_GREEN+"dm_takexp 500"+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_takelevel "+COLOR_END+COLOR_WHITE+DMCOMMAND16_4+COLOR_LT_GREEN+"dm_takelevel ("+DMCOMMAND16_4b+")"+COLOR_END+COLOR_WHITE+DMCOMMAND16_4c+COLOR_LT_GREEN+"dm_takelevel 2"+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    if ((DM_PLAYERS_HEAR_DM && VerifyDMKey(oPlayer) && (!GetIsDM(oPlayer))) || (ADMIN_PLAYERS_HEAR_DM && VerifyAdminKey(oPlayer) && (!GetIsDM(oPlayer)))) sMessage += COLOR_PURPLE+"dm_ignoredm "+COLOR_END+COLOR_WHITE+DMCOMMAND17+COLOR_END+NEWLINE;
+    if ((DMS_HEAR_TELLS && VerifyDMKey(oPlayer) && GetIsDM(oPlayer)) || (DM_PLAYERS_HEAR_TELLS && VerifyDMKey(oPlayer) && (!GetIsDM(oPlayer))) || (ADMIN_DMS_HEAR_TELLS && VerifyAdminKey(oPlayer) && GetIsDM(oPlayer)) || (ADMIN_PLAYERS_HEAR_TELLS && VerifyAdminKey(oPlayer) && (!GetIsDM(oPlayer)))) sMessage += COLOR_PURPLE+"dm_ignoretells "+COLOR_END+COLOR_WHITE+DMCOMMAND19+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_stealth "+COLOR_END+COLOR_WHITE+DMCOMMAND132+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_invis "+COLOR_END+COLOR_WHITE+DMCOMMAND20+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_invuln "+COLOR_END+COLOR_WHITE+DMCOMMAND21+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_item_id "+COLOR_END+COLOR_WHITE+DMCOMMAND73+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_item_destroy_all "+COLOR_END+COLOR_WHITE+DMCOMMAND74+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_item_destroy_equip "+COLOR_END+COLOR_WHITE+DMCOMMAND75+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_item_destroy_inv "+COLOR_END+COLOR_WHITE+DMCOMMAND76+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_help "+COLOR_END+COLOR_WHITE+DMCOMMAND78+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_kill "+COLOR_END+COLOR_WHITE+DMCOMMAND22+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_jump "+COLOR_END+COLOR_WHITE+DMCOMMAND86+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_porthere "+COLOR_END+COLOR_WHITE+DMCOMMAND25+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_porthell "+COLOR_END+COLOR_WHITE+DMCOMMAND26+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portjail "+COLOR_END+COLOR_WHITE+DMCOMMAND27+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portleader "+COLOR_END+COLOR_WHITE+DMCOMMAND28+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portthere "+COLOR_END+COLOR_WHITE+DMCOMMAND29+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_porttown "+COLOR_END+COLOR_WHITE+DMCOMMAND30+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portway "+COLOR_END+COLOR_WHITE+DMCOMMAND130+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartyhere "+COLOR_END+COLOR_WHITE+DMCOMMAND87+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartyhell "+COLOR_END+COLOR_WHITE+DMCOMMAND88+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartyjail "+COLOR_END+COLOR_WHITE+DMCOMMAND89+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartyleader "+COLOR_END+COLOR_WHITE+DMCOMMAND90+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartythere "+COLOR_END+COLOR_WHITE+DMCOMMAND91+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartytown "+COLOR_END+COLOR_WHITE+DMCOMMAND92+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_portpartyway "+COLOR_END+COLOR_WHITE+DMCOMMAND131+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_rez "+COLOR_END+COLOR_WHITE+DMCOMMAND31+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_reset_mod "+COLOR_END+COLOR_WHITE+DMCOMMAND32+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_rest "+COLOR_END+COLOR_WHITE+DMCOMMAND83+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_reveal "+COLOR_END+COLOR_WHITE+DMCOMMAND84+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_hide "+COLOR_END+COLOR_WHITE+DMCOMMAND85+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_settime "+COLOR_END+COLOR_WHITE+DMCOMMAND116+COLOR_END+COLOR_LT_PURPLE+"dm_settime "+DMCOMMAND125+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setvarint "+COLOR_END+COLOR_WHITE+DMCOMMAND109+DMCOMMAND111+DMCOMMAND114+COLOR_END+COLOR_LT_GREEN+"dm_setvarint "+DMCOMMAND104+DMCOMMAND105+COLOR_END+COLOR_WHITE+DMCOMMAND108+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setvarfloat "+COLOR_END+COLOR_WHITE+DMCOMMAND109+DMCOMMAND112+DMCOMMAND114+COLOR_END+COLOR_LT_GREEN+"dm_setvarfloat "+DMCOMMAND104+DMCOMMAND106+COLOR_END+COLOR_WHITE+DMCOMMAND108+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setvarstring "+COLOR_END+COLOR_WHITE+DMCOMMAND109+DMCOMMAND113+DMCOMMAND114+COLOR_END+COLOR_LT_GREEN+"dm_setvarstring "+DMCOMMAND104+DMCOMMAND107+COLOR_END+COLOR_WHITE+DMCOMMAND108+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setvarmodint "+COLOR_END+COLOR_WHITE+DMCOMMAND109+DMCOMMAND111+DMCOMMAND115+COLOR_END+COLOR_LT_PURPLE+"dm_setvarmodint "+DMCOMMAND104+DMCOMMAND105+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setvarmodfloat "+COLOR_END+COLOR_WHITE+DMCOMMAND109+DMCOMMAND112+DMCOMMAND115+COLOR_END+COLOR_LT_PURPLE+"dm_setvarmodfloat "+DMCOMMAND104+DMCOMMAND106+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setvarmodstring "+COLOR_END+COLOR_WHITE+DMCOMMAND109+DMCOMMAND113+DMCOMMAND115+COLOR_END+COLOR_LT_PURPLE+"dm_setvarmodstring "+DMCOMMAND104+DMCOMMAND107+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_getvarint "+COLOR_END+COLOR_WHITE+DMCOMMAND110+DMCOMMAND111+DMCOMMAND114+COLOR_END+COLOR_LT_GREEN+"dm_getvarint "+DMCOMMAND104+COLOR_END+COLOR_WHITE+DMCOMMAND108+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_getvarfloat "+COLOR_END+COLOR_WHITE+DMCOMMAND110+DMCOMMAND112+DMCOMMAND114+COLOR_END+COLOR_LT_GREEN+"dm_getvarfloat "+DMCOMMAND104+COLOR_END+COLOR_WHITE+DMCOMMAND108+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_getvarstring "+COLOR_END+COLOR_WHITE+DMCOMMAND110+DMCOMMAND113+DMCOMMAND114+COLOR_END+COLOR_LT_GREEN+"dm_getvarstring "+DMCOMMAND104+COLOR_END+COLOR_WHITE+DMCOMMAND108+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_getvarmodint "+COLOR_END+COLOR_WHITE+DMCOMMAND110+DMCOMMAND111+DMCOMMAND115+COLOR_END+COLOR_LT_PURPLE+"dm_getvarmodint "+DMCOMMAND104+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_getvarmodfloat "+COLOR_END+COLOR_WHITE+DMCOMMAND110+DMCOMMAND112+DMCOMMAND115+COLOR_END+COLOR_LT_PURPLE+"dm_getvarmodfloat "+DMCOMMAND104+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_getvarmodstring "+COLOR_END+COLOR_WHITE+DMCOMMAND110+DMCOMMAND113+DMCOMMAND115+COLOR_END+COLOR_LT_PURPLE+"dm_getvarmodstring "+DMCOMMAND104+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setweather_a_clear "+COLOR_END+COLOR_WHITE+DMCOMMAND117+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setweather_a_rain "+COLOR_END+COLOR_WHITE+DMCOMMAND118+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setweather_a_reset "+COLOR_END+COLOR_WHITE+DMCOMMAND119+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_setweather_a_snow "+COLOR_END+COLOR_WHITE+DMCOMMAND120+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setweather_m_clear "+COLOR_END+COLOR_WHITE+DMCOMMAND121+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setweather_m_rain "+COLOR_END+COLOR_WHITE+DMCOMMAND122+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setweather_m_reset "+COLOR_END+COLOR_WHITE+DMCOMMAND123+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_setweather_m_snow "+COLOR_END+COLOR_WHITE+DMCOMMAND124+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_spawn "+COLOR_END+COLOR_WHITE+DMCOMMAND126+COLOR_END+COLOR_LT_GREEN+"dm_spawn "+DMCOMMAND127+COLOR_END+COLOR_WHITE+"."+COLOR_END+NEWLINE;
+    if (VerifyAdminKey(oPlayer)) sMessage += COLOR_PURPLE+"dm_sql "+COLOR_END+COLOR_WHITE+DMCOMMAND80+COLOR_END+COLOR_LT_PURPLE+"dm_sql"+DMCOMMAND81+COLOR_END+COLOR_WHITE+DMCOMMAND82+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_unbandm "+COLOR_END+COLOR_WHITE+DMCOMMAND33+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_unbanshout "+COLOR_END+COLOR_WHITE+DMCOMMAND34+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_unfreeze "+COLOR_END+COLOR_WHITE+DMCOMMAND35+COLOR_END+NEWLINE;
+    if ((DM_PLAYERS_HEAR_DM && VerifyDMKey(oPlayer) && (!GetIsDM(oPlayer))) || (ADMIN_PLAYERS_HEAR_DM && VerifyAdminKey(oPlayer) && (!GetIsDM(oPlayer)))) sMessage += COLOR_PURPLE+"dm_unignoredm "+COLOR_END+COLOR_WHITE+DMCOMMAND36+COLOR_END+NEWLINE;
+    if ((DMS_HEAR_TELLS && VerifyDMKey(oPlayer) && GetIsDM(oPlayer)) || (DM_PLAYERS_HEAR_TELLS && VerifyDMKey(oPlayer) && (!GetIsDM(oPlayer))) || (ADMIN_DMS_HEAR_TELLS && VerifyAdminKey(oPlayer) && GetIsDM(oPlayer)) || (ADMIN_PLAYERS_HEAR_TELLS && VerifyAdminKey(oPlayer) && (!GetIsDM(oPlayer)))) sMessage += COLOR_PURPLE+"dm_unignoretells "+COLOR_END+COLOR_WHITE+DMCOMMAND38+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_uninvis "+COLOR_END+COLOR_WHITE+DMCOMMAND39+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_uninvuln "+COLOR_END+COLOR_WHITE+DMCOMMAND40+COLOR_END+NEWLINE;
+    sMessage += ""+COLOR_PURPLE+"/v "+COLOR_END+COLOR_WHITE+DMCOMMAND42+COLOR_END+NEWLINE;
+    sMessage += COLOR_GREEN+"dm_vent "+COLOR_END+COLOR_WHITE+DMCOMMAND128+COLOR_END+COLOR_LT_PURPLE+"/v"+COLOR_END+COLOR_WHITE+DMCOMMAND129+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_lockraid_on "+COLOR_END+COLOR_WHITE+"It will immediately lock portals to lair. Big obelisks will stay plot after the small obelisk is bashed."+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_lockraid_off "+COLOR_END+COLOR_WHITE+"Portals unlocked. Obelisks can be bashed again after the small obelisk is bashed. "+COLOR_END+NEWLINE;
+    sMessage += COLOR_PURPLE+"dm_lockraid_on_timed "+COLOR_END+COLOR_WHITE+"same as dm_lockraid_on but activated after 15 minutes."+COLOR_END+NEWLINE;
+    SendMessageToPC(oPlayer, sMessage);
+}
+
+void ListIgnored(object oPlayer)
+{
+    string sPlayername;
+    string sMessage = "";
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {
+        sPlayername = GetPCPlayerName(oPC);
+        if (GetLocalInt(oPlayer, "CHT_IGNORE" + sPlayername) == TRUE)
+        {
+            sMessage += COLOR_RED+IGNORE1+sPlayername+"."+COLOR_END+NEWLINE;
+        }
+        oPC = GetNextPC();
+    }
+    if (sMessage != "") SendMessageToPC(oPlayer, sMessage);
+    else SendMessageToPC(oPlayer, COLOR_RED+IGNORE2+COLOR_END);
+}
+
+int GetIsChannelSuppressed(int nChannel)
+{
+    int nReturn;
+    switch(nChannel)
+    {
+        case 1: nReturn = DISABLE_TALK_CHANNEL; break;
+        case 2: nReturn = DISABLE_SHOUT_CHANNEL; break;
+        case 3: nReturn = DISABLE_WHISPER_CHANNEL; break;
+        case 4: nReturn = DISABLE_TELL_CHANNEL; break;
+        case 6: nReturn = DISABLE_PARTY_CHANNEL; break;
+        case 14: nReturn = DISABLE_DM_CHANNEL; break;
+        default: nReturn = FALSE; break;
+    }
+    return nReturn;
+}
+int GetIsChannelDeadSuppressed(int nChannel)
+{
+    int nReturn;
+    switch(nChannel)
+    {
+        case 1: nReturn = DISABLE_DEAD_TALK; break;
+        case 2: nReturn = DISABLE_DEAD_SHOUT; break;
+        case 3: nReturn = DISABLE_DEAD_WHISPER; break;
+        case 4: nReturn = DISABLE_DEAD_TELL; break;
+        case 6: nReturn = DISABLE_DEAD_PARTY; break;
+        case 14: nReturn = DISABLE_DEAD_DM; break;
+        default: nReturn = FALSE; break;
+    }
+    return nReturn;
+}
+int GetIsChannelSilencedSuppressed(int nChannel)
+{
+    int nReturn;
+    switch(nChannel)
+    {
+        case 1: nReturn = DISABLE_SILENCED_TALK; break;
+        case 2: nReturn = DISABLE_SILENCED_SHOUT; break;
+        case 3: nReturn = DISABLE_SILENCED_WHISPER; break;
+        case 4: nReturn = DISABLE_SILENCED_TELL; break;
+        case 6: nReturn = DISABLE_SILENCED_PARTY; break;
+        case 14: nReturn = DISABLE_SILENCED_DM; break;
+        default: nReturn = FALSE; break;
+    }
+    return nReturn;
+}
+int GetIsSilenced(object oPC)
+{
+    effect eEffect = GetFirstEffect(oPC);
+    while (GetIsEffectValid(eEffect))
+    {
+        if (GetEffectType(eEffect) == EFFECT_TYPE_SILENCE) return TRUE;
+        eEffect = GetNextEffect(oPC);
+    }
+    return FALSE;
+}
+void SendMessageToPCDMs(string sMessage)
+{
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {//check to see if they've chosen to ignore
+        if (VerifyDMKey(oPC) && (!GetIsDM(oPC)) && (!GetLocalInt(oPC, "FKY_CHT_IGNORETELLS")))
+        {
+            if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oPC, sMessage, GetMessenger());
+            else SendMessageToPC(oPC, sMessage);
+        }
+        oPC = GetNextPC();
+    }
+}
+void SendMessageToPCAdmins(string sMessage)
+{
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {//check to see if they've chosen to ignore
+        if (VerifyAdminKey(oPC) && (!GetIsDM(oPC)) && (!GetLocalInt(oPC, "FKY_CHT_IGNORETELLS")))
+        {
+            if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oPC, sMessage, GetMessenger());
+            else SendMessageToPC(oPC, sMessage);
+        }
+        oPC = GetNextPC();
+    }
+}
+void SendMessageToDMDMs(string sMessage)
+{
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {//check to see if they've chosen to ignore
+        if (VerifyDMKey(oPC) && GetIsDM(oPC) && (!GetLocalInt(oPC, "FKY_CHT_IGNORETELLS")))
+        {
+            if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oPC, sMessage, GetMessenger());
+            else SendMessageToPC(oPC, sMessage);
+        }
+        oPC = GetNextPC();
+    }
+}
+void SendMessageToDMAdmins(string sMessage)
+{
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {//check to see if they've chosen to ignore
+        if (VerifyAdminKey(oPC) && GetIsDM(oPC) && (!GetLocalInt(oPC, "FKY_CHT_IGNORETELLS")))
+        {
+            if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oPC, sMessage, GetMessenger());
+            else SendMessageToPC(oPC, sMessage);
+        }
+        oPC = GetNextPC();
+    }
+}
+void GetBanList(object oPlayer)
+{
+    string sString = "";
+    string sList = "";
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {
+        if (GetLocalInt(oPlayer,"SHOUTBAN"))
+        {
+            sString = COLOR_RED+GetName(oPC)+BAN1+COLOR_END+NEWLINE;
+            sList += sString;
+        }
+        if (GetLocalInt(oPC, "FKY_CHT_BANDM") == TRUE)
+        {
+            sString = COLOR_RED+GetName(oPC)+BAN2+COLOR_END+NEWLINE;
+            sList += sString;
+        }
+        oPC = GetNextPC();
+    }
+    if (sList != "") SendMessageToPC(oPlayer, sList);
+    else SendMessageToPC(oPlayer, COLOR_RED+BAN3+COLOR_END);
+}
+void DMTellForwarding(object oPlayer, string sTarget, string sMessage, int nChannel)
+{
+    string sSend = COLOR_PURPLE + GetName(oPlayer) + "(" + GetPCPlayerName(oPlayer) + ")" + sTarget + COLOR_END+COLOR_GREEN+"["+TELL+"] " + sMessage + COLOR_END+NEWLINE;
+    if ((nChannel == 4) || (ENABLE_DM_TELL_ROUTING && (nChannel == 20)))
+    {
+        if (DMS_HEAR_TELLS) SendMessageToDMDMs(sSend);
+        if (DM_PLAYERS_HEAR_TELLS) SendMessageToPCDMs(sSend);
+        if (ADMIN_DMS_HEAR_TELLS) SendMessageToDMAdmins(sSend);
+        if (ADMIN_PLAYERS_HEAR_TELLS) SendMessageToPCAdmins(sSend);
+    }
+    else if ((nChannel == 20) && DM_TELLS_ROUTED_ONLY_TO_ADMINS)
+    {
+        if (ADMIN_DMS_HEAR_TELLS) SendMessageToDMAdmins(sSend);
+        if (ADMIN_PLAYERS_HEAR_TELLS) SendMessageToPCAdmins(sSend);
+    }
+}
+void DMChannelForwardToDMs(object oPlayer, string sMessage)
+{
+    string sSend = COLOR_PURPLE + GetName(oPlayer) + "(" + GetPCPlayerName(oPlayer) + ")" + ": "+COLOR_END+COLOR_LT_BLUE+"["+DM+"] " + sMessage + COLOR_END+NEWLINE;
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {
+        if (VerifyDMKey(oPC) && (!GetIsDM(oPC)) && (!GetLocalInt(oPC, "FKY_CHT_IGNOREDM")))
+        {
+            if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oPC, sSend, GetMessenger());
+            else SendMessageToPC(oPC, sSend);
+        }
+        oPC = GetNextPC();
+    }
+}
+void DMChannelForwardToAdmins(object oPlayer, string sMessage)
+{
+    string sSend = COLOR_PURPLE + GetName(oPlayer) + "(" + GetPCPlayerName(oPlayer) + ")" + ":"+COLOR_END+COLOR_LT_BLUE+"[DM] " + sMessage + COLOR_END+NEWLINE;
+    object oPC = GetFirstPC();
+    while (GetIsObjectValid(oPC))
+    {
+        if (VerifyAdminKey(oPC) && (!GetIsDM(oPC)) && (!GetLocalInt(oPC, "FKY_CHT_IGNOREDM")))
+        {
+            if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oPC, sSend, GetMessenger());
+            else SendMessageToPC(oPC, sSend);
+        }
+        oPC = GetNextPC();
+    }
+}
+void DoDMInvis(object oPlayer)
+{
+    effect eEffect = EffectCutsceneGhost();
+    effect eEffect2 = EffectVisualEffect(VFX_DUR_CUTSCENE_INVISIBILITY);
+    effect eLink = SupernaturalEffect(EffectLinkEffects(eEffect, eEffect2));
+    ApplyEffectToObject(2, eLink, oPlayer);
+}
+void DoDMUninvis(object oPlayer)
+{
+    effect eEffect = GetFirstEffect(oPlayer);
+    while (GetIsEffectValid(eEffect))
+    {
+        if (GetEffectCreator(eEffect) == GetModule()) DelayCommand(0.1, RemoveEffect(oPlayer, eEffect));
+        eEffect = GetNextEffect(oPlayer);
+    }
+}
+
+string ClassLevels(object oPC, int bAbbrClass=FALSE, int bShowLevels=TRUE) {
+   int nClass1 = GetClassByPosition(1, oPC);
+   int nClass2 = GetClassByPosition(2, oPC);
+   int nClass3 = GetClassByPosition(3, oPC);
+   int nClassLevel1 = GetLevelByClass(nClass1, oPC);
+   int nClassLevel2 = GetLevelByClass(nClass2, oPC);
+   int nClassLevel3 = GetLevelByClass(nClass3, oPC);
+   string sClasses;
+   if (!bShowLevels) {
+      int nMax = GetMax(GetMax(nClassLevel1, nClassLevel2), nClassLevel3);
+      if (nMax==nClassLevel1) return COLOR_LT_BLUE + ClassString(nClass1, bAbbrClass)+COLOR_END;
+      if (nMax==nClassLevel2) return COLOR_LT_BLUE + ClassString(nClass2, bAbbrClass)+COLOR_END;
+      if (nMax==nClassLevel3) return COLOR_LT_BLUE + ClassString(nClass3, bAbbrClass)+COLOR_END;
+      return "Unknown Class";
+   }
+   int nLevel = GetHitDice(oPC);
+   sClasses = COLOR_LT_BLUE + ClassString(nClass1, bAbbrClass)+COLOR_END;
+   if (bShowLevels) sClasses += COLOR_WHITE + " "+IntToString(nClassLevel1)+COLOR_END;
+   if (nClass2 != CLASS_TYPE_INVALID) {
+      sClasses += " / " + COLOR_LT_BLUE + ClassString(nClass2, bAbbrClass)+COLOR_END;
+      if (bShowLevels) sClasses += COLOR_WHITE + " " +IntToString(nClassLevel2)+COLOR_END;
+   }
+   if (nClass3 != CLASS_TYPE_INVALID) {
+      sClasses += " / "+ COLOR_LT_BLUE + ClassString(nClass3, bAbbrClass)+COLOR_END;
+      if (bShowLevels) sClasses += COLOR_WHITE + " "+IntToString(nClassLevel3)+COLOR_END;
+   }
+   return sClasses;
+}
+
+void LookingForPartyShout() {
+   string sClasses = ClassLevels(OBJECT_SELF, TRUE, FALSE);
+   int nLevel = GetHitDice(OBJECT_SELF);
+   string sLFG = "Level " + IntToString(nLevel) + " looking for Party " + COLOR_LT_GREEN + "(" + sClasses + ")" + COLOR_END;
+   //SpeakString(sLFG, TALKVOLUME_SHOUT);
+   NWNX_Chat_SendMessage(TALKVOLUME_SHOUT, sLFG);
+}
+
+void PartyLevels(object oPC) {
+   string sText;
+   int bSelfDMorAdmin = (VerifyDMKey(oPC) || VerifyAdminKey(oPC));
+   object oParty = GetIsDM(oPC) ? GetFirstPC() : GetFirstFactionMember(oPC, TRUE);
+   while (GetIsObjectValid(oParty)) {
+      if (oParty!=oPC) {
+         sText += COLOR_ORANGE + GetName(oParty) + COLOR_END;
+         sText += " (" + GetName(GetArea(oParty)) + ") ";
+         sText += "AC " + IntToString(GetAC(oParty));
+         sText += " / HP " + IntToString(GetMaxHitPoints(oParty));
+         sText += " / AB " + IntToString(GetBaseAttackBonus(oParty));
+         sText += " " + COLOR_LT_BLUE + ClassLevels(oParty, TRUE, bSelfDMorAdmin);
+         sText += " " + GetSubRace(oParty);
+         sText += " " + IntToString(GetHitDice(oParty)) + COLOR_END + "\n";
+      }
+     oParty = GetIsDM(oPC) ? GetNextPC() : GetNextFactionMember(oPC, TRUE);
+   }
+   if (sText=="") sText = "You aren't partying.";
+   SendMessageToPC(oPC, sText);
+}
+
+void ShowInfo(object oPlayer, object oGetInfoFrom)
+{
+    //collect info
+    int bSelfDMorAdmin = (VerifyDMKey(oPlayer) || VerifyAdminKey(oPlayer) || (oPlayer == oGetInfoFrom));
+    int nIsDM = GetIsDM(oGetInfoFrom);
+    string sName = GetName(oGetInfoFrom);
+    string sPlayername = GetPCPlayerName(oGetInfoFrom);
+    NWNX_SQL_ExecuteQuery("select name from trueid where trueid="+IntToString(dbGetTRUEID(oGetInfoFrom)));
+    NWNX_SQL_ReadyToReadNextRow();
+    NWNX_SQL_ReadNextRow();
+    string sTRUEIDname = NWNX_SQL_ReadDataInActiveRow(0);
+    string sTRUEID = IntToString(dbGetTRUEID(oGetInfoFrom));
+    string sKey = GetPCPublicCDKey(oGetInfoFrom);
+    string sIP = GetPCIPAddress(oGetInfoFrom);
+    string sFactionMembers = "";
+    string sClasses = ClassLevels(oGetInfoFrom, FALSE, bSelfDMorAdmin);
+    int nGold = GetGold(oGetInfoFrom);
+    int nX;
+    if (bSelfDMorAdmin)
+    {
+        object oLeader = GetFactionLeader(oGetInfoFrom);
+        object oMember = GetFirstFactionMember(oGetInfoFrom);
+        while (GetIsObjectValid(oMember))
+        {
+            if (oMember==oLeader) sFactionMembers = COLOR_WHITE+GetName(oMember)+COLOR_END+COLOR_BLUE+" ["+LFG1+IntToString(GetHitDice(oMember))+"] "+COLOR_END+COLOR_ORANGE+LEADER+COLOR_END+NEWLINE+sFactionMembers;
+            else sFactionMembers = sFactionMembers+COLOR_WHITE+GetName(oMember)+COLOR_END+COLOR_BLUE+" ["+LFG1+IntToString(GetHitDice(oMember))+"] "+COLOR_END+NEWLINE;
+            oMember = GetNextFactionMember(oGetInfoFrom);
+        }
+    }
+    int nLevel = GetHitDice(oGetInfoFrom);
+    string sSubrace = GetSubRace(oGetInfoFrom);
+    string sFAID = SDB_GetFAID(oGetInfoFrom);
+    string sFaction = (StringToInt(sFAID)) ? SDB_FactionGetName(sFAID) : "Factionless";
+    string sFactionRank = SDB_FactionGetRank(oGetInfoFrom);
+    if (sFactionRank != "") sFaction = sFactionRank + " of " + sFaction;
+    if (sSubrace=="") sSubrace = NONE;
+    string sMessage = COLOR_ORANGE+NFOHEADER+COLOR_END+NEWLINE;
+    int nFameSpent = GetLocalInt(oGetInfoFrom, "PLAYER_FAME_SPENT");
+    int nFame = GetLocalInt(oGetInfoFrom, "PLAYER_FAME");
+    int nTotalFame = nFame + nFameSpent;
+    string sFameInfo = IntToString(nTotalFame) + " (spent: " + IntToString(nFameSpent) + ")";
+    string sFameRanking = GetLocalString(oGetInfoFrom, "PLAYER_FAME_RANKING");
+    string sDiplomacyColor = COLOR_WHITE+"(N) "+COLOR_END+COLOR_BLUE;
+    string sFAIDplayer = SDB_GetFAID(oPlayer);
+    string sInfoFromID = (StringToInt(sFAID)) ? "F" + sFAID : "A" + IntToString(dbGetACID(oGetInfoFrom));
+    string sPlayerID = (StringToInt(sFAIDplayer)) ? "F" + sFAIDplayer : "A" + IntToString(dbGetACID(oPlayer));
+    if (!nIsDM)
+    {
+        if (StringToInt(sFAID) && sFAID == sFAIDplayer) sDiplomacyColor = COLOR_WHITE+"(F) "+COLOR_END+COLOR_GREEN;
+        else if (GetIsTokenInString(sInfoFromID, EnemyGetList(oPlayer, StringToInt(sFAIDplayer))) || GetIsTokenInString(sPlayerID, EnemyGetList(oGetInfoFrom, StringToInt(sFAID))))
+        {
+            sDiplomacyColor = COLOR_WHITE+"(H) "+COLOR_END+COLOR_RED;
+        }
+    }
+    sMessage += COLOR_ORANGE+NFO1+COLOR_END+sDiplomacyColor+sName+COLOR_END+NEWLINE;
+    sMessage += COLOR_ORANGE+NFO2+COLOR_END+COLOR_WHITE+sPlayername+COLOR_END+NEWLINE;
+    sMessage += COLOR_ORANGE+"TRUEID: "+COLOR_END+COLOR_LT_GREEN+sTRUEIDname+"   "+sTRUEID+COLOR_END+NEWLINE;
+    if (!nIsDM)
+    {
+        sMessage += COLOR_ORANGE+"Faction: "+COLOR_END+COLOR_WHITE+sFaction+COLOR_END+NEWLINE;
+        sMessage += COLOR_ORANGE+NFOHD+COLOR_END+IntToString(nLevel)+NEWLINE;
+        sMessage += COLOR_ORANGE+"Max Class: "+COLOR_END+sClasses+" ";
+        sMessage += COLOR_ORANGE+NFO11+COLOR_END+COLOR_LT_BLUE+sSubrace+COLOR_END+NEWLINE;
+        sMessage += COLOR_ORANGE+"Character Value Rating: "+COLOR_END+FloatToString(1.0+GetCVRating(oGetInfoFrom),0,2)+NEWLINE;
+        sMessage += COLOR_ORANGE+"Player Fame: "+COLOR_END+COLOR_WHITE+sFameInfo+COLOR_ORANGE+" Ranking: "+COLOR_WHITE+sFameRanking+COLOR_END+NEWLINE;
+        int nKills  = GetLocalInt(oGetInfoFrom, "Kills");
+        string sPKer = "Kills: " + IntToString(nKills);
+        sMessage += COLOR_ORANGE+"PvP "+COLOR_END+COLOR_GREEN+sPKer+COLOR_END/*+COLOR_RED+sPKed+COLOR_END*/+NEWLINE;
+    }
+
+    if (bSelfDMorAdmin)
+    {
+        int nXP = GetXP(oGetInfoFrom);
+        int nNextXP = (( nLevel * ( nLevel + 1 )) / 2 * 1000 );
+        int nXPForNextLevel = nNextXP - nXP;
+        if (nLevel==40) nXPForNextLevel = 0;
+
+        sMessage += COLOR_ORANGE+NFO3+COLOR_END+COLOR_WHITE+sKey+COLOR_END+" ";
+        sMessage += COLOR_ORANGE+NFO4+COLOR_END+COLOR_WHITE+sIP+COLOR_END+NEWLINE;
+        if (nXPForNextLevel > 1) sMessage += COLOR_ORANGE+NFO7+COLOR_END+COLOR_RED+IntToString(nXPForNextLevel)+COLOR_END+NEWLINE;
+        sMessage += COLOR_ORANGE+NFO9+COLOR_END+sFactionMembers;
+        if (oPlayer != oGetInfoFrom)
+        {
+            sMessage += COLOR_ORANGE+NFO6+COLOR_END+COLOR_YELLOW+IntToString(nXP)+COLOR_END+NEWLINE;
+            sMessage += COLOR_ORANGE+NFO12+COLOR_END+COLOR_GOLD+IntToString(nGold)+COLOR_END+NEWLINE;
+            //sMessage += COLOR_ORANGE+"---------------------"+COLOR_END;
+            //sMessage += COLOR_GREEN+GetFameTitle(nTotalFame, StringToInt(sFameRanking))+GetTitleString(oGetInfoFrom)+COLOR_END+NEWLINE;
+        }
+   }
+   SendMessageToPC(oPlayer, sMessage);
+}
+
+void SetDisLike(object oPC, int bThisAreaOnly = FALSE)
+{
+    SendMessageToPC(oPC, "This feature is temporary disabled, use ( !dislike / !undislike ) on target to change diplomacy settings.");
+}
+
+void GiveLevel(object oReceiver, object oDM, int nLevels, int nMessage = TRUE)
+{
+    int nHD = GetHitDice(oReceiver);
+    if (nHD < 40)
+    {
+        int nTargetLevel = nHD+nLevels;
+        if (nTargetLevel > 40) nTargetLevel = 40;
+        int nTargetXP = (( nTargetLevel * ( nTargetLevel - 1 )) / 2 * 1000 );
+        SetXP(oReceiver, nTargetXP);
+        string sLevel = XP4;
+        if (nLevels == 1) sLevel = XP5;
+        if (nMessage) SendMessageToPC(oDM, COLOR_RED+XP6+IntToString(nLevels)+sLevel+XP7+GetName(oReceiver) + "."+COLOR_END);
+    }
+    else if (nMessage) SendMessageToPC(oDM, COLOR_RED+GetName(oReceiver)+XP3+COLOR_END);
+}
+
+void TakeLevel(object oLoser, object oDM, int nLevels, int nMessage = TRUE)
+{
+    int nHD = GetHitDice(oLoser);
+    int nTargetLevel = nHD-nLevels;
+    if (nTargetLevel < 1) nTargetLevel = 1;
+    int nTargetXP = (( nTargetLevel * ( nTargetLevel - 1 )) / 2 * 1000 ) + 1; // + 1 to stop subrace from applying.
+    SetXP(oLoser, nTargetXP);
+    string sLevel = XP4;
+    if (nLevels == 1) sLevel = XP5;
+    if (nMessage) SendMessageToPC(oDM, COLOR_RED+XP8+IntToString(nLevels)+sLevel+XP10+GetName(oLoser) + "."+COLOR_END);
+}
+
+string GetColorStringForColumn(int nNum)
+{
+    string sReturn;
+    switch(nNum)
+    {
+        case 1: sReturn = COLOR_RED; break;
+        case 2: sReturn = COLOR_ORANGE; break;
+        case 3: sReturn = COLOR_YELLOW; break;
+        case 4: sReturn = COLOR_GREEN; break;
+        case 5: sReturn = COLOR_BLUE; break;
+        case 6: sReturn = COLOR_PURPLE; break;
+    }
+    return sReturn;
+}
+
+location VerifyLocation(object oPC, string sVLNormalCase)
+{
+    location lReturn = GetLocalLocation(oPC, "FKY_CHAT_LOCATION"); //have they already used the targeter?
+    if (!GetIsObjectValid(GetAreaFromLocation(lReturn)))
+    {
+        FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oPC, FALSE);//tell them
+        SetLocalString(oPC, "FKY_CHAT_COMMAND", LOCATION_TARGET+"dm_" + sVLNormalCase);//mark them for the targeter
+        if (!GetIsObjectValid(GetItemPossessedBy(oPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oPC);//give them a targeter if they need one
+    }
+    //else DeleteLocalLocation(oPC, "FKY_CHAT_LOCATION");//variable cleanup - done in individual commands
+    return lReturn;
+}
+
+//return the target object, if invaild a validity check will return out of the chat script
+object VerifyTarget(object oTarget, object oPC, string sVTNormalCase, string sCommandType = OBJECT_TARGET, int nPCOnly = TRUE, int nCreatureOnly = TRUE)//defaults to OBJECT_TARGET for object - no area object allowed; other option is AREA_TARGET_OK for area object allowed
+{
+    object oReturn = oTarget;
+    if (!GetIsObjectValid(oReturn))//target verification - do they need to use the command targeter?
+    {
+        oReturn = GetLocalObject(oPC, "FKY_CHAT_TARGET"); //have they already used the targeter?
+        if (!GetIsObjectValid(oReturn))
+        {
+            FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oPC, FALSE);//tell them
+            SetLocalString(oPC, "FKY_CHAT_COMMAND", sCommandType+"dm_" + sVTNormalCase);//mark them for the targeter
+            if (!GetIsObjectValid(GetItemPossessedBy(oPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oPC);//give them a targeter if they need one
+            return OBJECT_INVALID;
+        }
+        else DeleteLocalObject(oPC, "FKY_CHAT_TARGET");//variable cleanup
+    }
+    if (sCommandType == AREA_TARGET_OK)//failsafe check to ensure that if the command allows area targets it wiil ignore PCOnly and Creature only settings
+    {
+        nPCOnly = FALSE;
+        nCreatureOnly = FALSE;
+    }
+    if (nPCOnly && (!GetIsPC(oReturn)))
+    {
+        FloatingTextStringOnCreature(COLOR_RED+PC_ONLY+COLOR_END, oPC, FALSE);
+        return OBJECT_INVALID;
+    }
+    if (nCreatureOnly && (GetObjectType(oReturn) != OBJECT_TYPE_CREATURE))
+    {
+        FloatingTextStringOnCreature(COLOR_RED+CREATURE_ONLY+COLOR_END, oPC, FALSE);
+        return OBJECT_INVALID;
+    }
+    return oReturn;
+}
+
+void ChangeDiplomacy(object oPC, object oTarget, string sWhatToDo = "dislike")
+{
+    string sEnemyListPC;    string sEnemyListTarget;
+    string sPCWhich = "A";  string sTargetWhich = "A"; // A = ACCOUNT
+    string sIdPC;           string sIdTarget;
+
+    string sFAIDpc = SDB_GetFAID(oPC);
+    string sFAIDtarget = SDB_GetFAID(oTarget);
+    object oModule = GetModule();
+
+    if (StringToInt(sFAIDpc)) // PC is factioned?
+    {
+        if (SDB_FactionHasRank(oPC))
+        {   // PC is not leader and is trying to like/dislike target
+            SendMessageToPC(oPC, "Changing Faction-Diplomacy only allowed for General or Commander");
+            return;
+        }
+        else if (sFAIDtarget == sFAIDpc)
+        {
+            SendMessageToPC(oPC, "You can not dislike/undislike your own faction");
+            return;
+        }
+        // Use faction diplomacy
+        sEnemyListPC = GetLocalString(oModule, "ENEMY_LIST" + sFAIDpc);
+        sPCWhich = "F"; // F = FACTION
+        sIdPC = sPCWhich + sFAIDpc;
+    }
+    else
+    {
+        // else use trueid diplomacy
+        sEnemyListPC = GetLocalString(oPC, "ENEMY_LIST");
+        sIdPC = sPCWhich + IntToString(dbGetTRUEID(oPC));
+    }
+
+    if (StringToInt(sFAIDtarget)) // Target is factioned?
+    {
+        if (sWhatToDo == "undislike")
+        {
+            if (SDB_FactionHasRank(oTarget))
+            {
+                SendMessageToPC(oPC, "Target is not General or Commander and can not confirm your undislike request");
+                return;
+            }
+        }
+        // Use faction diplomacy
+        sEnemyListTarget = GetLocalString(oModule, "ENEMY_LIST" + sFAIDtarget);
+        sTargetWhich = "F"; // F = FACTION
+        sIdTarget = sTargetWhich + sFAIDtarget;
+    }
+    else
+    {
+        // else use trueid diplomacy
+        sEnemyListTarget = GetLocalString(oTarget, "ENEMY_LIST");
+        sIdTarget = sTargetWhich + IntToString(dbGetTRUEID(oTarget));
+    }
+
+    // can not find eachother in any enemy list
+    if (!GetIsTokenInString(sIdPC, sEnemyListTarget) && !GetIsTokenInString(sIdTarget, sEnemyListPC))
+    {
+        if (sWhatToDo == "dislike")
+        {
+            if (GetStringLength(sEnemyListTarget) < GetStringLength(sEnemyListPC))
+            { // target list smaller, add pc to target list
+                EnemySaveList(oTarget, AddTokenToString(sIdPC, sEnemyListTarget), sTargetWhich);
+            }
+            else
+            { // add target to pc list
+                EnemySaveList(oPC, AddTokenToString(sIdTarget, sEnemyListPC), sPCWhich);
+            }
+            SendMessageToPC(oPC, "Diplomacy has been changed to dislike");
+            DelayCommand(1.0, SDB_LoadDiplomacy(oPC, FALSE, TRUE));
+        }
+        else if (sWhatToDo == "undislike")
+        {
+            SendMessageToPC(oPC, "Target is not disliked");
+        }
+    }
+    else // found someone in list
+    {
+        if (sWhatToDo == "dislike")
+        {
+            SendMessageToPC(oPC, "Diplomacy was allready set to dislike");
+        }
+        else if (sWhatToDo == "undislike")
+        {
+            if (GetLocalInt(oPC, "UNDISLIKE" + sIdTarget))
+            {
+                string sNew = DeleteTokenFromString(sIdPC, sEnemyListTarget);
+                if (sNew != sEnemyListTarget) EnemySaveList(oTarget, sNew, sTargetWhich);
+
+                sNew = DeleteTokenFromString(sIdTarget, sEnemyListPC);
+                if (sEnemyListPC != sEnemyListTarget) EnemySaveList(oPC, sNew, sPCWhich);
+                SendMessageToPC(oPC, "Diplomacy has been changed to like");
+                SendMessageToPC(oTarget, GetName(oPC) + " has confirmed your undislike request");
+                DeleteLocalInt(oPC, "UNDISLIKE" + sIdTarget);
+            }
+            else
+            {
+                SendMessageToPC(oPC, "Undislike has to be confirmed by target to be valid, a message has been sent.");
+                SendMessageToPC(oTarget, GetName(oPC) + " is asking for changing your diplomacy settings. Send him a tell ( !undislike ) to confirm it");
+                SetLocalInt(oTarget, "UNDISLIKE" + sIdPC, TRUE);
+            }
+        }
+    }
+}
+
+//                         oPC          oTarget          sText       nChannel
+void HandleCommands(object oCPC, object oCTarget, string sCText, int nCChannel)
+{
+        string sSort, sTarget, sPlayer, sInvite, sKey, sNormalCase;
+        int nText, nCount, nPos, nLang, nCheck;
+        object oItem;
+        location lLoc;
+        NWNX_Chat_SkipMessage(); //suppress command speech no matter what, helps avoid circumvention of shout ban
+        if (!GetIsDead(oCPC))
+        {
+            sNormalCase = GetStringRight(sCText, GetStringLength(sCText) - 1); //preserve caps for setname command
+            sCText = GetStringLowerCase(sNormalCase);  //case insensitive
+            WriteTimestampedLogEntry(sCText);
+            sSort = GetStringLeft(sCText, 1);
+            nText = FindSubString("a d h i l m p s t u w", sSort);
+            switch (nText)       //0 2 4 6 8 101214161820
+            {
+    /*a*/       case 0:
+                if (sCText == "attack")
+                {
+                    object oTarget = GetAttackTarget(oCPC);
+                    object oSummon;
+
+                    AssignCommand(oSummon, ActionDoCommand(ActionAttack(oTarget)));
+                }
+                break;
+    /*p*/       case 12:
+                if (sCText == "playerinfo" || sCText == "pi")
+                {
+                    if (!GetIsObjectValid(oCTarget))//target verification - do they need to use the command targeter?
+                    {
+                        oCTarget = GetLocalObject(oCPC, "FKY_CHAT_TARGET"); //have they already used the targeter?
+                        if (!GetIsObjectValid(oCTarget))
+                        {
+                            FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oCPC, FALSE);//tell them
+                            SetLocalString(oCPC, "FKY_CHAT_COMMAND", OBJECT_TARGET+COMMAND_SYMBOL + sNormalCase);//mark them for the targeter
+                            if (!GetIsObjectValid(GetItemPossessedBy(oCPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oCPC);//give them a targeter if they need one
+                            return;
+                        }
+                        else DeleteLocalObject(oCPC, "FKY_CHAT_TARGET");//variable cleanup
+                    }
+                    //if ((nCChannel == 4) || (nCChannel == 20))//can now target with the command targeter
+                    if (GetIsPC(oCTarget))
+                    {
+                        ShowInfo(oCPC, oCTarget);
+                    }
+                    else FloatingTextStringOnCreature(COLOR_RED+PC_ONLY+COLOR_END, oCPC, FALSE);
+
+                } else if (sCText=="partylevels" || sCText=="pl")
+                {
+                    PartyLevels(oCPC);
+                }
+                break;
+    /*d*/       case 2:
+                if (sCText=="d" || sCText=="da")
+                {
+                    SetDisLike(oCPC, sCText=="da");
+                }
+                else if (sCText == "dislike")
+                {
+                    if (!GetIsObjectValid(oCTarget))//target verification - do they need to use the command targeter?
+                    {
+                        oCTarget = GetLocalObject(oCPC, "FKY_CHAT_TARGET"); //have they already used the targeter?
+                        if (!GetIsObjectValid(oCTarget))
+                        {
+                            FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oCPC, FALSE);//tell them
+                            SetLocalString(oCPC, "FKY_CHAT_COMMAND", OBJECT_TARGET+COMMAND_SYMBOL + sNormalCase);//mark them for the targeter
+                            if (!GetIsObjectValid(GetItemPossessedBy(oCPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oCPC);//give them a targeter if they need one
+                            return;
+                        }
+                        else DeleteLocalObject(oCPC, "FKY_CHAT_TARGET");//variable cleanup
+                    }
+                    if (GetIsPC(oCTarget) && !GetIsDM(oCTarget) && !GetIsDMPossessed(oCTarget) && oCTarget != oCPC)
+                    {
+                        ChangeDiplomacy(oCPC, oCTarget, sCText);
+                    }
+                    else FloatingTextStringOnCreature(COLOR_RED+PC_ONLY+COLOR_END, oCPC, FALSE);
+                }
+                else
+                {
+                    nText = FindSubString("d4 d6 d8 d10 d12 d20 d100", sCText);
+                    switch (nText)       //0  3  6  9   13  17  21
+                    {
+                        case 0: RollDie(oCPC, 4); break;
+                        case 3: RollDie(oCPC, 6); break;
+                        case 6: RollDie(oCPC, 8); break;
+                        case 9: RollDie(oCPC, 10); break;
+                        case 13: RollDie(oCPC, 12); break;
+                        case 17: RollDie(oCPC, 20); break;
+                        case 21: RollDie(oCPC, 100); break;
+                    }
+                }
+                break;
+    /*h*/       case 4:
+                if (sCText=="help") ListHelp(oCPC);
+                break;
+    /*i*/       case 6:
+                if (sCText == "ignore")
+                {
+                    if (!GetIsObjectValid(oCTarget))//target verification - do they need to use the command targeter?
+                    {
+                        oCTarget = GetLocalObject(oCPC, "FKY_CHAT_TARGET"); //have they already used the targeter?
+                        if (!GetIsObjectValid(oCTarget))
+                        {
+                            FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oCPC, FALSE);//tell them
+                            SetLocalString(oCPC, "FKY_CHAT_COMMAND", OBJECT_TARGET+COMMAND_SYMBOL + sNormalCase);//mark them for the targeter
+                            if (!GetIsObjectValid(GetItemPossessedBy(oCPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oCPC);//give them a targeter if they need one
+                            return;
+                        }
+                        else DeleteLocalObject(oCPC, "FKY_CHAT_TARGET");//variable cleanup
+                    }
+                    //if (((nCChannel == 4) ||(nCChannel == 20)) && GetIsObjectValid(oCTarget))//can now target with command targeter
+                    if (GetIsPC(oCTarget))
+                    {
+                        if ((!VerifyDMKey(oCTarget)) && (!VerifyAdminKey(oCTarget)))//can't ignore DMs or Admins
+                        {
+                            if (oCPC != oCTarget)
+                            {
+                                sTarget = GetPCPlayerName(oCTarget);
+                                if (GetLocalInt(oCPC, "FKY_CHT_IGNORE" + sTarget) == FALSE)
+                                {
+                                    sPlayer = GetPCPlayerName(oCPC);
+                                    SetLocalInt(oCPC, "FKY_CHT_IGNORE" + sTarget, TRUE);//ignore list stored on PC ignoring
+                                    SendMessageToPC(oCPC, COLOR_RED+IGNORE3+ sTarget + "."+COLOR_END);
+                                    SendMessageToPC(oCTarget, COLOR_RED + sPlayer +IGNORE4+COLOR_END);
+                                }
+                                else FloatingTextStringOnCreature(COLOR_RED+IGNORE5+ sTarget + "!"+COLOR_END, oCPC, FALSE);
+                            }
+                            else FloatingTextStringOnCreature(COLOR_RED+IGNORE6+COLOR_END, oCPC, FALSE);
+                        }
+                        else FloatingTextStringOnCreature(COLOR_RED+IGNORE7+COLOR_END, oCPC, FALSE);
+                    }
+                    else FloatingTextStringOnCreature(COLOR_RED+PC_ONLY+COLOR_END, oCPC, FALSE);
+                    //else FloatingTextStringOnCreature(COLOR_RED+IGNORE8+COLOR_END, oCPC, FALSE);
+                }
+                break;
+    /*l*/       case 8:
+                if (sCText=="lfg" || sCText=="lfp") {
+                    if (GetLocalInt(oCPC,"SHOUTBAN") || GetLocalInt(oCPC, "FKY_CHT_BANDM")) {//if they've been muted from either channel they can only use this 3 times, to avoid circumventing
+                       SendMessageToPC(oCPC, COLOR_RED+USES_3+COLOR_END);
+                    } else {
+                       LookingForPartyShout();
+                    }
+                }
+                else if (GetStringLeft(sCText, 4) == "list")
+                {
+                    if (sCText=="list emotes") ListEmotes(oCPC);
+                    else if (sCText=="list ignored") ListIgnored(oCPC);
+                }
+                break;
+    /*m*/       case 10://metachannels
+                break;
+    /*s*/       case 14:
+                /*if (GetStringLeft(sCText, 7)=="setpass") {
+                  sCText = GetStringRight(sCText, GetStringLength(sCText)-8);
+                  SDB_UpdateAccountPwd(oCPC, sCText);
+                }
+                else*/ if (GetStringLeft(sCText, 11) == "skillcheck ")//!skillcheck 5 50
+                {
+                    sCText = GetStringRight(sCText, GetStringLength(sCText) - 11);
+                    nPos = FindSubString(sCText, " ");
+                    sSort = GetStringLeft(sCText, nPos);
+                    sCText = GetStringRight(sCText, GetStringLength(sCText) - (nPos+1));
+                    if ((!TestStringAgainstPattern("*n", sSort)) ||  (!TestStringAgainstPattern("*n", sCText))) FloatingTextStringOnCreature(COLOR_RED+REQUIRES_NUMBER+COLOR_END, oCPC, FALSE);
+                    else DoSkillCheck(oCPC, StringToInt(sSort), StringToInt(sCText));
+                }
+                else if (sCText == "skillslist")
+                {
+                    sCText = "";
+                    for (nPos = 0; nPos < 27; nPos++)
+                    {
+                        sCText += IntToString(nPos) + ": " + GetSkillName(nPos) + NEWLINE;
+                    }
+                    SendMessageToPC(oCPC, sCText);
+                }
+                break;
+    /*t*/       case 16:
+                if (sCText=="target")
+                {
+                    sSort = GetLocalString(oCPC, "FKY_CHAT_COMMAND");
+                    if (sSort != "")
+                    {
+                        if (nCChannel == 4 || nCChannel == 20) //must be sent in tell
+                        {
+                            if (GetIsObjectValid(oCTarget))
+                            {
+                                sKey = GetStringLeft(sSort, 1);
+                                sSort = GetStringRight(sSort, GetStringLength(sSort) - 1);
+                                if (sKey == AREA_TARGET_OK ||
+                                    sKey == OBJECT_TARGET)
+                                {
+                                    SetLocalObject(oCPC, "FKY_CHAT_TARGET", oCTarget);
+                                    DeleteLocalString(oCPC, "FKY_CHAT_COMMAND");
+                                    SetLocalString(oCPC, "FKY_CHAT_COMMAND_EXE", sSort);//set the command to speak on them
+                                    DelayCommand(0.1, ExecuteScript("fky_chat_command", oCPC));//this ensures the spoken string fires the chat script again
+                                }
+                                else if (sKey == LOCATION_TARGET)
+                                {
+                                    lLoc = GetLocation(oCTarget);
+                                    if (GetIsObjectValid(GetAreaFromLocation(lLoc)))
+                                    {
+                                        SetLocalLocation(oCPC, "FKY_CHAT_LOCATION", lLoc);
+                                        DeleteLocalString(oCPC, "FKY_CHAT_COMMAND");//here we only delete if they selected a valid location - otherwise propmpt for retry
+                                        SetLocalString(oCPC, "FKY_CHAT_COMMAND_EXE", sSort);//set the command to speak on them
+                                        DelayCommand(0.1, ExecuteScript("fky_chat_command", oCPC));//this ensures the spoken string fires the chat script again
+                                    }
+                                    else FloatingTextStringOnCreature(COLOR_RED+TARGETER_ERROR3+COLOR_END, oCPC, FALSE);
+                                }
+                                else if (sKey == ITEM_TARGET)
+                                {
+                                    DeleteLocalString(oCPC, "FKY_CHAT_COMMAND");
+                                    FloatingTextStringOnCreature(COLOR_RED + TARGETER_ERROR5 + COLOR_END, oCPC, FALSE);
+                                }
+                                else
+                                {
+                                    DeleteLocalString(oCPC, "FKY_CHAT_COMMAND");
+                                    FloatingTextStringOnCreature(COLOR_RED + TARGETER_ERROR5 + COLOR_END, oCPC, FALSE);
+                                }
+                            }
+                            else FloatingTextStringOnCreature(COLOR_RED + TARGET_ON_SERV + COLOR_END, oCPC, FALSE);
+                        }
+                        else
+                        {
+                            DeleteLocalString(oCPC, "FKY_CHAT_COMMAND");
+                            FloatingTextStringOnCreature(COLOR_RED + TARGET_REQ_TELL1 + COLOR_END + COLOR_GREEN + COMMAND_SYMBOL+"target "+ COLOR_END + COLOR_RED + TARGET_REQ_TELL2 + COLOR_END, oCPC, FALSE);
+                        }
+                    }
+                    else FloatingTextStringOnCreature(COLOR_RED + TARGET_NO_COMM + COLOR_END, oCPC, FALSE);
+                }
+                break;
+    /*u*/       case 18:
+                if (sCText=="unignore")
+                {
+                    //if (((nCChannel == 4) ||(nCChannel == 20)) && GetIsObjectValid(oCTarget))//can now be targeted with the command targeter
+                    //{
+                        if (!GetIsObjectValid(oCTarget))//target verification - do they need to use the command targeter?
+                        {
+                            oCTarget = GetLocalObject(oCPC, "FKY_CHAT_TARGET"); //have they already used the targeter?
+                            if (!GetIsObjectValid(oCTarget))
+                            {
+                                FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oCPC, FALSE);//tell them
+                                SetLocalString(oCPC, "FKY_CHAT_COMMAND", OBJECT_TARGET+COMMAND_SYMBOL + sNormalCase);//mark them for the targeter
+                                if (!GetIsObjectValid(GetItemPossessedBy(oCPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oCPC);//give them a targeter if they need one
+                                return;
+                            }
+                            else DeleteLocalObject(oCPC, "FKY_CHAT_TARGET");//variable cleanup
+                        }
+                        if (GetIsPC(oCTarget))
+                        {
+                            sTarget = GetPCPlayerName(oCTarget);
+                            if (GetLocalInt(oCPC, "FKY_CHT_IGNORE" + sTarget) == TRUE)
+                            {
+                                sPlayer = GetPCPlayerName(oCPC);
+                                DeleteLocalInt(oCPC, "FKY_CHT_IGNORE" + sTarget);//ignore list stored on PC ignoring
+                                SendMessageToPC(oCPC, COLOR_RED+UNIGNORE1+ sTarget + "."+COLOR_END);
+                                SendMessageToPC(oCTarget, COLOR_RED + sPlayer+UNIGNORE2+COLOR_END);
+                            }
+                            else FloatingTextStringOnCreature(COLOR_RED+UNIGNORE3+ sTarget + "!"+COLOR_END, oCPC, FALSE);
+                        }
+                        else FloatingTextStringOnCreature(COLOR_RED+PC_ONLY+COLOR_END, oCPC, FALSE);
+                    //}
+                    //else FloatingTextStringOnCreature(COLOR_RED+UNIGNORE4+COLOR_END, oCPC, FALSE);
+                }
+                else if (sCText == "undislike")
+                {
+                    if (!GetIsObjectValid(oCTarget))//target verification - do they need to use the command targeter?
+                    {
+                        oCTarget = GetLocalObject(oCPC, "FKY_CHAT_TARGET"); //have they already used the targeter?
+                        if (!GetIsObjectValid(oCTarget))
+                        {
+                            FloatingTextStringOnCreature(COLOR_GOLD+REQUIRES_TARGET+COLOR_END, oCPC, FALSE);//tell them
+                            SetLocalString(oCPC, "FKY_CHAT_COMMAND", OBJECT_TARGET+COMMAND_SYMBOL + sNormalCase);//mark them for the targeter
+                            if (!GetIsObjectValid(GetItemPossessedBy(oCPC, "fky_chat_target"))) CreateItemOnObject("fky_chat_target", oCPC);//give them a targeter if they need one
+                            return;
+                        }
+                        else DeleteLocalObject(oCPC, "FKY_CHAT_TARGET");//variable cleanup
+                    }
+                    if (GetIsPC(oCTarget) && !GetIsDM(oCTarget))
+                    {
+                        ChangeDiplomacy(oCPC, oCTarget, sCText);
+                    }
+                    else FloatingTextStringOnCreature(COLOR_RED+PC_ONLY+COLOR_END, oCPC, FALSE);
+                }
+                break;
+    /*w*/       case 20:
+                if ((GetStringLeft(sCText, 2) == "wp") && ENABLE_WEAPON_VISUALS)//weapon visuals
+                {
+                    sCText = GetStringRight(sCText, GetStringLength(sCText) - 2);
+                    nText = FindSubString("ac co el ev fi ho none", sCText);
+                    switch (nText)       //0  3  6  9  12 15 18
+                    {
+                        case 0: AddItemPropertyVisualEffect(oCPC,ITEM_VISUAL_ACID); break;
+                        case 3: AddItemPropertyVisualEffect(oCPC,ITEM_VISUAL_COLD); break;
+                        case 6: AddItemPropertyVisualEffect(oCPC,ITEM_VISUAL_ELECTRICAL); break;
+                        case 9: AddItemPropertyVisualEffect(oCPC,ITEM_VISUAL_EVIL); break;
+                        case 12: AddItemPropertyVisualEffect(oCPC,ITEM_VISUAL_FIRE); break;
+                        case 15: AddItemPropertyVisualEffect(oCPC,ITEM_VISUAL_HOLY); break;
+                        case 18: RemoveItemPropertyVisualEffect(oCPC); break;
+                    }
+                }
+                break;
+            }
+        }
+        else FloatingTextStringOnCreature(COLOR_RED+NOT_DEAD+COLOR_END, oCPC, FALSE);//no match
+}
+
+void ShoutBlock(object oSBPC, int nSBChannel)
+{
+    if (nSBChannel == 2) NWNX_Chat_SkipMessage(); //suppress emote speech no matter what, helps avoid circumvention of shout bans
+    FloatingTextStringOnCreature(COLOR_RED+BADEMOTE+COLOR_END, oSBPC, FALSE);//no match
+    if (USING_LINUX && (!GetLocalInt(oSBPC, "FKY_CHAT_EMOTETOGGLE")))
+    {
+        SetLocalInt(oSBPC, "FKY_CHAT_CONVONUMBER", 80);
+        AssignCommand(oSBPC, ClearAllActions(TRUE));
+        AssignCommand(oSBPC, ActionStartConversation(oSBPC, "chat_emote", TRUE, FALSE));
+    }
+}
+
+//                       oPC          sText
+void HandleEmotes(object oEPC, string sEText, int nEChannel)
+{
+    int nText, nSort2;
+    string sSort;
+    if (!GetIsDead(oEPC))
+    {
+        sEText = GetStringLowerCase(GetStringRight(sEText, GetStringLength(sEText) - 1));  //23 commands, case insensitive
+        sSort = GetStringLeft(sEText, 1);
+        nText = FindSubString("abcdefghijklmnopqrstuvwxyz", sSort);
+        nSort2 = nText < 0 ? -1 : nText / 5;
+        switch (nSort2)
+        {
+            case -1:
+                if (USING_LINUX && (sEText == EMOTE_SYMBOL))//double emote symbol toggles emote popup window on and off
+                {
+                    if (GetLocalInt(oEPC, "FKY_CHAT_EMOTETOGGLE")) DeleteLocalInt(oEPC, "FKY_CHAT_EMOTETOGGLE");
+                    else SetLocalInt(oEPC, "FKY_CHAT_EMOTETOGGLE", 1);
+                }
+                else ShoutBlock(oEPC, nEChannel);
+                    break;
+
+            case 0:
+                switch(nText)
+                {
+                    case 0:/*a*/
+                    if (sEText == "ag" || sEText == "agree") DoLoopAnimation(oEPC, ANIMATION_LOOPING_LISTEN);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 1:/*b*/
+                    if (sEText =="bg" || sEText == "beg") DoLoopAnimation(oEPC, ANIMATION_LOOPING_TALK_PLEADING);
+                    else if (sEText == "bn" || sEText == "bend") DoLoopAnimation(oEPC, ANIMATION_LOOPING_GET_LOW);
+                    else if (sEText == "bw" || sEText == "bow") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_BOW);
+                    else if (sEText == "bo" || sEText == "bored") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_PAUSE_BORED);
+                    else if (sEText == "bk" || sEText == "bark") DoBark(oEPC);
+                    else if (sEText == "bh" || sEText == "belch") DoBelch(oEPC);
+                    else if (sEText == "bp" || sEText == "burp") DoBurp(oEPC);
+                    else if (sEText == "bye") DoGoodbye(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 2:/*c*/
+                    if (sEText == "cl" || sEText == "celebrate") DoCheer3(oEPC);
+                    else if (sEText == "ca" || sEText == "cantrip") DoLoopAnimation(oEPC, ANIMATION_LOOPING_CONJURE1);
+                    else if (sEText == "ch" || sEText == "cheer") DoCheer(oEPC);
+                    else if (sEText == "ck" || sEText == "chuckle") DoLaugh(oEPC);
+                    else if (sEText == "ct" || sEText == "chat") DoLoopAnimation(oEPC, ANIMATION_LOOPING_TALK_NORMAL);
+                    else if (sEText == "cs" || sEText == "cast") DoLoopAnimation(oEPC, ANIMATION_LOOPING_CONJURE2);
+                    else if (sEText == "cy" || sEText == "curtsy") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_BOW);
+                    else if (sEText == "co" || sEText == "collapse") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_FRONT);
+                    else if (sEText == "cn" || sEText == "chant") DoChant(oEPC);
+                    else if (sEText == "cr" || sEText == "chortle") DoLaugh2(oEPC);
+                    else if (sEText == "cg" || sEText == "cough" || sEText == "choke") DoCough(oEPC);
+                    else if (sEText == "cry") DoCry(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 3:/*d*/
+                    if (sEText == "da" || sEText == "dance") DoDance(oEPC);
+                    else if (sEText == "dd" || sEText == "dead") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_BACK);
+                    else if (sEText == "dk" || sEText == "duck") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_DODGE_DUCK);
+                    else if (sEText == "di" || sEText == "die") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_FRONT);
+                    else if (sEText == "dr" || sEText == "drink") DoDrink(oEPC);
+                    else if (sEText == "dm" || sEText == "demand") DoLoopAnimation(oEPC, ANIMATION_LOOPING_TALK_FORCEFUL);
+                    else if (sEText == "dg" || sEText == "dodge") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_DODGE_SIDE);
+                    else if (sEText == "dn" || sEText == "drunk") DoDrunk(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 4:/*e*/
+                    if (sEText == "ex" || sEText == "exhausted") DoTired(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    default: ShoutBlock(oEPC, nEChannel);
+                    break;
+                }
+                break;
+
+            case 1:
+                switch(nText)
+                {
+                    case 5:/*f*/
+                    if (sEText == "fa" || sEText== "fatigue") DoTired(oEPC);
+                    else if (sEText == "fd" || sEText == "fakedead") DoFakeDeath(oEPC);
+                    else if (sEText == "fg" || sEText == "fidget")  DoLoopAnimation(oEPC, ANIMATION_LOOPING_PAUSE2);
+                    else if (sEText == "fi" || sEText == "fiddle")  DoLoopAnimation(oEPC, ANIMATION_LOOPING_GET_MID);
+                    else if (sEText == "fl" || sEText == "fall") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_FRONT);
+                    else if (sEText == "fp" || sEText == "flop") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_FRONT);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 6:/*g*/
+                    if ((sEText == "gi" || sEText == "giggle") && (GetGender(oEPC) == GENDER_FEMALE)) DoGiggle(oEPC);
+                    else if (sEText == "gr" || sEText == "greet") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_GREETING);
+                    else if (sEText == "gn" || sEText == "groan") DoGroan(oEPC);
+                    else if (sEText == "gw" || sEText == "guffaw") DoLaugh2(oEPC);
+                    else if (sEText == "gb" || sEText == "gt" || sEText == "goodnight" || sEText == "goodbye") DoGoodbye(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 7:/*h*/
+                    if (sEText == "hm" || sEText == "hum") DoSong(oEPC);
+                    else if (sEText == "hy" || sEText == "hooray") DoCheer2(oEPC);
+                    else if (sEText == "hl" || sEText == "hello") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_GREETING);
+                    else if (sEText == "hw" || sEText == "howl") DoHowl(oEPC);
+                    else if (sEText == "ht" || sEText == "hoot") DoHoot(oEPC);
+                    else if (sEText == "hp" || sEText == "hiccup") DoHiccup(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    //case 8:/*i*/
+                    //break;
+                    //case 9:/*j*/
+                    //break;
+                    default: ShoutBlock(oEPC, nEChannel);
+                    break;
+                }
+                break;
+
+            case 2:
+                switch(nText)
+                {
+                    case 10:/*k*/
+                    if (sEText == "kn" || sEText == "kneel") DoLoopAnimation(oEPC, ANIMATION_LOOPING_MEDITATE);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 11:/*l*/
+                    if (sEText == "la" || sEText == "laugh") DoLaugh(oEPC);
+                    else if (sEText == "lie") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_BACK);
+                    else if (sEText == "lk" || sEText == "look") DoLoopAnimation(oEPC, ANIMATION_LOOPING_LOOK_FAR);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 12:/*m*/
+                    if (sEText == "md" || sEText == "meditate") DoLoopAnimation(oEPC, ANIMATION_LOOPING_MEDITATE);
+                    else if (sEText == "mk" || sEText == "mock") DoTaunt(oEPC);
+                    else if (sEText == "mn" || sEText == "moan") DoMoan(oEPC);
+                    else if (sEText == "mw" || sEText == "meow") DoMeow(oEPC);
+                    else if (sEText == "mo" || sEText == "moo") DoMoo(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 13:/*n*/
+                    if (sEText == "nd" || sEText == "nod") DoLoopAnimation(oEPC, ANIMATION_LOOPING_LISTEN);
+                    else if (sEText == "no") DoHeadShake(oEPC);
+                    else if (sEText == "np" || sEText == "nap") DoSleep(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    case 14:/*o*/
+                    if (sEText == "ow" || sEText == "ouch") DoOuch(oEPC);
+                    else ShoutBlock(oEPC, nEChannel);
+                    break;
+                    default: ShoutBlock(oEPC, nEChannel);
+                    break;
+                }
+                break;
+
+            case 3:
+                switch(nText)
+                {
+                    case 15:/*p*/
+                        if (sEText == "pe" || sEText == "peer") DoLoopAnimation(oEPC, ANIMATION_LOOPING_LOOK_FAR);
+                        else if (sEText == "pl" || sEText == "plead") DoLoopAnimation(oEPC, ANIMATION_LOOPING_TALK_PLEADING);
+                        else if (sEText == "pr" || sEText == "pray") DoLoopAnimation(oEPC, ANIMATION_LOOPING_MEDITATE);
+                        else if (sEText == "pn" || sEText == "prone") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_FRONT);
+                        else if (sEText == "pu" || sEText == "puke") DoPuke(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    //case 16:/*q*/
+                        //break;
+                    case 17:/*r*/
+                        if (sEText == "re" || sEText == "read") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_READ);
+                        else if (sEText == "rt" || sEText == "rest") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_BACK);
+                        else if (sEText == "rr" || sEText == "roar") DoRoar(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    case 18:/*s*/
+                        if (sEText == "sa" || sEText == "salute") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_SALUTE);
+                        else if (sEText == "sn" || sEText == "scan") DoLoopAnimation(oEPC, ANIMATION_LOOPING_LOOK_FAR);
+                        else if (sEText == "sc" || sEText == "scratch") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_PAUSE_SCRATCH_HEAD);
+                        else if (sEText == "sg" || sEText == "sing") DoSong(oEPC);
+                        else if (sEText == "sh" || sEText == "shift") DoLoopAnimation(oEPC, ANIMATION_LOOPING_PAUSE2);
+                        else if (sEText == "si" || sEText == "sit") DoLoopAnimation(oEPC, ANIMATION_LOOPING_SIT_CROSS);
+                        else if (sEText == "sip") DoDrink(oEPC);
+                        else if (sEText == "sl" || sEText == "sleep") DoSleep(oEPC);
+                        else if (sEText == "snore") DoSnore(oEPC);
+                        else if (sEText == "sk" || sEText == "smoke") SmokePipe(oEPC);
+                        else if (sEText == "sp" || sEText == "spasm") DoLoopAnimation(oEPC, ANIMATION_LOOPING_SPASM);
+                        else if (sEText == "st" || sEText == "steal" || sEText == "sw" || sEText == "swipe") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_STEAL);
+                        else if (sEText == "so" ||sEText == "stoop") DoLoopAnimation(oEPC, ANIMATION_LOOPING_GET_LOW);
+                        else if (sEText == "sr" || sEText == "stretch") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_PAUSE_BORED);
+                        else if (sEText == "sy" || sEText == "sway") DoLoopAnimation(oEPC, ANIMATION_LOOPING_PAUSE_DRUNK);
+                        else if (sEText == "sm" || sEText == "scream") DoScream(oEPC);
+                        else if (sEText == "sz" || sEText == "sneeze") DoSneeze(oEPC);
+                        else if (sEText == "spit") DoSpit(oEPC);
+                        else if (sEText == "snarl") DoSnarl(oEPC);
+                        else if (sEText == "screech") DoScreech(oEPC);
+                        else if (sEText == "sb" || sEText == "sob") DoCry(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    case 19:/*t*/
+                        if (sEText == "ta" || sEText == "taunt") DoTaunt(oEPC);
+                        else if (sEText == "th" || sEText == "threaten") DoLoopAnimation(oEPC, ANIMATION_LOOPING_TALK_FORCEFUL);
+                        else if (sEText == "ti" || sEText == "tired") DoTired(oEPC);
+                        else if (sEText == "tl" || sEText == "talk") DoLoopAnimation(oEPC, ANIMATION_LOOPING_TALK_NORMAL);
+                        else if (sEText == "tp" || sEText == "trip") DoLoopAnimation(oEPC, ANIMATION_LOOPING_DEAD_FRONT);
+                        else if (sEText == "tt" || sEText == "toast") DoToast(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    default: ShoutBlock(oEPC, nEChannel);
+                        break;
+                }
+                break;
+
+            case 4:
+                switch(nText)
+                {
+                    //case 20:/*u*/
+                        //break;
+                    case 21:/*v*/
+                        if (sEText == "vm" || sEText == "vomit") DoPuke(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    case 22:/*w*/
+                        if (sEText == "wa" || sEText == "wave") DoFireForgetAnimation(oEPC, ANIMATION_FIREFORGET_GREETING);
+                        else if (sEText == "wh" || sEText == "whistle") DoWhistle(oEPC);
+                        else if (sEText == "wo" || sEText == "worship") DoLoopAnimation(oEPC, ANIMATION_LOOPING_WORSHIP);
+                        else if (sEText == "wz" || sEText == "woozy") DoDrunk(oEPC);
+                        else if (sEText == "wl" || sEText == "wail") DoWail(oEPC);
+                        else if (sEText == "wp" || sEText == "weep") DoCry(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    //case 23:/*x*/
+                        //break;
+                    case 24:/*y*/
+                        if (sEText == "yw" || sEText == "yawn") DoYawn(oEPC);
+                        else ShoutBlock(oEPC, nEChannel);
+                        break;
+                    default: ShoutBlock(oEPC, nEChannel);
+                        break;
+                }
+                break;
+
+            //case 5:
+                //switch(nText)
+                //{
+            //case 25:/*z*/
+                //break;
+                //}
+
+            default:
+                ShoutBlock(oEPC, nEChannel);
+                break;
+        }
+    }
+    else
+    {
+        NWNX_Chat_SkipMessage();
+        FloatingTextStringOnCreature(COLOR_RED+NOT_DEAD_EM+COLOR_END, oEPC, FALSE);
+    }
+}
+//                    oPC           sText
+void DoSpamBan(object oSBPC, string sSBText)
+{
+    string sKey = GetPCPublicCDKey(oSBPC);
+    NWNX_Chat_SkipMessage(); //mute em
+    SetLocalInt(oSBPC, "FKY_CHT_BANSHOUT", TRUE);//temp ban em
+    if (GetLocalString(oSBPC, "FKY_CHT_BANREASON") == "") SetLocalString(oSBPC, "FKY_CHT_BANREASON", sSBText);
+    //capture the first message that got them busted so that that can't overwrite with something
+    //benign to show the dms to get unbanned so they can try again
+    if (USING_NWNX_DB) dbSetPersistentInt(GetModule(), "FKY_CHT_BANSHOUT"+ sKey, TRUE);//permaban em
+    else SetCampaignInt("FKY_CHT", "FKY_CHT_BANSHOUT" + sKey, TRUE);                //
+    SendMessageToPC(oSBPC, COLOR_RED+PERMBANSHT1+COLOR_END);//tell em
+}
+
+void HandleVentrilo(string sVText, object oVPC)
+{
+    NWNX_Chat_SkipMessage();
+    sVText = GetStringRight(sVText, GetStringLength(sVText) - 2);
+    object oTarget = GetLocalObject(oVPC, "FKY_CHT_VENTRILO");
+    if (GetIsObjectValid(oTarget)) AssignCommand(oTarget, SpeakString(sVText));
+    else FloatingTextStringOnCreature(COLOR_RED+BADVENT+COLOR_END, oVPC, FALSE);
+}
+
+void DoStealth(object oSPC, object oSTarget, string sSText, int nSChannel, string sSLogMessageTarget)
+{
+    NWNX_Chat_SkipMessage();
+    SendMessageToPC(oSPC, DMSTEALTH1);
+    if (SEND_CHANNELS_TO_CHAT_LOG) SendChatLogMessage(oSTarget, COLOR_PURPLE+GetName(oSPC)+COLOR_END+COLOR_WHITE+DMSTEALTH2+sSText, GetMessenger());
+    else SendMessageToPC(oSTarget, COLOR_PURPLE+GetName(oSPC)+COLOR_END+COLOR_WHITE+DMSTEALTH2+sSText);
+    if (TEXT_LOGGING_ENABLED) DoLogging(oSPC, sSLogMessageTarget, nSChannel, sSText);
+    DoCleanup(oSPC);
+}
+
+void HandleOtherSpeech(object oHOPC, object oHOTarget, string sHOText, int nHOChannel, string sHOLogMessageTarget)
+{
+        string sHOTarget, sEscape;
+        switch(nHOChannel) //all speech besides emotes, player commands, and metachannels - sort by channel
+        {
+////////////Player speaker channels from 1-14
+            case NWNX_CHAT_CHANNEL_PLAYER_TALK:
+                if (ENABLE_METALANGUAGE_CONVERSION)
+                {
+                    /*if (GetStringLowerCase(sHOText) == "lol" )
+                    {
+                        SpeakString(LOL);
+                        NWNX_Chat_SkipMessage();
+                    }*/
+                }
+                break;
+
+            case NWNX_CHAT_CHANNEL_PLAYER_SHOUT:
+                if (GetLocalInt(oHOPC,"SHOUTBAN")) //check for shout ban
+                {
+                    NWNX_Chat_SkipMessage(); //mute em
+                    SendMessageToPC(oHOPC, COLOR_RED+BANNEDSHT+COLOR_END); //tell em
+                }
+                else { // SHOUT CHANNEL, ADD LOCATION // if (!VerifyDMKey(oHOPC) && !VerifyAdminKey(oHOPC))
+                   SpeakString(sHOText, TALKVOLUME_SHOUT);
+                   NWNX_Chat_SkipMessage();
+                }
+                break;
+
+            case NWNX_CHAT_CHANNEL_PLAYER_WHISPER:
+                break;
+
+            case NWNX_CHAT_CHANNEL_PLAYER_TELL:
+                sHOTarget = GetPCPlayerName(oHOPC);
+                if (GetLocalInt(oHOTarget, "FKY_CHT_IGNORE" + sHOTarget))//check for ignore
+                {
+                    NWNX_Chat_SkipMessage(); //mute em
+                    SendMessageToPC(oHOPC, COLOR_RED + GetName(oHOTarget)+ISIGNORED+COLOR_END);//tell em
+                }
+                //HandleDMTraffic(oHOPC, oHOTarget, sHOText, sHOLogMessageTarget, nHOChannel);//handles dm traffic and tell forwarding//now handled earlier
+                DMTellForwarding(oHOPC, sHOLogMessageTarget, sHOText, nHOChannel); //check for tell options
+                break;
+
+            case NWNX_CHAT_CHANNEL_PLAYER_PARTY:
+                break;
+
+            case NWNX_CHAT_CHANNEL_PLAYER_DM:
+                if (GetLocalInt(oHOPC, "FKY_CHT_BANDM"))//check for DM ban
+                {
+                    NWNX_Chat_SkipMessage(); //mute em
+                    SendMessageToPC(oHOPC, COLOR_RED+BANNEDDM+COLOR_END);//tell em
+                }
+                if (DM_PLAYERS_HEAR_DM) DMChannelForwardToDMs(oHOPC, sHOText);//check for dm players hearing dm
+                if (ADMIN_PLAYERS_HEAR_DM) DMChannelForwardToAdmins(oHOPC, sHOText);//check for admin players hearing dm
+                break;
+
+////////////DM speaker channels from 17-30
+            case NWNX_CHAT_CHANNEL_DM_TALK:
+                break;
+
+            case NWNX_CHAT_CHANNEL_DM_SHOUT:
+                break;
+
+            case NWNX_CHAT_CHANNEL_DM_WHISPER:
+                break;
+
+            case NWNX_CHAT_CHANNEL_DM_TELL:
+                //HandleDMTraffic(oHOPC, oHOTarget, sHOText, sHOLogMessageTarget, nHOChannel);//handles dm traffic and tell forwarding//now handled earlier
+                DMTellForwarding(oHOPC, sHOLogMessageTarget, sHOText, nHOChannel); //check for tell options
+                break;
+
+            case NWNX_CHAT_CHANNEL_DM_PARTY:
+                break;
+
+            case NWNX_CHAT_CHANNEL_DM_DM:
+                break;
+
+            if (DM_PLAYERS_HEAR_DM)
+                DMChannelForwardToDMs(oHOPC, sHOText); //check for dm players hearing dm
+
+            if (ADMIN_PLAYERS_HEAR_DM)
+                DMChannelForwardToAdmins(oHOPC, sHOText); //check for admin players hearing dm
+            break;
+        }
+
+        //if the channel is always suppressed then suppress it
+        if (ENABLE_PERMANENT_CHANNEL_MUTING && GetIsChannelSuppressed(nHOChannel) && (!VerifyDMKey(oHOPC)) && (!VerifyAdminKey(oHOPC)) && (GetIsPC(oHOPC) || (!PERMANENT_CHANNEL_MUTING_FOR_PC_ONLY))) NWNX_Chat_SkipMessage();
+
+        //otherwise suppress it when they are dead if it is deadsuppressed
+        else if (DISALLOW_SPEECH_WHILE_DEAD && GetIsChannelDeadSuppressed(nHOChannel) && GetIsDead(oHOPC) && (!VerifyDMKey(oHOPC)) && (!VerifyAdminKey(oHOPC))) NWNX_Chat_SkipMessage();
+
+        //otherwise suppress it when they are silenced if it is silencedsuppressed
+        else if (DISALLOW_SPEECH_WHILE_SILENCED && GetIsChannelSilencedSuppressed(nHOChannel) && GetIsSilenced(oHOPC) && (!VerifyDMKey(oHOPC)) && (!VerifyAdminKey(oHOPC))) NWNX_Chat_SkipMessage();
+}
+
+//void main(){}
+

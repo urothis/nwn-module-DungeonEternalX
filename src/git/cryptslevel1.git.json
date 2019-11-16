@@ -1,0 +1,2984 @@
+{
+  "__data_type": "GIT ",
+  "AreaProperties": {
+    "__struct_id": 100,
+    "type": "struct",
+    "value": {
+      "__struct_id": 100,
+      "AmbientSndDay": {
+        "type": "int",
+        "value": 69
+      },
+      "AmbientSndDayVol": {
+        "type": "int",
+        "value": 32
+      },
+      "AmbientSndNight": {
+        "type": "int",
+        "value": 69
+      },
+      "AmbientSndNitVol": {
+        "type": "int",
+        "value": 32
+      },
+      "EnvAudio": {
+        "type": "int",
+        "value": 34
+      },
+      "MusicBattle": {
+        "type": "int",
+        "value": 38
+      },
+      "MusicDay": {
+        "type": "int",
+        "value": 11
+      },
+      "MusicDelay": {
+        "type": "int",
+        "value": 87000
+      },
+      "MusicNight": {
+        "type": "int",
+        "value": 12
+      }
+    }
+  },
+  "Creature List": {
+    "type": "list",
+    "value": []
+  },
+  "Door List": {
+    "type": "list",
+    "value": [
+      {
+        "__struct_id": 8,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 0
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -3.141457319259644
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 60
+        },
+        "Description": {
+          "id": 9072,
+          "type": "cexolocstring",
+          "value": {
+            "0": ""
+          }
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 20
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 25
+        },
+        "GenericType_New": {
+          "type": "dword",
+          "value": 2
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 10
+        },
+        "HP": {
+          "type": "short",
+          "value": 60
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 1
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": "LG_to_C1"
+        },
+        "LinkedToFlags": {
+          "type": "byte",
+          "value": 1
+        },
+        "LoadScreenID": {
+          "type": "word",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5349,
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnFailToOpen": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 25
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 0
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "CRYPT1_GRAVEYARD"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "nw_door_grate"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 2
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 45.0
+        },
+        "Y": {
+          "type": "float",
+          "value": 5.199996948242188
+        },
+        "Z": {
+          "type": "float",
+          "value": 1.600000023841858
+        }
+      },
+      {
+        "__struct_id": 8,
+        "AnimationState": {
+          "type": "byte",
+          "value": 0
+        },
+        "Appearance": {
+          "type": "dword",
+          "value": 0
+        },
+        "AutoRemoveKey": {
+          "type": "byte",
+          "value": 0
+        },
+        "Bearing": {
+          "type": "float",
+          "value": -0.0
+        },
+        "CloseLockDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "Comment": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "Conversation": {
+          "type": "resref",
+          "value": ""
+        },
+        "CurrentHP": {
+          "type": "short",
+          "value": 60
+        },
+        "Description": {
+          "id": 9070,
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "DisarmDC": {
+          "type": "byte",
+          "value": 28
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Fort": {
+          "type": "byte",
+          "value": 28
+        },
+        "GenericType_New": {
+          "type": "dword",
+          "value": 5
+        },
+        "Hardness": {
+          "type": "byte",
+          "value": 10
+        },
+        "HP": {
+          "type": "short",
+          "value": 60
+        },
+        "Interruptable": {
+          "type": "byte",
+          "value": 1
+        },
+        "KeyName": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "KeyRequired": {
+          "type": "byte",
+          "value": 0
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": "C2_TO_C1"
+        },
+        "LinkedToFlags": {
+          "type": "byte",
+          "value": 1
+        },
+        "LoadScreenID": {
+          "type": "word",
+          "value": 0
+        },
+        "Lockable": {
+          "type": "byte",
+          "value": 0
+        },
+        "Locked": {
+          "type": "byte",
+          "value": 0
+        },
+        "LocName": {
+          "id": 5349,
+          "type": "cexolocstring",
+          "value": {
+            "0": "Door"
+          }
+        },
+        "OnClick": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnClosed": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDamaged": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDeath": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnDisarm": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnFailToOpen": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnLock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnMeleeAttacked": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnOpen": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnSpellCastAt": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnTrapTriggered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUnlock": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "OpenLockDC": {
+          "type": "byte",
+          "value": 28
+        },
+        "Plot": {
+          "type": "byte",
+          "value": 1
+        },
+        "PortraitId": {
+          "type": "word",
+          "value": 0
+        },
+        "Ref": {
+          "type": "byte",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "C1_TO_C2"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "nw_door_metal"
+        },
+        "TrapDetectable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapDetectDC": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapDisarmable": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapFlag": {
+          "type": "byte",
+          "value": 0
+        },
+        "TrapOneShot": {
+          "type": "byte",
+          "value": 1
+        },
+        "TrapType": {
+          "type": "byte",
+          "value": 2
+        },
+        "Will": {
+          "type": "byte",
+          "value": 0
+        },
+        "X": {
+          "type": "float",
+          "value": 45.0
+        },
+        "Y": {
+          "type": "float",
+          "value": 76.30000305175781
+        },
+        "Z": {
+          "type": "float",
+          "value": -1.600000023841858
+        }
+      }
+    ]
+  },
+  "Encounter List": {
+    "type": "list",
+    "value": [
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "Comment": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "X": {
+                "type": "float",
+                "value": 0.1810951232910156
+              },
+              "Y": {
+                "type": "float",
+                "value": -13.65583229064941
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "X": {
+                "type": "float",
+                "value": 2.191322326660156
+              },
+              "Y": {
+                "type": "float",
+                "value": -13.6156759262085
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "X": {
+                "type": "float",
+                "value": 2.282943725585938
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.006971359252929688
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 29.85042953491211
+              },
+              "Y": {
+                "type": "float",
+                "value": 14.68132781982422
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999984979629517
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 29.40763282775879
+              },
+              "Y": {
+                "type": "float",
+                "value": 24.78298759460449
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999984979629517
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 32.81692504882812
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 26.84638786315918
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "Comment": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.1810951232910156
+              },
+              "Y": {
+                "type": "float",
+                "value": -13.65583229064941
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 2.191322326660156
+              },
+              "Y": {
+                "type": "float",
+                "value": -13.6156759262085
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 2.282943725585938
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.006971359252929688
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 59.58300018310547
+              },
+              "Y": {
+                "type": "float",
+                "value": 24.26946640014648
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2000008374452591
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 59.525146484375
+              },
+              "Y": {
+                "type": "float",
+                "value": 14.51932525634766
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.200001522898674
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 54.56008911132812
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 26.63252830505371
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.2000004053115845
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.6011886596679688
+              },
+              "Y": {
+                "type": "float",
+                "value": -19.61268997192383
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 2.759735107421875
+              },
+              "Y": {
+                "type": "float",
+                "value": -19.60469627380371
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02500000037252903
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 2.622138977050781
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.1659526824951172
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1616460382938385
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.0250005591660738
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.2067642211914062
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.2148933410644531
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.0250005591660738
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 84.62541961669922
+              },
+              "Y": {
+                "type": "float",
+                "value": 21.86429786682129
+              },
+              "Z": {
+                "type": "float",
+                "value": -7.171183824539185e-06
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 84.52632904052734
+              },
+              "Y": {
+                "type": "float",
+                "value": 11.15961647033691
+              },
+              "Z": {
+                "type": "float",
+                "value": -7.171183824539185e-06
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 78.58779907226562
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 28.03291130065918
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2259800732135773
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.3878021240234375
+              },
+              "Y": {
+                "type": "float",
+                "value": -3.829639434814453
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2259800732135773
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 6.348976135253906
+              },
+              "Y": {
+                "type": "float",
+                "value": -10.0958137512207
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1661866009235382
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 9.869468688964844
+              },
+              "Y": {
+                "type": "float",
+                "value": -4.37237548828125
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1780941784381866
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 64.51017761230469
+              },
+              "Y": {
+                "type": "float",
+                "value": 36.4088249206543
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999993175268173
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 61.35153961181641
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 46.90755081176758
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -11.7934627532959
+              },
+              "Y": {
+                "type": "float",
+                "value": -4.543502807617188
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1659715473651886
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -6.56016731262207
+              },
+              "Y": {
+                "type": "float",
+                "value": -9.220378875732422
+              },
+              "Z": {
+                "type": "float",
+                "value": 3.225000381469727
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.1955223083496094
+              },
+              "Y": {
+                "type": "float",
+                "value": -3.610637664794922
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2259801924228668
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2259801924228668
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 17.08591842651367
+              },
+              "Y": {
+                "type": "float",
+                "value": 44.7862548828125
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.0385727696120739
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 28.60579109191895
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 46.88006210327148
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.6011886596679688
+              },
+              "Y": {
+                "type": "float",
+                "value": -19.61268997192383
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 2.759735107421875
+              },
+              "Y": {
+                "type": "float",
+                "value": -19.60469627380371
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02500000037252903
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 2.622138977050781
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.1659526824951172
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1616460382938385
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.0250005591660738
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.2067642211914062
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.2148933410644531
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.0250005591660738
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 3.980831384658813
+              },
+              "Y": {
+                "type": "float",
+                "value": 16.52792167663574
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999993175268173
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 4.122563362121582
+              },
+              "Y": {
+                "type": "float",
+                "value": 27.60381698608398
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999993175268173
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 8.910713195800781
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 28.57161903381348
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 2.384185791015625e-07
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.2734873294830322
+              },
+              "Y": {
+                "type": "float",
+                "value": -14.62936019897461
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250001728534698
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 3.788351058959961
+              },
+              "Y": {
+                "type": "float",
+                "value": -14.77273178100586
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02499988116323948
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 3.868640899658203
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.4289665222167969
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02500011958181858
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 4.273290634155273
+              },
+              "Y": {
+                "type": "float",
+                "value": 37.52001190185547
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999993175268173
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 11.5401782989502
+              },
+              "Y": {
+                "type": "float",
+                "value": 55.03097534179688
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.05634081363677979
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 3.142041206359863
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 57.13053894042969
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.2734873294830322
+              },
+              "Y": {
+                "type": "float",
+                "value": -14.62936019897461
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02499988116323948
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 3.788351058959961
+              },
+              "Y": {
+                "type": "float",
+                "value": -14.77273178100586
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 3.868640899658203
+              },
+              "Y": {
+                "type": "float",
+                "value": -0.4289665222167969
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02499988116323948
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 78.30135345458984
+              },
+              "Y": {
+                "type": "float",
+                "value": 45.57077789306641
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1999993175268173
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 80.08158111572266
+              },
+              "Y": {
+                "type": "float",
+                "value": 56.43742752075195
+              },
+              "Z": {
+                "type": "float",
+                "value": -5.647540092468262e-06
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 83.8258056640625
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 57.41257095336914
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1791252195835114
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 1.133623123168945
+              },
+              "Y": {
+                "type": "float",
+                "value": -4.312206268310547
+              },
+              "Z": {
+                "type": "float",
+                "value": 2.158316612243652
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 12.62983894348145
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.6075592041015625
+              },
+              "Z": {
+                "type": "float",
+                "value": 3.224999904632568
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 15.4128475189209
+              },
+              "Y": {
+                "type": "float",
+                "value": 1.728771209716797
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 20.08682441711426
+              },
+              "Y": {
+                "type": "float",
+                "value": 5.282169342041016
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.3447551727294922
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0257720947265625
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.05375983566045761
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 29.8564510345459
+              },
+              "Y": {
+                "type": "float",
+                "value": 72.82450866699219
+              },
+              "Z": {
+                "type": "float",
+                "value": -7.934868335723877e-06
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 17.06573867797852
+              },
+              "Y": {
+                "type": "float",
+                "value": 64.72425842285156
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.04563377425074577
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 16.77615547180176
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 61.67710494995117
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 195
+              },
+              "CR": {
+                "type": "float",
+                "value": 4.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "cryptzombie"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 0
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 2
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -20.41521453857422
+              },
+              "Y": {
+                "type": "float",
+                "value": 7.828834533691406
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -13.9359245300293
+              },
+              "Y": {
+                "type": "float",
+                "value": 2.304691314697266
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -11.645263671875
+              },
+              "Y": {
+                "type": "float",
+                "value": 2.449882507324219
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.0674591064453125
+              },
+              "Y": {
+                "type": "float",
+                "value": -3.690147399902344
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1194808706641197
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2250000536441803
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "id": 91352,
+          "type": "cexolocstring",
+          "value": {
+            "0": "ZOMBIE_CR4"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 60
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 72.47095489501953
+              },
+              "Y": {
+                "type": "float",
+                "value": 54.71066284179688
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.1631141901016235
+              }
+            },
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 59.33722686767578
+              },
+              "Y": {
+                "type": "float",
+                "value": 72.05336761474609
+              },
+              "Z": {
+                "type": "float",
+                "value": -7.934868335723877e-06
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ZOMBIE_CR4"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "enc_normal"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 73.12728118896484
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 61.51994323730469
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
+      }
+    ]
+  },
+  "List": {
+    "type": "list",
+    "value": []
+  },
+  "Placeable List": {
+    "type": "list",
+    "value": []
+  },
+  "SoundList": {
+    "type": "list",
+    "value": []
+  },
+  "StoreList": {
+    "type": "list",
+    "value": []
+  },
+  "TriggerList": {
+    "type": "list",
+    "value": []
+  },
+  "WaypointList": {
+    "type": "list",
+    "value": [
+      {
+        "__struct_id": 5,
+        "Appearance": {
+          "type": "byte",
+          "value": 1
+        },
+        "Description": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "HasMapNote": {
+          "type": "byte",
+          "value": 1
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "LocalizedName": {
+          "id": 14817,
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "MapNote": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Loftenwood Graveyard - [CR2]"
+          }
+        },
+        "MapNoteEnabled": {
+          "type": "byte",
+          "value": 1
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "CRYPT1_GRAVEYARD_WP"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "nw_waypoint001"
+        },
+        "XOrientation": {
+          "type": "float",
+          "value": 0.0
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 44.95957946777344
+        },
+        "YOrientation": {
+          "type": "float",
+          "value": 1.0
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 8.445353507995605
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.199999526143074
+        }
+      },
+      {
+        "__struct_id": 5,
+        "Appearance": {
+          "type": "byte",
+          "value": 1
+        },
+        "Description": {
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "HasMapNote": {
+          "type": "byte",
+          "value": 1
+        },
+        "LinkedTo": {
+          "type": "cexostring",
+          "value": ""
+        },
+        "LocalizedName": {
+          "id": 14817,
+          "type": "cexolocstring",
+          "value": {}
+        },
+        "MapNote": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Crypts of Necrodel - Level 2 [CR6]"
+          }
+        },
+        "MapNoteEnabled": {
+          "type": "byte",
+          "value": 1
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MN_C2_TO_2"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "nw_waypoint001"
+        },
+        "XOrientation": {
+          "type": "float",
+          "value": -0.07367976754903793
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 44.97911834716797
+        },
+        "YOrientation": {
+          "type": "float",
+          "value": -0.9972819685935974
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 74.65691375732422
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": -1.38299822807312
+        }
+      }
+    ]
+  }
+}

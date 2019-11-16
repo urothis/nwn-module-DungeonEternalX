@@ -1,0 +1,79 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 10000
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 77
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": ""
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 10000
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "Description": {
+    "id": 13309,
+    "type": "cexolocstring",
+    "value": {
+      "0": "10000 GP\n\nBest known in its pale, orange-yellow form, topaz is an attractive gem that appears in well-formed, multifaceted crystals. These crystals can reach an incredible size, and specimens weighing several hundred pounds are not unknown. The largest stones are customarily reserved for gifts on state occasions, and only the greatest master gemcutters are allowed to work them."
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "id": 13308,
+    "type": "cexolocstring",
+    "value": {}
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 10
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 57
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "GEM_10000"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "gem_10000"
+  }
+}
