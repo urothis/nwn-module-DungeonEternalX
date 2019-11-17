@@ -66,7 +66,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.141585350036621
+          "value": -3.141584873199463
         },
         "CloseLockDC": {
           "type": "byte",
@@ -941,7 +941,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.141585350036621
+          "value": -3.141584873199463
         },
         "CloseLockDC": {
           "type": "byte",
@@ -1850,240 +1850,6 @@
               },
               "CR": {
                 "type": "float",
-                "value": 64.0
-              },
-              "ResRef": {
-                "type": "resref",
-                "value": "animatedhalfplat"
-              },
-              "SingleSpawn": {
-                "type": "byte",
-                "value": 0
-              }
-            }
-          ]
-        },
-        "Difficulty": {
-          "type": "int",
-          "value": 5
-        },
-        "DifficultyIndex": {
-          "type": "int",
-          "value": 3
-        },
-        "Faction": {
-          "type": "dword",
-          "value": 1
-        },
-        "Geometry": {
-          "type": "list",
-          "value": [
-            {
-              "__struct_id": 1,
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "X": {
-                "type": "float",
-                "value": -10.02190399169922
-              },
-              "Y": {
-                "type": "float",
-                "value": 0.5833954811096191
-              },
-              "Z": {
-                "type": "float",
-                "value": 0.2040423452854156
-              }
-            },
-            {
-              "__struct_id": 1,
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "X": {
-                "type": "float",
-                "value": -9.978836059570312
-              },
-              "Y": {
-                "type": "float",
-                "value": 0.07627725601196289
-              },
-              "Z": {
-                "type": "float",
-                "value": 0.2286099493503571
-              }
-            },
-            {
-              "__struct_id": 1,
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "X": {
-                "type": "float",
-                "value": 0.0
-              },
-              "Y": {
-                "type": "float",
-                "value": 0.0
-              },
-              "Z": {
-                "type": "float",
-                "value": 0.2280797064304352
-              }
-            },
-            {
-              "__struct_id": 1,
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "X": {
-                "type": "float",
-                "value": 0.038909912109375
-              },
-              "Y": {
-                "type": "float",
-                "value": 0.4485597610473633
-              },
-              "Z": {
-                "type": "float",
-                "value": 0.228079229593277
-              }
-            }
-          ]
-        },
-        "LocalizedName": {
-          "type": "cexolocstring",
-          "value": {
-            "0": "AnimatedHalfplateSpawn"
-          }
-        },
-        "MaxCreatures": {
-          "type": "int",
-          "value": 2
-        },
-        "OnEntered": {
-          "type": "resref",
-          "value": ""
-        },
-        "OnExhausted": {
-          "type": "resref",
-          "value": ""
-        },
-        "OnExit": {
-          "type": "resref",
-          "value": ""
-        },
-        "OnHeartbeat": {
-          "type": "resref",
-          "value": ""
-        },
-        "OnUserDefined": {
-          "type": "resref",
-          "value": ""
-        },
-        "PlayerOnly": {
-          "type": "byte",
-          "value": 1
-        },
-        "RecCreatures": {
-          "type": "int",
-          "value": 1
-        },
-        "Reset": {
-          "type": "byte",
-          "value": 1
-        },
-        "ResetTime": {
-          "type": "int",
-          "value": 600
-        },
-        "Respawns": {
-          "type": "int",
-          "value": -1
-        },
-        "SpawnOption": {
-          "type": "int",
-          "value": 0
-        },
-        "SpawnPointList": {
-          "type": "list",
-          "value": [
-            {
-              "__struct_id": 2,
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "Orientation": {
-                "type": "float",
-                "value": -0.0
-              },
-              "X": {
-                "type": "float",
-                "value": 67.07009887695312
-              },
-              "Y": {
-                "type": "float",
-                "value": 16.88238906860352
-              },
-              "Z": {
-                "type": "float",
-                "value": -8.162111043930054e-06
-              }
-            }
-          ]
-        },
-        "Tag": {
-          "type": "cexostring",
-          "value": "AnimatedHalfplateSpawn"
-        },
-        "TemplateResRef": {
-          "type": "resref",
-          "value": "animatedhalfplat"
-        },
-        "XPosition": {
-          "type": "float",
-          "value": 79.49667358398438
-        },
-        "YPosition": {
-          "type": "float",
-          "value": 4.880443572998047
-        },
-        "ZPosition": {
-          "type": "float",
-          "value": 0.1106061935424805
-        }
-      },
-      {
-        "__struct_id": 7,
-        "Active": {
-          "type": "byte",
-          "value": 1
-        },
-        "Comment": {
-          "type": "cexostring",
-          "value": ""
-        },
-        "CreatureList": {
-          "type": "list",
-          "value": [
-            {
-              "__struct_id": 0,
-              "Appearance": {
-                "type": "int",
-                "value": 4
-              },
-              "Comment": {
-                "type": "cexostring",
-                "value": ""
-              },
-              "CR": {
-                "type": "float",
                 "value": 49.0
               },
               "ResRef": {
@@ -2767,6 +2533,10 @@
           "type": "byte",
           "value": 1
         },
+        "Comment": {
+          "type": "cexostring",
+          "value": ""
+        },
         "CreatureList": {
           "type": "list",
           "value": [
@@ -2775,6 +2545,10 @@
               "Appearance": {
                 "type": "int",
                 "value": 4
+              },
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
               },
               "CR": {
                 "type": "float",
@@ -2808,6 +2582,10 @@
           "value": [
             {
               "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
               "X": {
                 "type": "float",
                 "value": -0.1803169250488281
@@ -2823,6 +2601,10 @@
             },
             {
               "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
               "X": {
                 "type": "float",
                 "value": 0.0
@@ -2838,6 +2620,10 @@
             },
             {
               "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
               "X": {
                 "type": "float",
                 "value": 0.5171432495117188
@@ -2853,6 +2639,10 @@
             },
             {
               "__struct_id": 1,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
               "X": {
                 "type": "float",
                 "value": 0.5784111022949219
@@ -2927,6 +2717,10 @@
           "value": [
             {
               "__struct_id": 2,
+              "Comment": {
+                "type": "cexostring",
+                "value": ""
+              },
               "Orientation": {
                 "type": "float",
                 "value": -0.0
@@ -9071,6 +8865,227 @@
           "type": "float",
           "value": 0.0
         }
+      },
+      {
+        "__struct_id": 7,
+        "Active": {
+          "type": "byte",
+          "value": 1
+        },
+        "CreatureList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "Appearance": {
+                "type": "int",
+                "value": 6
+              },
+              "CR": {
+                "type": "float",
+                "value": 122.0
+              },
+              "ResRef": {
+                "type": "resref",
+                "value": "velmirkeepguardi"
+              },
+              "SingleSpawn": {
+                "type": "byte",
+                "value": 0
+              }
+            }
+          ]
+        },
+        "Difficulty": {
+          "type": "int",
+          "value": 5
+        },
+        "DifficultyIndex": {
+          "type": "int",
+          "value": 3
+        },
+        "Faction": {
+          "type": "dword",
+          "value": 1
+        },
+        "Geometry": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.2585983276367188
+              },
+              "Y": {
+                "type": "float",
+                "value": -1.645895004272461
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.189227968454361
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 10.06155395507812
+              },
+              "Y": {
+                "type": "float",
+                "value": -1.698587894439697
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.2067617475986481
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 10.16680908203125
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.7574868202209473
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02860989607870579
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": -0.12646484375
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.2783513069152832
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02860989607870579
+              }
+            },
+            {
+              "__struct_id": 1,
+              "X": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Y": {
+                "type": "float",
+                "value": 0.0
+              },
+              "Z": {
+                "type": "float",
+                "value": 0.02860989607870579
+              }
+            }
+          ]
+        },
+        "LocalizedName": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "velmir_guardian"
+          }
+        },
+        "MaxCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "OnEntered": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExhausted": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnExit": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnHeartbeat": {
+          "type": "resref",
+          "value": ""
+        },
+        "OnUserDefined": {
+          "type": "resref",
+          "value": ""
+        },
+        "PlayerOnly": {
+          "type": "byte",
+          "value": 1
+        },
+        "RecCreatures": {
+          "type": "int",
+          "value": 1
+        },
+        "Reset": {
+          "type": "byte",
+          "value": 1
+        },
+        "ResetTime": {
+          "type": "int",
+          "value": 180
+        },
+        "Respawns": {
+          "type": "int",
+          "value": -1
+        },
+        "SpawnOption": {
+          "type": "int",
+          "value": 0
+        },
+        "SpawnPointList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 2,
+              "Orientation": {
+                "type": "float",
+                "value": -0.0
+              },
+              "X": {
+                "type": "float",
+                "value": 65.30458068847656
+              },
+              "Y": {
+                "type": "float",
+                "value": 21.54906463623047
+              },
+              "Z": {
+                "type": "float",
+                "value": -7.987022399902344e-06
+              }
+            }
+          ]
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "velmir_guardian"
+        },
+        "TemplateResRef": {
+          "type": "resref",
+          "value": "velmir_guardian"
+        },
+        "XPosition": {
+          "type": "float",
+          "value": 69.99885559082031
+        },
+        "YPosition": {
+          "type": "float",
+          "value": 6.364584445953369
+        },
+        "ZPosition": {
+          "type": "float",
+          "value": 0.0
+        }
       }
     ]
   },
@@ -14503,7 +14518,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.132858514785767
+          "value": 3.132858037948608
         },
         "BodyBag": {
           "type": "byte",
@@ -22611,7 +22626,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.024648189544678
+          "value": 3.02464771270752
         },
         "BodyBag": {
           "type": "byte",
@@ -23736,7 +23751,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.007195234298706
+          "value": 3.007194995880127
         },
         "BodyBag": {
           "type": "byte",
@@ -23961,7 +23976,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.007195234298706
+          "value": 3.007194995880127
         },
         "BodyBag": {
           "type": "byte",
@@ -24186,7 +24201,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.007195234298706
+          "value": 3.007194995880127
         },
         "BodyBag": {
           "type": "byte",
@@ -24411,7 +24426,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.007195234298706
+          "value": 3.007194995880127
         },
         "BodyBag": {
           "type": "byte",
@@ -28475,7 +28490,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.141585350036621
+          "value": -3.141584873199463
         },
         "BodyBag": {
           "type": "byte",
@@ -28929,7 +28944,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.125877618789673
+          "value": 3.125877141952515
         },
         "BodyBag": {
           "type": "byte",
@@ -29837,7 +29852,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.141585350036621
+          "value": -3.141584873199463
         },
         "BodyBag": {
           "type": "byte",
@@ -30739,7 +30754,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.110169172286987
+          "value": -3.110168695449829
         },
         "BodyBag": {
           "type": "byte",
@@ -31639,7 +31654,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -2.970543146133423
+          "value": -2.970542669296265
         },
         "BodyBag": {
           "type": "byte",
@@ -32764,7 +32779,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 0.930258572101593
+          "value": 0.9302584528923035
         },
         "BodyBag": {
           "type": "byte",
@@ -32989,7 +33004,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -2.775066375732422
+          "value": -2.775066137313843
         },
         "BodyBag": {
           "type": "byte",
@@ -33214,7 +33229,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -2.775066375732422
+          "value": -2.775066137313843
         },
         "BodyBag": {
           "type": "byte",
@@ -36615,7 +36630,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.127622842788696
+          "value": -3.127622604370117
         },
         "BodyBag": {
           "type": "byte",
@@ -38869,7 +38884,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.129368305206299
+          "value": 3.12936806678772
         },
         "BodyBag": {
           "type": "byte",
@@ -39096,7 +39111,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.129368305206299
+          "value": 3.12936806678772
         },
         "BodyBag": {
           "type": "byte",
@@ -46111,7 +46126,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.129368305206299
+          "value": 3.12936806678772
         },
         "BodyBag": {
           "type": "byte",
@@ -46338,7 +46353,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.129368305206299
+          "value": 3.12936806678772
         },
         "BodyBag": {
           "type": "byte",
@@ -50862,7 +50877,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.127622842788696
+          "value": 3.127622604370117
         },
         "BodyBag": {
           "type": "byte",
@@ -54691,7 +54706,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": 3.125877618789673
+          "value": 3.125877141952515
         },
         "BodyBag": {
           "type": "byte",
@@ -54918,7 +54933,7 @@
         },
         "Bearing": {
           "type": "float",
-          "value": -3.127622842788696
+          "value": -3.127622604370117
         },
         "BodyBag": {
           "type": "byte",
