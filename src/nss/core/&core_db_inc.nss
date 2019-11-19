@@ -52,9 +52,9 @@ string dbLocationUUID(string sUUID) {
     return GetModuleName()+":"+objectTypeString(oObject)+":"+GetObjectUUID(oObject)+":";
   }
   Log("db", objectTypeString(oObject),sUUID,3);
-  return OBJECT_INVALID;
+  return "OBJECT_INVALID";
 }
 
 // get the path to a cd key
-string dbLocationCDKEY(object oPC);
-string dbLocationCDKEY(object oPC) { return GetModuleName()+":cd-key:"+GetObjectUUID(oObject)+":"+GetPCPublicCDKey(oPC); }
+string dbLocationCDKEY(string cdKey);
+string dbLocationCDKEY(string cdKey) { return GetModuleName()+":cd-key:"+cdKey; }

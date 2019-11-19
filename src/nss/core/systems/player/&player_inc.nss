@@ -20,19 +20,23 @@ int playerGetInt(object oPC, string sKey) { return HashInt(dbLocationObject(oPC)
 float playerGetFloat(object oPC, string sKey);
 float playerGetFloat(object oPC, string sKey) { return HashFloat(dbLocationObject(oPC),sKey);
 
+
 // new account
-void newCDKEY() {
+void newCDKEY(object oPC, string sOld, string sNew) {
+  SendMessageToPC(oPC,"Your cdkey has changed.");
+  // new cd key
 
 }
 
 // new character
 void newCharacter() {
-
+  // add character to account tracking
 }
 
 // player account tracking
 void trackAccount(object oPC)  {
   string sCD = GetPCPublicCDKey(oPC);
+  string sStoredCD = playerGetValueInt(oPC,"CDKEY");
   string sIP = GetPCIPAddress(oPC);
 
   // first login data
@@ -42,14 +46,12 @@ void trackAccount(object oPC)  {
 
   // every login
   // if different cdkey
-  if ( sCD != playerGetValueInt(oPC,"CDKEY")) { 
-    // TODO cd key change  
-    SendMessageToPC(oPC,"Your CD-KEY has changed."); 
-  }
+  if ( sCD != sStoredCD) { newCDKEY(oPC, sStoredCD, sCD); }
+
   // if different ip
   if (IP != playerGetValueInt(oPC,"IP")) { 
     // TODO ip change
-    SendMessageToPC(oPC,"Your IP address has changed."); 
+     
   }
 }
 
@@ -64,19 +66,20 @@ void requestAddDiscordToCharacter(object oPC) {
   FloatingTextStringOnCreature(oPC, "This will link your discord account to this character.");
 }
 
-// this will be triggered via pubsub upon completion
+// this will be triggered via pubsub upon link
 void addDiscordToCharacter(string sUUID) {
   object oPC = GetObjectByUUID(sUUID);
   string sDiscordName = playerGetValue(oPC, "discord_account");
   FloatingTextStringOnCreature(oPC, "You're character is now linked with discord user " + sDiscordName);
 }
 
-// call all tracking from here
+// call all player tracking from here
 void mainPlayerTrackingStart(object oPC) {
   trackPlaytime(oPC,1);
   trackAccount(oPC);
 }
 
+// stop all player tracking from here
 void mainPlayerTrackingStop(object oPC) {
   trackPlaytime(oPC,0);
 
