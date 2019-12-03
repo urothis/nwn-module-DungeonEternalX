@@ -1,12 +1,10 @@
-/// @defgroup player Player
+/// @addtogroup player
 /// @brief Functions exposing additional player properties.
 /// @{
 /// @file nwnx_player.nss
 #include "nwnx"
 
 const string NWNX_Player = "NWNX_Player"; ///< @private
-
-/// @tableofcontents
 
 /// @brief A quickbar slot.
 struct NWNX_Player_QuickBarSlot
@@ -25,14 +23,6 @@ struct NWNX_Player_QuickBarSlot
     int    nAssociateType; ///< @todo Describe
     object oAssociate; ///< @todo Describe
 };
-/// @name Visibility Types
-/// @deprecated Use @ref vis_types "NWNX_Visibility Visibility Types" instead.
-/// The various types of visibilities.
-/// @{
-const int NWNX_PLAYER_VISIBILITY_DEFAULT = 0;
-const int NWNX_PLAYER_VISIBILITY_HIDDEN  = 1;
-const int NWNX_PLAYER_VISIBILITY_VISIBLE = 2;
-/// @}
 
 /// @name Timing Bar Types
 /// @anchor timing_bar_types
@@ -103,14 +93,6 @@ void NWNX_Player_SetQuickBarSlot(object player, int slot, struct NWNX_Player_Qui
 /// @param player The player object.
 /// @return The filename for this player's bic. (Not including the ".bic")
 string NWNX_Player_GetBicFileName(object player);
-
-/// @brief Overrides the default visibility rules about how player perceives the target object.
-/// @deprecated Use NWNX_Visibility_SetVisibilityOverride() instead
-void NWNX_Player_SetVisibilityOverride(object player, object target, int override);
-
-/// @brief Queries the existing visibility override for given (player, object) pair
-/// @deprecated Use NWNX_Visibility_GetVisibilityOverride() instead
-int NWNX_Player_GetVisibilityOverride(object player, object target);
 
 /// @brief Plays the VFX at the target position in current area for the given player only
 /// @param player The player object.
@@ -252,6 +234,22 @@ void NWNX_Player_SetPersistentLocation(string sCDKeyOrCommunityName, string sBic
 /// @param oItem The item object.
 void NWNX_Player_UpdateItemName(object oPlayer, object oItem);
 
+/// @brief Possesses a creature by temporarily making them a familiar
+/// @details This command allows a PC to possess an NPC by temporarily adding them as a familiar. It will work
+/// if the player already has an existing familiar. The creatures must be in the same area. Unpossession can be
+/// done with the regular @nwn{UnpossessFamiliar} commands.
+/// @note The possessed creature will send automap data back to the possessor.
+/// If you wish to prevent this you may wish to use NWNX_Player_GetAreaExplorationState() and
+/// NWNX_Player_SetAreaExplorationState() before and after the possession.
+/// @note The possessing creature will be left wherever they were when beginning the possession. You may wish
+/// to use @nwn{EffectCutsceneImmobilize} and @nwn{EffectCutsceneGhost} to hide them.
+/// @param oPossessor The possessor player object.
+/// @param oPossessed The possessed creature object. Only works on NPCs.
+/// @param bMindImmune If FALSE will remove the mind immunity effect on the possessor.
+/// @param bCreateDefaultQB If TRUE will populate the quick bar with default buttons.
+/// @return TRUE if possession succeeded.
+int NWNX_Player_PossessCreature(object oPossessor, object oPossessed, int bMindImmune = TRUE, int bCreateDefaultQB = FALSE);
+
 /// @}
 
 void NWNX_Player_ForcePlaceableExamineWindow(object player, object placeable)
@@ -387,67 +385,6 @@ string NWNX_Player_GetBicFileName(object player)
     NWNX_PushArgumentObject(NWNX_Player, sFunc, player);
     NWNX_CallFunction(NWNX_Player, sFunc);
     return NWNX_GetReturnValueString(NWNX_Player, sFunc);
-}
-
-void NWNX_Player_SetVisibilityOverride(object player, object target, int override)
-{
-    WriteTimestampedLogEntry("NWNX_Player: SetVisibilityOverride() is deprecated. Use NWNX_Visibility: SetVisibilityOverride() instead");
-
-    string sFunc = "SetVisibilityOverride";
-    string NWNX_Visibility = "NWNX_Visibility";
-
-    switch(override)
-    {
-        case NWNX_PLAYER_VISIBILITY_DEFAULT:
-            override = -1;
-            break;
-
-        case NWNX_PLAYER_VISIBILITY_HIDDEN:
-            override = 1;
-            break;
-
-        case NWNX_PLAYER_VISIBILITY_VISIBLE:
-            override = 0;
-            break;
-    }
-
-    NWNX_PushArgumentInt(NWNX_Visibility, sFunc, override);
-    NWNX_PushArgumentObject(NWNX_Visibility, sFunc, target);
-    NWNX_PushArgumentObject(NWNX_Visibility, sFunc, player);
-
-    NWNX_CallFunction(NWNX_Visibility, sFunc);
-}
-
-int NWNX_Player_GetVisibilityOverride(object player, object target)
-{
-    WriteTimestampedLogEntry("NWNX_Player: GetVisibilityOverride() is deprecated. Use NWNX_Visibility: GetVisibilityOverride() instead");
-
-    string sFunc = "GetVisibilityOverride";
-    string NWNX_Visibility = "NWNX_Visibility";
-
-    NWNX_PushArgumentObject(NWNX_Visibility, sFunc, target);
-    NWNX_PushArgumentObject(NWNX_Visibility, sFunc, player);
-
-    NWNX_CallFunction(NWNX_Visibility, sFunc);
-
-    int retVal = NWNX_GetReturnValueInt(NWNX_Visibility, sFunc);
-
-    switch(retVal)
-    {
-        case -1:
-            retVal = NWNX_PLAYER_VISIBILITY_DEFAULT;
-            break;
-
-        case 0:
-            retVal = NWNX_PLAYER_VISIBILITY_VISIBLE;
-            break;
-
-        case 1:
-            retVal = NWNX_PLAYER_VISIBILITY_HIDDEN;
-            break;
-    }
-
-    return retVal;
 }
 
 void NWNX_Player_ShowVisualEffect(object player, int effectId, vector position)
@@ -672,7 +609,7 @@ int NWNX_Player_GetQuestCompleted(object player, string sQuestName)
     NWNX_PushArgumentObject(NWNX_Player, sFunc, player);
 
     NWNX_CallFunction(NWNX_Player, sFunc);
-    return  NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
 }
 
 void NWNX_Player_SetPersistentLocation(string sCDKeyOrCommunityName, string sBicFileName, object oWP, int bFirstConnectOnly = TRUE)
@@ -697,3 +634,15 @@ void NWNX_Player_UpdateItemName(object oPlayer, object oItem)
     NWNX_CallFunction(NWNX_Player, sFunc);
 }
 
+int NWNX_Player_PossessCreature(object oPossessor, object oPossessed, int bMindImmune = TRUE, int bCreateDefaultQB = FALSE)
+{
+    string sFunc = "PossessCreature";
+
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, bCreateDefaultQB);
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, bMindImmune);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPossessed);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPossessor);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+}

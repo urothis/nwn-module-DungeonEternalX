@@ -1446,27 +1446,6 @@
         "__struct_id": 6,
         "Area_Name": {
           "type": "resref",
-          "value": "velmircave"
-        }
-      },
-      {
-        "__struct_id": 6,
-        "Area_Name": {
-          "type": "resref",
-          "value": "velmirskeep001"
-        }
-      },
-      {
-        "__struct_id": 6,
-        "Area_Name": {
-          "type": "resref",
-          "value": "velmirskeep2"
-        }
-      },
-      {
-        "__struct_id": 6,
-        "Area_Name": {
-          "type": "resref",
           "value": "falkenrotwoods"
         }
       }
@@ -1544,7 +1523,7 @@
   },
   "Mod_MinGameVer": {
     "type": "cexostring",
-    "value": "1.77"
+    "value": "1.79"
   },
   "Mod_MinPerHour": {
     "type": "byte",

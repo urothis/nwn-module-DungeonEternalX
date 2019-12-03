@@ -90,7 +90,7 @@
   },
   "ChallengeRating": {
     "type": "float",
-    "value": 88.0
+    "value": 135.0
   },
   "ClassList": {
     "type": "list",
@@ -164,7 +164,7 @@
   },
   "CurrentHitPoints": {
     "type": "short",
-    "value": 218
+    "value": 1050
   },
   "DecayTime": {
     "type": "dword",
@@ -404,7 +404,7 @@
   },
   "fortbonus": {
     "type": "short",
-    "value": 0
+    "value": 25
   },
   "Gender": {
     "type": "byte",
@@ -416,7 +416,7 @@
   },
   "HitPoints": {
     "type": "short",
-    "value": 218
+    "value": 1050
   },
   "Int": {
     "type": "byte",
@@ -450,11 +450,11 @@
   },
   "MaxHitPoints": {
     "type": "short",
-    "value": 302
+    "value": 1134
   },
   "NaturalAC": {
     "type": "byte",
-    "value": 0
+    "value": 44
   },
   "NoPermDeath": {
     "type": "byte",
@@ -486,7 +486,7 @@
   },
   "refbonus": {
     "type": "short",
-    "value": 0
+    "value": 30
   },
   "ScriptAttacked": {
     "type": "resref",
@@ -755,7 +755,7 @@
   },
   "Str": {
     "type": "byte",
-    "value": 20
+    "value": 60
   },
   "Subrace": {
     "type": "cexostring",
@@ -783,7 +783,7 @@
   },
   "willbonus": {
     "type": "short",
-    "value": 0
+    "value": 25
   },
   "Wings_New": {
     "type": "dword",
