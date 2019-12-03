@@ -1,4 +1,4 @@
-/// @defgroup rename Rename
+/// @addtogroup rename Rename
 /// @brief Facilitates renaming, overriding and customization of player names.
 /// @{
 /// @file nwnx_rename.nss
@@ -78,4 +78,3 @@ void NWNX_Rename_ClearPCNameOverride(object oTarget, object oObserver = OBJECT_I
 
     NWNX_CallFunction(NWNX_Rename, sFunc);
 }
-

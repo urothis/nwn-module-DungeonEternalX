@@ -16,7 +16,6 @@
 #include "db_inc"
 #include "sfsubr_consts"
 #include "inc_server"
-#include "nwnx_ruby"
 #include "nwnx_admin"
 
 //No change. This is pure bridge code, and the syntax there has hardly moved at all.(DS)
@@ -27,13 +26,7 @@
 int LetoPingPong();
 
 string LetoScript(string sScript) {
-  // Seed - added logging data
-    // Stores a var in the module which NWNX LETO then takes and works with.
-    WriteTimestampedLogEntry("Leto Subrace Script >: "+sScript);
-    string sScriptResult = NWNX_Ruby_Evaluate("(LetoLib.request %q#" + sScript + "#).to_s");
-    WriteTimestampedLogEntry("Leto Subrace Results <: "+sScriptResult);
-    // Gets the var now changed by NWNX LETO back from the module and returns it.
-    return sScriptResult;
+    return "TODO";
 }
 
 string LetoSet(string sLocation,string sValue, string sType, int bAdd = TRUE)

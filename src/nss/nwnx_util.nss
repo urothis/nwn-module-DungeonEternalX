@@ -1,4 +1,4 @@
-/// @defgroup util Util
+/// @addtogroup util Util
 /// @brief Provides various utility functions that don't have a better home
 /// @{
 /// @file nwnx_util.nss
@@ -60,10 +60,6 @@ itemproperty NWNX_Util_EffectToItemProperty(effect e);
 /// @return The converted effect.
 effect NWNX_Util_ItemPropertyToEffect(itemproperty ip);
 
-/// @brief Generates a v4 UUID.
-/// @return A UUID string.
-string NWNX_Util_GenerateUUID();
-
 /// @brief Strip any color codes from a string.
 /// @param str The string to strip of color.
 /// @return The new string without any color codes.
@@ -120,10 +116,24 @@ int NWNX_Util_GetServerTicksPerSecond();
 
 /// @brief Get the last created object.
 /// @param nObjectType Does not take the NWScript OBJECT_TYPE_* constants.
-/// Use @ref consts_translate_obj_type "NWNX_Consts_TranslateNWScriptObjectType()" to get their NWNX equivalent.
+/// Use NWNX_Consts_TranslateNWScriptObjectType() to get their NWNX equivalent.
 /// @param nNthLast The nth last object created.
 /// @return The last created object. On error, this returns OBJECT_INVALID.
 object NWNX_Util_GetLastCreatedObject(int nObjectType, int nNthLast = 1);
+
+/// @brief Compiles and adds a script to the UserDirectory/nwnx folder.
+/// @note Will override existing scripts that are in the module.
+/// @param sFileName The script filename without extension, 16 or less characters.
+/// @param sScriptData The script data to compile
+/// @param bWrapIntoMain Set to TRUE to wrap sScriptData into void main(){}.
+/// @return "" on success, or the compilation error.
+string NWNX_Util_AddScript(string sFileName, string sScriptData, int bWrapIntoMain = FALSE);
+
+/// @brief Gets the contents of a .nss script file as a string.
+/// @param sScriptName The name of the script to get the contents of.
+/// @param nMaxLength The max length of the return string, -1 to get everything
+/// @return The script file contents or "" on error.
+string NWNX_Util_GetNSSContents(string sScriptName, int nMaxLength = -1);
 
 /// @}
 
@@ -172,13 +182,6 @@ effect NWNX_Util_ItemPropertyToEffect(itemproperty ip)
     NWNX_PushArgumentItemProperty(NWNX_Util, sFunc, ip);
     NWNX_CallFunction(NWNX_Util, sFunc);
     return NWNX_GetReturnValueEffect(NWNX_Util, sFunc);
-}
-
-string NWNX_Util_GenerateUUID()
-{
-    string sFunc = "GenerateUUID";
-    NWNX_CallFunction(NWNX_Util, sFunc);
-    return NWNX_GetReturnValueString(NWNX_Util, sFunc);
 }
 
 string NWNX_Util_StripColors(string str)
@@ -279,3 +282,25 @@ object NWNX_Util_GetLastCreatedObject(int nObjectType, int nNthLast = 1)
     return NWNX_GetReturnValueObject(NWNX_Util, sFunc);
 }
 
+string NWNX_Util_AddScript(string sFileName, string sScriptData, int bWrapIntoMain = FALSE)
+{
+    string sFunc = "AddScript";
+
+    NWNX_PushArgumentInt(NWNX_Util, sFunc, bWrapIntoMain);
+    NWNX_PushArgumentString(NWNX_Util, sFunc, sScriptData);
+    NWNX_PushArgumentString(NWNX_Util, sFunc, sFileName);
+    NWNX_CallFunction(NWNX_Util, sFunc);
+
+    return NWNX_GetReturnValueString(NWNX_Util, sFunc);
+}
+
+string NWNX_Util_GetNSSContents(string sScriptName, int nMaxLength = -1)
+{
+    string sFunc = "GetNSSContents";
+
+    NWNX_PushArgumentInt(NWNX_Util, sFunc, nMaxLength);
+    NWNX_PushArgumentString(NWNX_Util, sFunc, sScriptName);
+    NWNX_CallFunction(NWNX_Util, sFunc);
+
+    return NWNX_GetReturnValueString(NWNX_Util, sFunc);
+}

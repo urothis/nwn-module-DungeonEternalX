@@ -1,4 +1,4 @@
-/// @defgroup chat Chat
+/// @addtogroup chat Chat
 /// @brief Functions related to chat.
 /// @{
 /// @file nwnx_chat.nss
@@ -156,4 +156,3 @@ float NWNX_Chat_GetChatHearingDistance(object listener = OBJECT_INVALID, int cha
     NWNX_CallFunction(NWNX_Chat, sFunc);
     return NWNX_GetReturnValueFloat(NWNX_Chat, sFunc);
 }
-
