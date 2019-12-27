@@ -106,3 +106,4 @@ string NWNX_Redis_GetResultAsString(int resultId)
     NWNX_CallFunction("NWNX_Redis", "GetResultAsString");
     return NWNX_GetReturnValueString("NWNX_Redis", "GetResultAsString");
 }
+

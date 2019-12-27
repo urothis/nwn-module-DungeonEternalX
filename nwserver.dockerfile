@@ -1,4 +1,4 @@
-FROM nwnxee/unified:build8193.4
+FROM nwnxee/unified:build8193.5
 LABEL maintainer "urothis@gmail.com"
 ARG NWNX_CORE_LOG_LEVEL
 ENV NWNX_CORE_LOG_LEVEL=${NWNX_CORE_LOG_LEVEL}

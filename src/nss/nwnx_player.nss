@@ -40,6 +40,27 @@ const int NWNX_PLAYER_TIMING_BAR_LOCK          = 8;
 const int NWNX_PLAYER_TIMING_BAR_CUSTOM        = 10;
 /// @}
 
+/// @name Platform IDs
+/// @anchor platform_ids
+/// @{
+const int NWNX_PLAYER_PLATFORM_INVALID           = 0;
+const int NWNX_PLAYER_PLATFORM_WINDOWS_X86       = 1;
+const int NWNX_PLAYER_PLATFORM_WINDOWS_X64       = 2;
+const int NWNX_PLAYER_PLATFORM_LINUX_X86         = 10;
+const int NWNX_PLAYER_PLATFORM_LINUX_X64         = 11;
+const int NWNX_PLAYER_PLATFORM_LINUX_ARM32       = 12;
+const int NWNX_PLAYER_PLATFORM_LINUX_ARM64       = 13;
+const int NWNX_PLAYER_PLATFORM_MAC_X86           = 20;
+const int NWNX_PLAYER_PLATFORM_MAC_X64           = 21;
+const int NWNX_PLAYER_PLATFORM_IOS               = 30;
+const int NWNX_PLAYER_PLATFORM_ANDROID_ARM32     = 40;
+const int NWNX_PLAYER_PLATFORM_ANDROID_ARM64     = 41;
+const int NWNX_PLAYER_PLATFORM_ANDROID_X64       = 42;
+const int NWNX_PLAYER_PLATFORM_NINTENDO_SWITCH   = 50;
+const int NWNX_PLAYER_PLATFORM_MICROSOFT_XBOXONE = 60;
+const int NWNX_PLAYER_PLATFORM_SONY_PS4          = 70;
+/// @}
+
 /// @brief Force display placeable examine window for player
 /// @note If used on a placeable in a different area than the player, the portait will not be shown.
 /// @param player The player object.
@@ -249,6 +270,14 @@ void NWNX_Player_UpdateItemName(object oPlayer, object oItem);
 /// @param bCreateDefaultQB If TRUE will populate the quick bar with default buttons.
 /// @return TRUE if possession succeeded.
 int NWNX_Player_PossessCreature(object oPossessor, object oPossessed, int bMindImmune = TRUE, int bCreateDefaultQB = FALSE);
+
+/// @brief returns the platform ID of the given player (NWNX_PLAYER_PLATFORM_*)
+int NWNX_Player_GetPlatformId(object oPlayer);
+
+/// @brief returns the game language of the given player (uses NWNX_DIALOG_LANGUAGE_*)
+/// @details This function returns the ID of the game language displayed to the player.
+/// Uses the same constants as nwnx_dialog.
+int NWNX_Player_GetLanguage(object oPlayer);
 
 /// @}
 
@@ -646,3 +675,24 @@ int NWNX_Player_PossessCreature(object oPossessor, object oPossessed, int bMindI
     NWNX_CallFunction(NWNX_Player, sFunc);
     return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
 }
+
+int NWNX_Player_GetPlatformId(object oPlayer)
+{
+    string sFunc = "GetPlatformId";
+
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+}
+
+int NWNX_Player_GetLanguage(object oPlayer)
+{
+    string sFunc = "GetLanguage";
+
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+}
+

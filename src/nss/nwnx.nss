@@ -111,3 +111,4 @@ itemproperty NWNX_GetReturnValueItemProperty(string pluginName, string functionN
     itemproperty ip;
     return TagItemProperty(ip, NWNX_INTERNAL_BuildString(pluginName, functionName, "POP"));
 }
+

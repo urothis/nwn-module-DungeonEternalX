@@ -72,7 +72,7 @@ int BITCOUNT(
  * Perform arbitrary bitfield integer operations on strings
  *
  * Time complexity: O(1) for each subcommand specified
- * Annotated return value: 
+ * Annotated return value:
  */
 int BITFIELD(
 	string key,
@@ -206,7 +206,7 @@ int BZPOPMAX(
  * Returns the client ID for the current connection
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int CLIENT_ID();
 
@@ -294,7 +294,7 @@ int CLIENT_SETNAME(
  * Time complexity: O(log N) where N is the number of client connections
 
  * - Valid values for unblock_type: "TIMEOUT", "ERROR"
- * Annotated return value: 
+ * Annotated return value:
  */
 int CLIENT_UNBLOCK(
 	string client_id,
@@ -516,7 +516,7 @@ int CLUSTER_SETSLOT(
  * List replica nodes of the specified master node
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int CLUSTER_SLAVES(
 	string node_id
@@ -528,7 +528,7 @@ int CLUSTER_SLAVES(
  * List replica nodes of the specified master node
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int CLUSTER_REPLICAS(
 	string node_id
@@ -731,7 +731,7 @@ int ECHO(
  * Execute a Lua script server side
  *
  * Time complexity: Depends on the script that is executed.
- * Annotated return value: 
+ * Annotated return value:
  */
 int EVAL(
 	string script,
@@ -747,7 +747,7 @@ int EVAL(
  * Execute a Lua script server side
  *
  * Time complexity: Depends on the script that is executed.
- * Annotated return value: 
+ * Annotated return value:
  */
 int EVALSHA(
 	string sha1,
@@ -956,7 +956,7 @@ int GEORADIUS(
  * - Valid values for withhash: "WITHHASH"
 
  * - Valid values for order: "ASC", "DESC"
- * Annotated return value: 
+ * Annotated return value:
  */
 int GEORADIUSBYMEMBER(
 	string key,
@@ -1552,7 +1552,7 @@ int MIGRATE(
  * MONITOR
  *
  * Listen for all requests received by the server in real time
- * Annotated return value: 
+ * Annotated return value:
  */
 int MONITOR();
 
@@ -1610,7 +1610,7 @@ int MULTI();
  * Inspect the internals of Redis objects
  *
  * Time complexity: O(1) for all the currently implemented subcommands.
- * Annotated return value: 
+ * Annotated return value:
  */
 int OBJECT(
 	string subcommand,
@@ -1715,7 +1715,7 @@ int PING(
  * Set the value and expiration in milliseconds of a key
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int PSETEX(
 	string key,
@@ -2213,7 +2213,7 @@ int REPLICAOF(
  * SLOWLOG
  *
  * Manages the Redis slow queries log
- * Annotated return value: 
+ * Annotated return value:
  */
 int SLOWLOG(
 	string subcommand,
@@ -2377,7 +2377,7 @@ int SWAPDB(
  * SYNC
  *
  * Internal command used for replication
- * Annotated return value: 
+ * Annotated return value:
  */
 int SYNC();
 
@@ -2884,7 +2884,7 @@ int ZUNIONSTORE(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection.
- * Annotated return value: 
+ * Annotated return value:
  */
 int SCAN(
 	// Redis type: integer
@@ -2904,7 +2904,7 @@ int SCAN(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection..
- * Annotated return value: 
+ * Annotated return value:
  */
 int SSCAN(
 	string key,
@@ -2924,7 +2924,7 @@ int SSCAN(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection..
- * Annotated return value: 
+ * Annotated return value:
  */
 int HSCAN(
 	string key,
@@ -2944,7 +2944,7 @@ int HSCAN(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection..
- * Annotated return value: 
+ * Annotated return value:
  */
 int ZSCAN(
 	string key,
@@ -2966,7 +2966,7 @@ int ZSCAN(
  * items in the stream.
 
  * - Valid values for help: "HELP"
- * Annotated return value: 
+ * Annotated return value:
  */
 int XINFO(
 	// Redis type: key
@@ -3114,7 +3114,7 @@ int XREAD(
  * Time complexity: O(1) for all the subcommands, with the exception of the DESTROY subcommand
  * which takes an additional O(M) time in order to delete the M entries inside
  * the consumer group pending entries list (PEL).
- * Annotated return value: 
+ * Annotated return value:
  */
 int XGROUP(
 	// Redis type: key
@@ -3148,7 +3148,7 @@ int XGROUP(
  * - Valid values for noack: "NOACK"
 
  * - Valid values for streams: "STREAMS"
- * Annotated return value: 
+ * Annotated return value:
  */
 int XREADGROUP(
 	string group_group,
@@ -5897,4 +5897,5 @@ int XPENDING(
   NWNX_CallFunction("NWNX_Redis", "Deferred");
   return NWNX_GetReturnValueInt("NWNX_Redis", "Deferred");
 }
+
 
