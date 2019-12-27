@@ -29,6 +29,6 @@ void main() {
     // mute command
     if (TestStringAgainstPattern(sMessage,"!dm unmute") && GetIsDM(oPC) && NWNX_Chat_GetChannel() == 4 || NWNX_Chat_GetChannel() == 20 ){
         SetChatPermissionLevel(NWNX_Chat_GetTarget(), 0);
-    }    
+    }
 }
 

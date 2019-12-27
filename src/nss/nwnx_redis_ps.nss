@@ -21,3 +21,4 @@ struct NWNX_Redis_PubSubMessageData NWNX_Redis_GetPubSubMessageData()
     return ret;
 }
 /// @}
+

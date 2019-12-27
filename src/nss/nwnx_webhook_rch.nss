@@ -157,3 +157,4 @@ string NWNX_WebHook_BuildMessageForWebHook(string host, string path, struct NWNX
 
     return message;
 }
+

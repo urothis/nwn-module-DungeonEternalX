@@ -77,7 +77,7 @@ int NWNX_Redis_BITCOUNT(
  * Perform arbitrary bitfield integer operations on strings
  *
  * Time complexity: O(1) for each subcommand specified
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_BITFIELD(
 	string key,
@@ -211,7 +211,7 @@ int NWNX_Redis_BZPOPMAX(
  * Returns the client ID for the current connection
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_CLIENT_ID();
 
@@ -299,7 +299,7 @@ int NWNX_Redis_CLIENT_SETNAME(
  * Time complexity: O(log N) where N is the number of client connections
 
  * - Valid values for unblock_type: "TIMEOUT", "ERROR"
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_CLIENT_UNBLOCK(
 	string client_id,
@@ -521,7 +521,7 @@ int NWNX_Redis_CLUSTER_SETSLOT(
  * List replica nodes of the specified master node
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_CLUSTER_SLAVES(
 	string node_id
@@ -533,7 +533,7 @@ int NWNX_Redis_CLUSTER_SLAVES(
  * List replica nodes of the specified master node
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_CLUSTER_REPLICAS(
 	string node_id
@@ -736,7 +736,7 @@ int NWNX_Redis_ECHO(
  * Execute a Lua script server side
  *
  * Time complexity: Depends on the script that is executed.
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_EVAL(
 	string script,
@@ -752,7 +752,7 @@ int NWNX_Redis_EVAL(
  * Execute a Lua script server side
  *
  * Time complexity: Depends on the script that is executed.
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_EVALSHA(
 	string sha1,
@@ -961,7 +961,7 @@ int NWNX_Redis_GEORADIUS(
  * - Valid values for withhash: "WITHHASH"
 
  * - Valid values for order: "ASC", "DESC"
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_GEORADIUSBYMEMBER(
 	string key,
@@ -1557,7 +1557,7 @@ int NWNX_Redis_MIGRATE(
  * MONITOR
  *
  * Listen for all requests received by the server in real time
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_MONITOR();
 
@@ -1615,7 +1615,7 @@ int NWNX_Redis_MULTI();
  * Inspect the internals of Redis objects
  *
  * Time complexity: O(1) for all the currently implemented subcommands.
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_OBJECT(
 	string subcommand,
@@ -1720,7 +1720,7 @@ int NWNX_Redis_PING(
  * Set the value and expiration in milliseconds of a key
  *
  * Time complexity: O(1)
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_PSETEX(
 	string key,
@@ -2218,7 +2218,7 @@ int NWNX_Redis_REPLICAOF(
  * SLOWLOG
  *
  * Manages the Redis slow queries log
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_SLOWLOG(
 	string subcommand,
@@ -2382,7 +2382,7 @@ int NWNX_Redis_SWAPDB(
  * SYNC
  *
  * Internal command used for replication
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_SYNC();
 
@@ -2889,7 +2889,7 @@ int NWNX_Redis_ZUNIONSTORE(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection.
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_SCAN(
 	// Redis type: integer
@@ -2909,7 +2909,7 @@ int NWNX_Redis_SCAN(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection..
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_SSCAN(
 	string key,
@@ -2929,7 +2929,7 @@ int NWNX_Redis_SSCAN(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection..
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_HSCAN(
 	string key,
@@ -2949,7 +2949,7 @@ int NWNX_Redis_HSCAN(
  * Time complexity: O(1) for every call. O(N) for a complete iteration, including enough command
  * calls for the cursor to return back to 0. N is the number of elements inside
  * the collection..
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_ZSCAN(
 	string key,
@@ -2971,7 +2971,7 @@ int NWNX_Redis_ZSCAN(
  * items in the stream.
 
  * - Valid values for help: "HELP"
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_XINFO(
 	// Redis type: key
@@ -3119,7 +3119,7 @@ int NWNX_Redis_XREAD(
  * Time complexity: O(1) for all the subcommands, with the exception of the DESTROY subcommand
  * which takes an additional O(M) time in order to delete the M entries inside
  * the consumer group pending entries list (PEL).
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_XGROUP(
 	// Redis type: key
@@ -3153,7 +3153,7 @@ int NWNX_Redis_XGROUP(
  * - Valid values for noack: "NOACK"
 
  * - Valid values for streams: "STREAMS"
- * Annotated return value: 
+ * Annotated return value:
  */
 int NWNX_Redis_XREADGROUP(
 	string group_group,
@@ -5904,3 +5904,4 @@ int NWNX_Redis_XPENDING(
 }
 
 /// @}
+

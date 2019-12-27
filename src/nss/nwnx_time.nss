@@ -61,3 +61,4 @@ struct NWNX_Time_HighResTimestamp NWNX_Time_GetHighResTimeStamp()
     t.seconds = NWNX_GetReturnValueInt(NWNX_Time, sFunc);
     return t;
 }
+

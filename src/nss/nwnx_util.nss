@@ -304,3 +304,4 @@ string NWNX_Util_GetNSSContents(string sScriptName, int nMaxLength = -1)
 
     return NWNX_GetReturnValueString(NWNX_Util, sFunc);
 }
+

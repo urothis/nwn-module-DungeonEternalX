@@ -248,3 +248,4 @@ int NWNX_SQL_GetPreparedQueryParamCount()
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueInt(NWNX_SQL, sFunc);
 }
+

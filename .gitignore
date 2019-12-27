@@ -14,3 +14,4 @@ docker-compose.yml
 database/var/*
 logs/*
 bin/nwnsc
+DungeonEternalX.BackupMod
